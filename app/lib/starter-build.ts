@@ -13,6 +13,8 @@
       name: 'Setup your companion',
       description: 'An inititive is a short term project based series of tasks, designed to complete set of preconfigured outcomes within a set timeline.',
       goals: ['create a new role before end date on first milestone', 'establish clear lead metric goals with measurable lag outcomes'],
+      duration_count: 1,
+      duration_type: 'week',
       completed_on: null,
     },
   ];
