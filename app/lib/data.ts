@@ -1,6 +1,9 @@
 import { Roles, Habits, Initiatives } from "./starter-build";
 
 export const fetchRoleByName = (name:string) => {
+    if (!name) {
+        return Roles[0]
+    }
     const Role = Roles.filter((role) => role.name == name)
     return Role[0]
 }
