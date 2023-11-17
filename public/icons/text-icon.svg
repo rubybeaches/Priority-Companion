@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="36px" viewBox="0 0 160 160">
-  <g id="text-icon">
-    <circle class="circle-inner" id="Ellipse_926" data-name="Ellipse 926" cx="80" cy="80" r="80" transform="translate(0.44)"/>
-    <path class="circle-outline" id="Ellipse_926_-_Outline" data-name="Ellipse 926 - Outline" d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"/>
+  <g id="text-icon" class="cls-1">
+    <rect class="cls-2"/>
+    <circle fill="#fff" id="Ellipse_926" data-name="Ellipse 926" class="cls-2" cx="80" cy="80" r="80" transform="translate(0.44)"/>
+    <path id="Ellipse_926_-_Outline" data-name="Ellipse 926 - Outline" d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"/>
     <g id="Group_1808" data-name="Group 1808" transform="translate(48.694 41.738)">
       <path id="Path_794" data-name="Path 794" d="M19.37,66.578H-1.5V0H19.37Z" transform="translate(23.117 11.712)"/>
       <path id="Path_665" data-name="Path 665" d="M63.55,19.37H0V-1.5H63.55Z" transform="translate(0 1.5)"/>
