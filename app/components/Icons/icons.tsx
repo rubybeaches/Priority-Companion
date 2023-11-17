@@ -1,4 +1,4 @@
-import { taskIconsProp, colorSchema } from "./typeDefinitions";
+import { taskIconsProp, colorSchema } from "../../lib/definitions";
 
 const set = {
   circle: "#FFF",
@@ -33,6 +33,8 @@ export const TaskIcons = ({ icon, state }: taskIconsProp) => {
     chart: <ChartIcon fill={colors[state]} />,
     calendar: <CalendarIcon fill={colors[state]} />,
     clock: <ClockIcon fill={colors[state]} />,
+    square: <SquareIcon fill={colors[state]} />,
+    link: <LinkIcon fill={colors[state]} />,
   };
 
   return svg[icon];
@@ -44,8 +46,8 @@ const TaskIcon = ({ fill }: { fill: colorSchema }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="36px"
-      height="36px"
+      width="24px"
+      height="24px"
       viewBox="0 0 160 160"
     >
       <circle
@@ -91,8 +93,8 @@ const ChartIcon = ({ fill }: { fill: colorSchema }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="36"
-      height="36"
+      width="24px"
+      height="24px"
       viewBox="0 0 160 160"
     >
       <circle
@@ -132,8 +134,8 @@ const CalendarIcon = ({ fill }: { fill: colorSchema }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="36"
-      height="36"
+      width="24px"
+      height="24px"
       viewBox="0 0 160 160"
     >
       <circle
@@ -237,8 +239,8 @@ const ClockIcon = ({ fill }: { fill: colorSchema }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="36"
-      height="36"
+      width="24px"
+      height="24px"
       viewBox="0 0 160 160"
     >
       <circle
@@ -335,6 +337,116 @@ const ClockIcon = ({ fill }: { fill: colorSchema }) => {
           data-name="Line 431"
           d="M6.6,11.522-.354,4.565,4.565-.354,11.522,6.6Z"
           transform="translate(105.309 109.355)"
+        />
+      </g>
+    </svg>
+  );
+};
+
+const SquareIcon = ({ fill }: { fill: colorSchema }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+    >
+      <circle
+        fill={fill.circle}
+        id="Ellipse_926"
+        data-name="Ellipse 926"
+        cx="80"
+        cy="80"
+        r="80"
+        transform="translate(0.44)"
+      />
+      <path
+        fill={fill.outline}
+        id="Ellipse_926_-_Outline"
+        data-name="Ellipse 926 - Outline"
+        d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"
+      />
+      <rect
+        fill={fill.shapeInner}
+        id="Rectangle_3658"
+        data-name="Rectangle 3658"
+        width="89.87"
+        height="89.87"
+        transform="translate(34.646 32.595)"
+      />
+      <g fill={fill.shape} id="Group_1809" data-name="Group 1809">
+        <path
+          id="Rectangle_3658_-_Outline"
+          data-name="Rectangle 3658 - Outline"
+          d="M6.957,6.957V82.913H82.914V6.957H6.957M0,0H89.87V89.87H0Z"
+          transform="translate(34.646 32.595)"
+        />
+        <path
+          id="Line_389"
+          data-name="Line 389"
+          d="M6.457,83.478H-.5V0H6.457Z"
+          transform="translate(77.021 38.261)"
+        />
+        <path
+          id="Path_794"
+          data-name="Path 794"
+          d="M83.478,6.457H0V-.5H83.478Z"
+          transform="translate(38.261 77.022)"
+        />
+      </g>
+    </svg>
+  );
+};
+
+const LinkIcon = ({ fill }: { fill: colorSchema }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+    >
+      <circle
+        fill={fill.circle}
+        id="Ellipse_926"
+        data-name="Ellipse 926"
+        cx="80"
+        cy="80"
+        r="80"
+        transform="translate(0.44)"
+      />
+      <path
+        fill={fill.outline}
+        id="Ellipse_926_-_Outline"
+        data-name="Ellipse 926 - Outline"
+        d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"
+      />
+      <g fill={fill.shapeInner} id="Group_1814" data-name="Group 1814">
+        <path
+          id="Path_805"
+          data-name="Path 805"
+          d="M20.425,0A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,0,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z"
+          transform="translate(114.857 25.367) rotate(51)"
+        />
+        <path
+          id="Path_804"
+          data-name="Path 804"
+          d="M20.425,0A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,0,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z"
+          transform="translate(73.587 58.791) rotate(51)"
+        />
+      </g>
+      <g fill={fill.shape} id="Group_1813" data-name="Group 1813">
+        <path
+          id="Rectangle_3659_-_Outline"
+          data-name="Rectangle 3659 - Outline"
+          d="M20.425,6.957A13.484,13.484,0,0,0,6.957,20.425V57.19a13.468,13.468,0,1,0,26.937,0V20.425A13.484,13.484,0,0,0,20.425,6.957m0-6.957A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,1,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z"
+          transform="translate(114.857 25.367) rotate(51)"
+        />
+        <path
+          id="Rectangle_3657_-_Outline"
+          data-name="Rectangle 3657 - Outline"
+          d="M20.425,6.957A13.484,13.484,0,0,0,6.957,20.425V57.19a13.468,13.468,0,1,0,26.937,0V20.425A13.484,13.484,0,0,0,20.425,6.957m0-6.957A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,1,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z"
+          transform="translate(73.587 58.791) rotate(51)"
         />
       </g>
     </svg>

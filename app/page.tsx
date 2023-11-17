@@ -1,27 +1,38 @@
 import { Roles } from "./lib/starter-build";
 import { fetchRoleData } from "./lib/data";
 import Link from "next/link";
-import TaskIcons from "@/app/lib/icons";
+import Task from "./components/Task/Task";
+import TaskIcons from "./components/Icons/icons";
+import Image from "next/image";
 
-const Home = () => {
+const Page = () => {
   const { habits, initiatives } = fetchRoleData(Roles[0].id);
   return (
     <main>
       <h1>Priority Companion</h1>
       <h3>PC is an all in one stop shop, go to fucking extradoridare.</h3>
+      <Image
+        src="/colors.png"
+        width={534}
+        height={259}
+        priority={false}
+        alt="Screenshots of the dashboard project showing desktop and mobile versions"
+      />
       <div
         style={{
           height: "40px",
           backgroundColor: "#f8f8f8",
           padding: "10px",
           display: "flex",
-          gap: ".8em",
+          gap: ".5em",
         }}
       >
         <TaskIcons icon={"chart"} state={"set"} />
         <TaskIcons icon={"task"} state={"unset"} />
         <TaskIcons icon={"clock"} state={"set"} />
         <TaskIcons icon={"calendar"} state={"set"} />
+        <TaskIcons icon={"square"} state={"selected"} />
+        <TaskIcons icon={"link"} state={"set"} />
       </div>
       <div
         className="container"
@@ -38,41 +49,19 @@ const Home = () => {
               ))}
               <h3>Habits</h3>
               {habits.map((habit) => (
-                <div
-                  key={habit.parent_id}
-                  className="habit"
-                  style={{
-                    border: "2px solid #427BDE",
-                    borderRadius: "10px",
-                    padding: "10px",
-                    marginBlock: "10px",
-                  }}
-                >
-                  {habit.name}
-                  <div
-                    style={{
-                      display: "flex",
-                      marginTop: "10px",
-                      lineHeight: "36px",
-                      justifyItems: "center",
-                      gap: ".5em",
-                    }}
-                  >
-                    <TaskIcons
-                      icon="task"
-                      state={habit.description ? "set" : "unset"}
-                    />
-                    {habit.description}
-                    <TaskIcons
-                      icon="clock"
-                      state={habit.est_time_seconds ? "set" : "unset"}
-                    />
-                    <TaskIcons
-                      icon="calendar"
-                      state={habit.planned_start ? "set" : "unset"}
-                    />
-                  </div>
-                </div>
+                <span key={habit.id}>
+                  <Task
+                    title={habit.name}
+                    description={habit.description}
+                    priority={habit.priority}
+                    estTime={habit.est_time_seconds}
+                    chronoType={"trough"}
+                    plannedStart={habit.planned_start}
+                    dueBy={habit.due_date || undefined}
+                    link={undefined}
+                    parent={"habit"}
+                  />
+                </span>
               ))}
             </div>
             <button
@@ -102,4 +91,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

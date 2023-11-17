@@ -1,0 +1,44 @@
+:root {
+    --icon-width: calc((24px + 1em));
+    --task-width: calc((24px * 6 + 3em) * 2);
+}
+
+.taskTitle {
+    color: #427BDE;
+    margin-block: .25em .75em;
+}
+
+.taskWrapper {
+    border: 2px solid #5693FF;
+    border-radius: 10px;
+    padding: 10px;
+    margin-block: 10px;
+    width: var(--task-width);
+}
+
+.iconFieldWrapper {
+    display: flex;
+    margin-top: 10px;
+    height: 24px;
+    line-height: 24px;
+    padding: 5px;
+    background-color: #F8F8F8;
+    align-items: center;
+    gap: .5em;
+}
+
+.minimizedField {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #FFF;
+    border: #5693FF 2px solid;
+    border-radius: 20px;
+}
+
+.minimizedField > * { 
+    vertical-align: text-bottom;
+    padding: 2px 2px 0px 2px;
+    font-size: .9em;
+    }
