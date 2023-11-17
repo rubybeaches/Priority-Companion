@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-link-icon);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-link-icon">
+      <rect width="160" height="160"/>
+    </clipPath>
+  </defs>
+  <g id="link-icon" class="cls-1">
+    <rect class="cls-2" width="160" height="160"/>
+    <circle id="Ellipse_926" data-name="Ellipse 926" class="cls-2" cx="80" cy="80" r="80" transform="translate(0.44)"/>
+    <path id="Ellipse_926_-_Outline" data-name="Ellipse 926 - Outline" d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"/>
+    <g id="Group_1814" data-name="Group 1814">
+      <path id="Path_805" data-name="Path 805" class="cls-2" d="M20.425,0A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,0,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z" transform="translate(114.857 25.367) rotate(51)"/>
+      <path id="Path_804" data-name="Path 804" class="cls-2" d="M20.425,0A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,0,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z" transform="translate(73.587 58.791) rotate(51)"/>
+    </g>
+    <g id="Group_1813" data-name="Group 1813">
+      <path id="Rectangle_3659_-_Outline" data-name="Rectangle 3659 - Outline" d="M20.425,6.957A13.484,13.484,0,0,0,6.957,20.425V57.19a13.468,13.468,0,1,0,26.937,0V20.425A13.484,13.484,0,0,0,20.425,6.957m0-6.957A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,1,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z" transform="translate(114.857 25.367) rotate(51)"/>
+      <path id="Rectangle_3657_-_Outline" data-name="Rectangle 3657 - Outline" d="M20.425,6.957A13.484,13.484,0,0,0,6.957,20.425V57.19a13.468,13.468,0,1,0,26.937,0V20.425A13.484,13.484,0,0,0,20.425,6.957m0-6.957A20.425,20.425,0,0,1,40.85,20.425V57.19A20.425,20.425,0,1,1,0,57.19V20.425A20.425,20.425,0,0,1,20.425,0Z" transform="translate(73.587 58.791) rotate(51)"/>
+    </g>
+  </g>
+</svg>

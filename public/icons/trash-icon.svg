@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-trash-icon);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-trash-icon">
+      <rect width="120" height="120"/>
+    </clipPath>
+  </defs>
+  <g id="trash-icon" class="cls-1">
+    <rect class="cls-2" width="120" height="120"/>
+    <g id="Group_1819" data-name="Group 1819" transform="translate(-6597.281 -2362)">
+      <path id="Path_808" data-name="Path 808" d="M5,0H75a5,5,0,0,1,0,10H5A5,5,0,0,1,5,0Z" transform="translate(6617.281 2369.5)"/>
+      <path id="Path_807" data-name="Path 807" d="M7.5,0h25a7.5,7.5,0,0,1,0,15H7.5a7.5,7.5,0,0,1,0-15Z" transform="translate(6637.281 2362)"/>
+      <path id="Rectangle_4197_-_Outline" data-name="Rectangle 4197 - Outline" d="M10,10V85H70V10H10M10,0H70A10,10,0,0,1,80,10V85A10,10,0,0,1,70,95H10A10,10,0,0,1,0,85V10A10,10,0,0,1,10,0Z" transform="translate(6617.281 2387)"/>
+      <path id="Line_421" data-name="Line 421" d="M9.5,83.477H-.5V0h10Z" transform="translate(6632.781 2393.523)"/>
+      <path id="Line_422" data-name="Line 422" d="M9.5,83.477H-.5V0h10Z" transform="translate(6652.781 2393.523)"/>
+      <path id="Line_423" data-name="Line 423" d="M9.5,83.477H-.5V0h10Z" transform="translate(6672.781 2393.523)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-square-icon);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-square-icon">
+      <rect width="160" height="160"/>
+    </clipPath>
+  </defs>
+  <g id="square-icon" class="cls-1">
+    <rect class="cls-2" width="160" height="160"/>
+    <circle id="Ellipse_926" data-name="Ellipse 926" class="cls-2" cx="80" cy="80" r="80" transform="translate(0.44)"/>
+    <path id="Ellipse_926_-_Outline" data-name="Ellipse 926 - Outline" d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"/>
+    <rect id="Rectangle_3658" data-name="Rectangle 3658" class="cls-2" width="89.87" height="89.87" transform="translate(34.646 32.595)"/>
+    <g id="Group_1809" data-name="Group 1809">
+      <path id="Rectangle_3658_-_Outline" data-name="Rectangle 3658 - Outline" d="M6.957,6.957V82.913H82.914V6.957H6.957M0,0H89.87V89.87H0Z" transform="translate(34.646 32.595)"/>
+      <path id="Line_389" data-name="Line 389" d="M6.457,83.478H-.5V0H6.457Z" transform="translate(77.021 38.261)"/>
+      <path id="Path_794" data-name="Path 794" d="M83.478,6.457H0V-.5H83.478Z" transform="translate(38.261 77.022)"/>
+    </g>
+  </g>
+</svg>

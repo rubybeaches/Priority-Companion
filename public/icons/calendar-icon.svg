@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-calendar-icon);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-calendar-icon">
+      <rect width="160" height="160"/>
+    </clipPath>
+  </defs>
+  <g id="calendar-icon" class="cls-1">
+    <rect class="cls-2" width="160" height="160"/>
+    <circle id="Ellipse_926" data-name="Ellipse 926" class="cls-2" cx="80" cy="80" r="80" transform="translate(0.44)"/>
+    <path id="Ellipse_926_-_Outline" data-name="Ellipse 926 - Outline" d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"/>
+    <rect id="Rectangle_3616" data-name="Rectangle 3616" class="cls-2" width="97.022" height="87.801" transform="translate(31.489 40.516)"/>
+    <g id="Group_1811" data-name="Group 1811">
+      <path id="Rectangle_3616_-_Outline" data-name="Rectangle 3616 - Outline" d="M6.969,6.937V80.864H90.053V6.937H6.969M0,0H97.022V87.8H0Z" transform="translate(31.489 40.516)"/>
+      <path id="Path_800" data-name="Path 800" d="M0,0H17.56V17.56H0Z" transform="translate(44.798 93.238)"/>
+      <path id="Path_797" data-name="Path 797" d="M0,0H17.56V17.56H0Z" transform="translate(71.22 66.816)"/>
+      <path id="Path_799" data-name="Path 799" d="M0,0H17.56V17.56H0Z" transform="translate(71.22 93.238)"/>
+      <path id="Path_796" data-name="Path 796" d="M0,0H17.56V17.56H0Z" transform="translate(97.642 66.816)"/>
+      <path id="Path_798" data-name="Path 798" d="M0,0H17.56V17.56H0Z" transform="translate(97.642 93.238)"/>
+      <path id="Path_801" data-name="Path 801" d="M6.969,0H90.053a6.953,6.953,0,0,1,6.969,6.937v3.685a6.953,6.953,0,0,1-6.969,6.937H6.969A6.953,6.953,0,0,1,0,10.623V6.937A6.953,6.953,0,0,1,6.969,0Z" transform="translate(31.489 40.394)"/>
+      <path id="Path_803" data-name="Path 803" d="M4.291,0A4.291,4.291,0,0,1,8.583,4.291v8.978a4.291,4.291,0,0,1-8.583,0V4.291A4.291,4.291,0,0,1,4.291,0Z" transform="translate(44.79 31.587)"/>
+      <path id="Path_802" data-name="Path 802" d="M4.39,0A4.39,4.39,0,0,1,8.78,4.39v8.78a4.39,4.39,0,0,1-8.78,0V4.39A4.39,4.39,0,0,1,4.39,0Z" transform="translate(106.43 31.587)"/>
+    </g>
+    <g id="Group_1812" data-name="Group 1812">
+      <path id="Path_803_-_Outline" data-name="Path 803 - Outline" class="cls-2" d="M7.76,3.469A4.291,4.291,0,0,0,3.469,7.76v8.978a4.291,4.291,0,0,0,8.583,0V7.76A4.291,4.291,0,0,0,7.76,3.469M7.76,0a7.769,7.769,0,0,1,7.76,7.76v8.978a7.76,7.76,0,0,1-15.52,0V7.76A7.769,7.769,0,0,1,7.76,0Z" transform="translate(41.316 28.112)"/>
+      <path id="Path_802_-_Outline" data-name="Path 802 - Outline" class="cls-2" d="M7.859,3.469a4.39,4.39,0,0,0-4.39,4.39v8.78a4.39,4.39,0,1,0,8.78,0V7.859a4.39,4.39,0,0,0-4.39-4.39M7.859,0a7.868,7.868,0,0,1,7.859,7.859v8.78A7.859,7.859,0,0,1,0,16.639V7.859A7.868,7.868,0,0,1,7.859,0Z" transform="translate(102.966 28.112)"/>
+    </g>
+  </g>
+</svg>

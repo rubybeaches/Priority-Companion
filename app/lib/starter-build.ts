@@ -25,7 +25,6 @@
         name: 'Weekly Outcomes',
         role_id: Roles[0].id,
         frequency: "weekly",
-        start_date: '2023-11-06',
     },
   ];
   
