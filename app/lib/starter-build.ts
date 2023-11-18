@@ -28,6 +28,12 @@ import { chronoType } from "./definitions";
         role_id: Roles[0].id,
         frequency: "weekly",
     },
+    {
+      id: '712f-3958dc9e-712f-712f-fec4b6a6442a',
+      name: 'Anotha One',
+      role_id: Roles[0].id,
+      frequency: "weekly",
+  },
   ];
   
   export const Milestones = [
@@ -77,5 +83,17 @@ import { chronoType } from "./definitions";
         planned_start: '2023-11-16',
         due_date: null,
         link: "google.com",
+      },
+      {
+        id: '4b6a6442a-85e9-6442-85e9-fec4b6a6442a',
+        parent_id: Habits[1].id,
+        parent_type: 'habit',
+        description: "it's a beep boop",
+        est_time_seconds: "400",
+        priority: 'schedule',
+        type: 'trough',
+        planned_start: '2023-11-19',
+        due_date: null,
+        link: null,
       },
   ];
