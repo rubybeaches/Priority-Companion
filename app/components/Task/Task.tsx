@@ -18,11 +18,6 @@ const Task = ({
 }: TaskProps) => {
   const [selected, setSelected] = useState("");
 
-  const handleClick = (field: string | chronoType | undefined) => {
-    console.log(field);
-    setSelected((selected) => field || "");
-  };
-
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -34,13 +29,7 @@ const Task = ({
     const state = field ? (expand ? "selected" : "set") : "unset";
 
     const triggerClick = () => {
-      document
-        .getElementsByClassName("minimizedField")[0]
-        .classList.add("collapseField");
-
-      setTimeout(() => {
-        handleClick(field);
-      }, 700);
+      setSelected((selected) => field || "");
     };
 
     if (!expand) {
@@ -49,12 +38,8 @@ const Task = ({
       );
     }
     return (
-      <span className="minimizedField">
-        <TaskIcons
-          icon={icon}
-          state={state}
-          clickFunc={() => handleClick(field)}
-        />
+      <span className="minimizedField" id={icon}>
+        <TaskIcons icon={icon} state={state} clickFunc={() => triggerClick()} />
         <span>{field}</span>
       </span>
     );

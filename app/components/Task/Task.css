@@ -23,8 +23,11 @@
     line-height: 24px;
     padding: 5px;
     background-color: #F8F8F8;
-    align-items: center;
     gap: .5em;
+}
+
+.hidden {
+    display: none;
 }
 
 @keyframes slideInFromLeft {
@@ -36,18 +39,12 @@
     }
   }
 
-  @keyframes collapse {
-    0% {
-      flex: 1;
-    }
-    100% {
-      flex: .135;
-    }
-  }
-
 .minimizedField {
     animation: 1s ease-in-out 1 slideInFromLeft;
     flex: 1;
+    height: fit-content;
+    position: relative;
+    top: -4px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -56,12 +53,7 @@
     border-radius: 20px;
 }
 
-.collapseField {
-    animation: .5s ease-in-out 1 collapse;
-    flex: .135;
-}
-
-.minimizedField > * { 
+.minimizedField > *, .collapseField > * { 
     vertical-align: text-bottom;
     padding: 2px 2px 0px 2px;
     font-size: .9em;
