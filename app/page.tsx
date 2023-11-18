@@ -27,12 +27,14 @@ const Page = () => {
           gap: ".5em",
         }}
       >
+        {/*
         <TaskIcons icon={"chart"} state={"set"} />
         <TaskIcons icon={"task"} state={"unset"} />
         <TaskIcons icon={"clock"} state={"set"} />
         <TaskIcons icon={"calendar"} state={"set"} />
         <TaskIcons icon={"square"} state={"selected"} />
         <TaskIcons icon={"link"} state={"set"} />
+      */}
       </div>
       <div
         className="container"

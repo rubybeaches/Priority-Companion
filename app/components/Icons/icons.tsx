@@ -1,4 +1,6 @@
-import { taskIconsProp, colorSchema } from "../../lib/definitions";
+"use client";
+
+import { taskIconsProp, colorSchema, chronoType } from "../../lib/definitions";
 
 const set = {
   circle: "#FFF",
@@ -21,7 +23,7 @@ const unset = {
   shapeInner: "#F8F8F8",
 };
 
-export const TaskIcons = ({ icon, state }: taskIconsProp) => {
+export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
   const colors: any = {
     set: set,
     selected: selected,
@@ -29,12 +31,12 @@ export const TaskIcons = ({ icon, state }: taskIconsProp) => {
   };
 
   const svg: any = {
-    task: <TaskIcon fill={colors[state]} />,
-    chart: <ChartIcon fill={colors[state]} />,
-    calendar: <CalendarIcon fill={colors[state]} />,
-    clock: <ClockIcon fill={colors[state]} />,
-    square: <SquareIcon fill={colors[state]} />,
-    link: <LinkIcon fill={colors[state]} />,
+    task: <TaskIcon fill={colors[state]} clickFunc={clickFunc} />,
+    chart: <ChartIcon fill={colors[state]} clickFunc={clickFunc} />,
+    calendar: <CalendarIcon fill={colors[state]} clickFunc={clickFunc} />,
+    clock: <ClockIcon fill={colors[state]} clickFunc={clickFunc} />,
+    square: <SquareIcon fill={colors[state]} clickFunc={clickFunc} />,
+    link: <LinkIcon fill={colors[state]} clickFunc={clickFunc} />,
   };
 
   return svg[icon];
@@ -42,9 +44,16 @@ export const TaskIcons = ({ icon, state }: taskIconsProp) => {
 
 export default TaskIcons;
 
-const TaskIcon = ({ fill }: { fill: colorSchema }) => {
+const TaskIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -89,9 +98,16 @@ const TaskIcon = ({ fill }: { fill: colorSchema }) => {
   );
 };
 
-const ChartIcon = ({ fill }: { fill: colorSchema }) => {
+const ChartIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -130,9 +146,16 @@ const ChartIcon = ({ fill }: { fill: colorSchema }) => {
   );
 };
 
-const CalendarIcon = ({ fill }: { fill: colorSchema }) => {
+const CalendarIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -235,9 +258,16 @@ const CalendarIcon = ({ fill }: { fill: colorSchema }) => {
   );
 };
 
-const ClockIcon = ({ fill }: { fill: colorSchema }) => {
+const ClockIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -343,9 +373,16 @@ const ClockIcon = ({ fill }: { fill: colorSchema }) => {
   );
 };
 
-const SquareIcon = ({ fill }: { fill: colorSchema }) => {
+const SquareIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -398,9 +435,16 @@ const SquareIcon = ({ fill }: { fill: colorSchema }) => {
   );
 };
 
-const LinkIcon = ({ fill }: { fill: colorSchema }) => {
+const LinkIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
   return (
     <svg
+      onClick={() => clickFunc()}
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"

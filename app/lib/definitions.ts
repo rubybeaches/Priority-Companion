@@ -12,6 +12,7 @@ export type chronoType = "peak" | "trough" | "creative" | undefined;
 export interface taskIconsProp {
     icon: iconName;
     state: state;
+    clickFunc: () => void;
   }
 
 export interface TaskProps {

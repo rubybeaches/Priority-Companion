@@ -27,7 +27,26 @@
     gap: .5em;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+      flex: .135;
+    }
+    100% {
+      flex: 1;
+    }
+  }
+
+  @keyframes collapse {
+    0% {
+      flex: 1;
+    }
+    100% {
+      flex: .135;
+    }
+  }
+
 .minimizedField {
+    animation: 1s ease-in-out 1 slideInFromLeft;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -35,6 +54,11 @@
     background-color: #FFF;
     border: #5693FF 2px solid;
     border-radius: 20px;
+}
+
+.collapseField {
+    animation: .5s ease-in-out 1 collapse;
+    flex: .135;
 }
 
 .minimizedField > * { 
