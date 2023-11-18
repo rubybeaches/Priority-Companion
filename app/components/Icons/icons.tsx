@@ -184,7 +184,12 @@ const CalendarIcon = ({
         height="87.801"
         transform="translate(31.489 40.516)"
       />
-      <g fill={fill.shape} id="Group_1811" data-name="Group 1811">
+      <g
+        fill={fill.shape}
+        className="calendarAnimate"
+        id="Group_1811"
+        data-name="Group 1811"
+      >
         <path
           id="Rectangle_3616_-_Outline"
           data-name="Rectangle 3616 - Outline"
