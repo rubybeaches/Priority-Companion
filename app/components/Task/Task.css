@@ -26,19 +26,6 @@
     gap: .5em;
 }
 
-.hidden {
-    display: none;
-}
-
-@keyframes slideInFromLeft {
-    0% {
-      flex: .135;
-    }
-    100% {
-      flex: 1;
-    }
-  }
-
 .minimizedField {
     animation: 1s ease-in-out 1 slideInFromLeft;
     flex: 1;
@@ -53,8 +40,49 @@
     border-radius: 20px;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+      flex: .135;
+    }
+    100% {
+      flex: 1;
+    }
+  }
+
 .minimizedField > *, .collapseField > * { 
     vertical-align: text-bottom;
     padding: 2px 2px 0px 2px;
     font-size: .9em;
     }
+
+/* SVG Animations */
+
+.minimizedField .clockAnimate {
+    animation: 1s ease-in-out 1 spinClock;
+    transform-origin: center;
+}
+
+@keyframes spinClock {
+    0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+}
+
+.minimizedField .clockAnimate > #Path_665 {
+    animation: 1s ease-in-out 1 spinClockHand;
+}
+
+@keyframes spinClockHand {
+    0% {
+        transform: translate(76.492px, 77.025px) rotate(0deg);
+      }
+      50% {
+        transform: translate(76.492px, 77.025px) rotate(30deg);
+      }
+      100% {
+        transform: translate(76.492px, 77.025px) rotate(0deg);
+      }
+}
