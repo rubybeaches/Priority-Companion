@@ -232,41 +232,48 @@
 }
 
 /* Chart Icon */
-.minimizedField .chartAnimate  {
+.minimizedField .chartAnimate .inside  {
+    animation: 1s ease-in-out 1 chartSqueeze;
+    animation-delay: .2s;
+    transform-origin: center;
+}
+.minimizedField .chartAnimate .outline  {
     animation: 1s ease-in-out 1 chartSqueeze;
     transform-origin: center;
-
 }
 
 @keyframes chartSqueeze {
     0% {
-        transform: scaleY(1) scaleX(1);
+        transform: scaleY(1);
       }
       35% {
-        transform: scaleY(.6) scaleX(1.1);
+        transform: scaleY(.5);
       }
       70% { 
-        transform: scaleY(1.3) scaleX(.8);
+        transform: scaleY(1.5);
       }
       100% {
-        transform: scaleY(1) scaleX(1);
+        transform: scaleY(1);
       }
 }
 
 /* Task Icon */
 .minimizedField .taskAnimate  {
-    animation: 1s ease-in-out 1 taskDip;
+    animation: 1s ease-out 1 taskDip;
 }
 
 @keyframes taskDip {
     0% {
         transform: translate(0px, 1.5px);
       }
-      35% {
+      25% {
         transform: translate(10px, 21.5px) rotate(30deg);
       }
-      70% { 
-        transform: translate(0px, 21.5px) rotate(-60deg);
+      50% {
+        transform: translate(0px, 31.5px) rotate(0deg);
+      }
+      75% { 
+        transform: translate(0px, 21.5px) rotate(-30deg);
       }
       100% {
         transform: translate(0px, 1.5px) rotate(0deg);
