@@ -1,3 +1,5 @@
+import { chronoType } from "./definitions"; 
+
   export const Roles = [
     {
       id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
@@ -38,7 +40,19 @@
     },
   ];
   
-  export const Tasks = [
+    interface TaskProps {
+    id: string,
+    parent_id: string,
+    parent_type: string,
+    description: string,
+    priority: string | undefined,
+    est_time_seconds: string | undefined,
+    type: chronoType;
+    planned_start: string,
+    due_date: string | null,
+}
+
+  export const Tasks: TaskProps[] = [
     {
       id: '4b6a6442a-712f-4377-85e9-fec4b6a6442a',
       parent_id: Initiatives[0].id,

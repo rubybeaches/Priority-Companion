@@ -57,7 +57,7 @@ const Page = () => {
                     description={habit.description}
                     priority={habit.priority}
                     estTime={habit.est_time_seconds}
-                    chronoType={"trough"}
+                    chronoType={habit.type}
                     plannedStart={habit.planned_start}
                     dueBy={habit.due_date || undefined}
                     link={undefined}
