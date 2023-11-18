@@ -50,6 +50,7 @@ import { chronoType } from "./definitions";
     type: chronoType;
     planned_start: string,
     due_date: string | null,
+    link: string | null,
 }
 
   export const Tasks: TaskProps[] = [
@@ -63,6 +64,7 @@ import { chronoType } from "./definitions";
       type: 'trough',
       planned_start: '2023-11-16',
       due_date: null,
+      link: null,
     },
     {
         id: '4b6a6442a-71e9-6442-85e9-fec4b6a6442a',
@@ -74,5 +76,6 @@ import { chronoType } from "./definitions";
         type: 'peak',
         planned_start: '2023-11-16',
         due_date: null,
+        link: "google.com",
       },
   ];

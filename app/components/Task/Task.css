@@ -279,3 +279,42 @@
         transform: translate(0px, 1.5px) rotate(0deg);
       }
 }
+
+/* Link Icon */
+.minimizedField .linkAnimate #Rectangle_3659_-_Outline {
+    animation: 1s ease-in-out 1 linkSqueeze1;
+}
+.minimizedField .linkAnimate #Rectangle_3657_-_Outline {
+    animation: 1s ease-in-out 1 linkSqueeze2;
+}
+.minimizedField .linkAnimate #Path_804 {
+    animation: 1s ease-in-out 1 linkSqueeze1;
+}
+.minimizedField .linkAnimate #Path_805 {
+    animation: 1s ease-in-out 1 linkSqueeze2;
+}
+
+/* Path_804 */
+
+@keyframes linkSqueeze1 {
+    0% {
+        transform: translate(114.857px, 25.367px) rotate(51deg);
+      }
+      50% {
+        transform: translate(104.857px, 35.367px) rotate(51deg);
+      }
+      100% {
+        transform: translate(114.857px, 25.367px) rotate(51deg);
+      }
+}
+@keyframes linkSqueeze2 {
+    0% {
+        transform: translate(73.587px, 58.791px) rotate(51deg);
+      }
+      50% {
+        transform: translate(83.587px, 48.791px) rotate(51deg);
+      }
+      100% {
+        transform: translate(73.587px, 58.791px) rotate(51deg);
+      }
+}

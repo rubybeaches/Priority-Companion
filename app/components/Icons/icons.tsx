@@ -460,6 +460,7 @@ const LinkIcon = ({
   return (
     <svg
       onClick={() => clickFunc()}
+      className="linkAnimate"
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
