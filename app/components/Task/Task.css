@@ -170,16 +170,16 @@
 
 /* Square Icon */
 .minimizedField .squareAnimate > #Rectangle_3658 {
-    animation: 1s ease-in-out 1 squareShift1;
+    animation: 1s ease-out 1 squareShift1;
 }
 .minimizedField .squareAnimate #Rectangle_3658_-_Outline {
-    animation: 1s ease-in-out 1 squareShift1;
+    animation: 1s ease-out 1 squareShift1;
 }
 .minimizedField .squareAnimate #Line_389 {
-    animation: 1s ease-in-out 1 squareShift2;
+    animation: 1s ease-out 1 squareShift2;
 }
 .minimizedField .squareAnimate #Path_794 {
-    animation: 1s ease-in-out 1 squareShift3;
+    animation: 1s ease-out 1 squareShift3;
 }
 
 @keyframes squareShift1 {
