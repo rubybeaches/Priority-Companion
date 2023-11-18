@@ -167,3 +167,108 @@
         transform: translate(97.642px, 93.238px) scale(1);
       }
 }
+
+/* Square Icon */
+.minimizedField .squareAnimate > #Rectangle_3658 {
+    animation: 1s ease-in-out 1 squareShift1;
+}
+.minimizedField .squareAnimate #Rectangle_3658_-_Outline {
+    animation: 1s ease-in-out 1 squareShift1;
+}
+.minimizedField .squareAnimate #Line_389 {
+    animation: 1s ease-in-out 1 squareShift2;
+}
+.minimizedField .squareAnimate #Path_794 {
+    animation: 1s ease-in-out 1 squareShift3;
+}
+
+@keyframes squareShift1 {
+    0% {
+        transform: translate(34.646px, 32.595px);
+      }
+      35% { 
+        transform: translate(34.646px, 32.595px) scale(1.1);
+        transform-origin: right;
+      }
+      70% { 
+        transform: translate(34.646px, 32.595px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(34.646px, 32.595px);
+      }
+}
+@keyframes squareShift2 {
+    0% {
+        transform: translate(77.021px, 38.261px);
+      }
+      35% { 
+        transform: translate(67.021px, 38.261px) scale(1.1);
+        transform-origin: right;
+      }
+      70% {  
+        transform: translate(97.021px, 38.261px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(77.021px, 38.261px);
+      }
+}
+@keyframes squareShift3 {
+    0% {
+        transform: translate(38.261px, 77.022px);
+      }
+      35% { 
+        transform: translate(38.261px, 67.022px) scale(1.1);
+        transform-origin: right;
+      }
+      70% { 
+        transform: translate(38.261px, 97.022px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(38.261px, 77.022px);
+      }
+}
+
+/* Chart Icon */
+.minimizedField .chartAnimate  {
+    animation: 1s ease-in-out 1 chartSqueeze;
+    transform-origin: center;
+
+}
+
+@keyframes chartSqueeze {
+    0% {
+        transform: scaleY(1) scaleX(1);
+      }
+      35% {
+        transform: scaleY(.6) scaleX(1.1);
+      }
+      70% { 
+        transform: scaleY(1.3) scaleX(.8);
+      }
+      100% {
+        transform: scaleY(1) scaleX(1);
+      }
+}
+
+/* Task Icon */
+.minimizedField .taskAnimate  {
+    animation: 1s ease-in-out 1 taskDip;
+}
+
+@keyframes taskDip {
+    0% {
+        transform: translate(0px, 1.5px);
+      }
+      35% {
+        transform: translate(10px, 21.5px) rotate(30deg);
+      }
+      70% { 
+        transform: translate(0px, 21.5px) rotate(-60deg);
+      }
+      100% {
+        transform: translate(0px, 1.5px) rotate(0deg);
+      }
+}
