@@ -1,4 +1,22 @@
 import { Roles, Habits, Initiatives, Tasks } from "./starter-build";
+import { prisma } from "./script";
+
+/*
+export const getStaticProps: GetStaticProps = async () => {
+    const feed = await prisma.post.findMany({
+      where: { published: true },
+      include: {
+        author: {
+          select: { name: true },
+        },
+      },
+    });
+    return {
+      props: { feed },
+      revalidate: 10,
+    };
+  };
+*/
 
 export const fetchRoleByName = (name:string) => {
     if (!name) {
