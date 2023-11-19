@@ -3,7 +3,7 @@
 import TaskIcons from "@/app/components/Icons/icons";
 import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
 import "./Task.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const Task = ({
   title,
@@ -18,6 +18,15 @@ const Task = ({
 }: TaskProps) => {
   const [selected, setSelected] = useState("");
 
+  const handleToggle = ({ target }: any) => {
+    // console.log(target.checked);
+  };
+
+  const toggleWrapperState = () => {
+    // changed to expanded or minimized state
+    // document.getElementsByClassName(".expand")[0].classList.add(".collaspe")
+  };
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -26,11 +35,11 @@ const Task = ({
     if (!selected) {
       setSelected(description);
     }
-    const state = field ? (expand ? "selected" : "set") : "unset";
-
     const triggerClick = () => {
       setSelected((selected) => field || "");
     };
+
+    const state = field ? (expand ? "selected" : "set") : "unset";
 
     if (!expand) {
       return (
@@ -47,7 +56,20 @@ const Task = ({
 
   return (
     <div className="taskWrapper">
-      <p className="taskTitle">{title}</p>
+      <label className="checkboxWrapper">
+        <input onChange={handleToggle} type="checkbox" />
+        <span className="checkcircle"></span>
+      </label>
+      <div className="taskHeader">
+        <p className="taskTitle">{title}</p>
+        <span className="taskHeaderIcons expand">
+          <TaskIcons
+            icon="expand"
+            state="set"
+            clickFunc={() => toggleWrapperState()}
+          />
+        </span>
+      </div>
       <div className="iconFieldWrapper">
         {expandSelected("task", description, description == selected)}
         {expandSelected("square", priority, priority == selected)}

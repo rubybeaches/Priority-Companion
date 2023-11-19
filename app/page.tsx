@@ -19,24 +19,6 @@ const Page = () => {
         alt="Screenshots of the dashboard project showing desktop and mobile versions"
       />
       <div
-        style={{
-          height: "40px",
-          backgroundColor: "#f8f8f8",
-          padding: "10px",
-          display: "flex",
-          gap: ".5em",
-        }}
-      >
-        {/*
-        <TaskIcons icon={"chart"} state={"set"} />
-        <TaskIcons icon={"task"} state={"unset"} />
-        <TaskIcons icon={"clock"} state={"set"} />
-        <TaskIcons icon={"calendar"} state={"set"} />
-        <TaskIcons icon={"square"} state={"selected"} />
-        <TaskIcons icon={"link"} state={"set"} />
-      */}
-      </div>
-      <div
         className="container"
         style={{ border: "1px blue solid", padding: "12px" }}
       >

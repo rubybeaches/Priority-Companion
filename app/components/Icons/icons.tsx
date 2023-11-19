@@ -37,9 +37,75 @@ export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
     clock: <ClockIcon fill={colors[state]} clickFunc={clickFunc} />,
     square: <SquareIcon fill={colors[state]} clickFunc={clickFunc} />,
     link: <LinkIcon fill={colors[state]} clickFunc={clickFunc} />,
+    expand: <ExpandIcon fill={colors[state]} clickFunc={clickFunc} />,
   };
 
   return svg[icon];
+};
+
+const ExpandIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
+  return (
+    <svg
+      onClick={() => clickFunc()}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+    >
+      <circle
+        fill={fill.circle}
+        id="Ellipse_926"
+        data-name="Ellipse 926"
+        cx="80"
+        cy="80"
+        r="80"
+        transform="translate(0.44)"
+      />
+      <path
+        fill={fill.outline}
+        id="Ellipse_926_-_Outline"
+        data-name="Ellipse 926 - Outline"
+        d="M80,6.957A73.043,73.043,0,1,0,153.044,80,73.126,73.126,0,0,0,80,6.957M80,0A80,80,0,1,1,0,80,80,80,0,0,1,80,0Z"
+      />
+      <g
+        fill={fill.outline}
+        className="expandAnimate"
+        id="Group_1818"
+        data-name="Group 1818"
+      >
+        <path
+          id="Path_806"
+          data-name="Path 806"
+          d="M11.882,78.954H-.75V0H11.882Z"
+          transform="translate(108.727 37.194)"
+        />
+        <path
+          id="Path_807"
+          data-name="Path 807"
+          d="M12.632,78.954H0V0H12.632Z"
+          transform="translate(120.608 37.194) rotate(90)"
+        />
+        <path
+          id="Path_808"
+          data-name="Path 808"
+          d="M12.632,50.756H0V0H12.632Z"
+          transform="translate(54.286 116.147) rotate(180)"
+        />
+        <path
+          id="Path_664"
+          data-name="Path 664"
+          d="M50.756,12.632H0V0H50.756Z"
+          transform="translate(92.411 116.147) rotate(180)"
+        />
+      </g>
+    </svg>
+  );
 };
 
 export default TaskIcons;

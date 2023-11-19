@@ -5,12 +5,25 @@
 
 .taskTitle {
     color: #427BDE;
-    margin-block: .25em .75em;
+    margin-block: 0;
+    margin-left: 6px;
 }
+
+.taskHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 
+.taskHeaderIcons {
+    
+}
+*/
 
 .taskWrapper {
     border: 2px solid #5693FF;
     border-radius: 10px;
+    background-color: #FFF;
     padding: 10px;
     margin-block: 10px;
     width: var(--task-width);
@@ -18,7 +31,7 @@
 
 .iconFieldWrapper {
     display: flex;
-    margin-top: 10px;
+    margin-top: 4px;
     height: 24px;
     line-height: 24px;
     padding: 5px;
@@ -54,6 +67,65 @@
     padding: 2px 2px 0px 2px;
     font-size: .9em;
     }
+
+/* Checkbox styles */
+.checkboxWrapper {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .checkboxWrapper input {
+    display: none;
+  }
+  
+  /* Create a custom checkbox */
+  .checkcircle {
+    position: absolute;
+    top: 0;
+    left: -21px;
+    height: 18px;
+    width: 18px;
+    background-color: #FFF;
+    border: 2px solid #427BDE;
+    border-radius: 20px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .checkboxWrapper:hover input ~ .checkcircle {
+    background-color: #F3F3F3;
+  }
+  
+  /* When the checkbox is checked, add a white background */
+  .checkboxWrapper input:checked ~ .checkcircle {
+    background-color: #FFF;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkcircle:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkboxWrapper input:checked ~ .checkcircle:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkboxWrapper .checkcircle:after {
+    height: 14px;
+    width: 14px;
+    background-color: #427BDE;
+    border-radius: 20px;
+    top: 2px;
+    left: 2px;
+  }
 
 /* SVG Animations */
 /* Clock Icon */
@@ -294,8 +366,6 @@
     animation: 1s ease-in-out 1 linkSqueeze2;
 }
 
-/* Path_804 */
-
 @keyframes linkSqueeze1 {
     0% {
         transform: translate(114.857px, 25.367px) rotate(51deg);
@@ -316,5 +386,30 @@
       }
       100% {
         transform: translate(73.587px, 58.791px) rotate(51deg);
+      }
+}
+
+/* Expand Icon */
+.expand .expandAnimate > #Path_664 {
+    animation: 1s ease 1 expandShift1;
+}
+.expand .expandAnimate > #Path_808 {
+    animation: 1s ease 1 expandShift2;
+}
+
+@keyframes expandShift1 {
+    0% {  
+        transform: translate(92.411px, 76.147px) rotate(180deg);
+      }
+      100% {
+        transform: translate(92.411px, 116.147px) rotate(180deg);
+      }
+}
+@keyframes expandShift2 {
+    0% {  
+        transform: translate(94.286px, 116.147px) rotate(180deg);
+      }
+      100% {
+        transform: translate(54.286px, 116.147px) rotate(180deg);
       }
 }
