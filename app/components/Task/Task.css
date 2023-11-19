@@ -65,7 +65,17 @@
 .minimizedField > *, .collapseField > * { 
     vertical-align: text-bottom;
     padding: 2px 2px 0px 2px;
-    font-size: .9em;
+    }
+.minimizedField > input, .collapseField > input { 
+    box-sizing: border-box;
+    width: auto;
+    border-color: #FFF;
+    border-style: solid;
+    outline: none;
+    padding-bottom: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     }
 
 /* Checkbox styles */

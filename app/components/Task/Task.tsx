@@ -18,7 +18,7 @@ const Task = ({
 }: TaskProps) => {
   const [selected, setSelected] = useState("");
 
-  const handleToggle = ({ target }: any) => {
+  const handleChecked = ({ target }: any) => {
     // console.log(target.checked);
   };
 
@@ -35,7 +35,7 @@ const Task = ({
     if (!selected) {
       setSelected(description);
     }
-    const triggerClick = () => {
+    const triggerSelect = () => {
       setSelected((selected) => field || "");
     };
 
@@ -43,13 +43,21 @@ const Task = ({
 
     if (!expand) {
       return (
-        <TaskIcons icon={icon} state={state} clickFunc={() => triggerClick()} />
+        <TaskIcons
+          icon={icon}
+          state={state}
+          clickFunc={() => triggerSelect()}
+        />
       );
     }
     return (
       <span className="minimizedField" id={icon}>
-        <TaskIcons icon={icon} state={state} clickFunc={() => triggerClick()} />
-        <span>{field}</span>
+        <TaskIcons
+          icon={icon}
+          state={state}
+          clickFunc={() => triggerSelect()}
+        />
+        <input type="text" defaultValue={field} />
       </span>
     );
   };
@@ -57,7 +65,7 @@ const Task = ({
   return (
     <div className="taskWrapper">
       <label className="checkboxWrapper">
-        <input onChange={handleToggle} type="checkbox" />
+        <input onChange={handleChecked} type="checkbox" />
         <span className="checkcircle"></span>
       </label>
       <div className="taskHeader">
