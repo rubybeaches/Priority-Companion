@@ -18,11 +18,11 @@ export interface taskIconsProp {
 export interface TaskProps {
     title: string,
     description: string,
-    priority: string | undefined,
-    estTime: string | undefined,
+    priority?: string,
+    estTime?: string,
     chronoType: chronoType;
     plannedStart: string,
-    dueBy: string | undefined,
-    link: string | undefined,
+    dueBy?: string,
+    link?: string,
     parent: string,
 }

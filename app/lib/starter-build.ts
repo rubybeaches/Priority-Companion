@@ -51,12 +51,12 @@ import { chronoType } from "./definitions";
     parent_id: string,
     parent_type: string,
     description: string,
-    priority: string | undefined,
-    est_time_seconds: string | undefined,
+    priority?: string,
+    est_time_seconds?: string,
     type: chronoType;
     planned_start: string,
-    due_date: string | null,
-    link: string | null,
+    due_date?: string,
+    link?: string,
 }
 
   export const Tasks: TaskProps[] = [
@@ -69,8 +69,8 @@ import { chronoType } from "./definitions";
       priority: 'schedule',
       type: 'trough',
       planned_start: '2023-11-16',
-      due_date: null,
-      link: null,
+      due_date: undefined,
+      link: undefined,
     },
     {
         id: '4b6a6442a-71e9-6442-85e9-fec4b6a6442a',
@@ -81,7 +81,7 @@ import { chronoType } from "./definitions";
         priority: 'schedule',
         type: 'peak',
         planned_start: '2023-11-16',
-        due_date: null,
+        due_date: undefined,
         link: "google.com",
       },
       {
@@ -93,7 +93,7 @@ import { chronoType } from "./definitions";
         priority: 'schedule',
         type: 'trough',
         planned_start: '2023-11-19',
-        due_date: null,
-        link: null,
+        due_date: undefined,
+        link: undefined,
       },
   ];

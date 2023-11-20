@@ -20,6 +20,11 @@ const Task = ({
 
   const handleChecked = ({ target }: any) => {
     // console.log(target.checked);
+    const taskWrapper = target.parentElement.parentElement;
+    taskWrapper
+      .querySelector(".revealWrapper")
+      .setAttribute("style", "width:200px");
+    taskWrapper.querySelector(".tab").setAttribute("style", "left:200px");
   };
 
   const toggleWrapperState = () => {
@@ -64,6 +69,14 @@ const Task = ({
 
   return (
     <div className="taskWrapper">
+      <div className="revealWrapper">
+        <span className="tab"></span>
+        <span className="taskBehindWrapper">
+          <h4>Complete {title}</h4>
+          <button>yes</button>
+          <button>no</button>
+        </span>
+      </div>
       <label className="checkboxWrapper">
         <input onChange={handleChecked} type="checkbox" />
         <span className="checkcircle"></span>

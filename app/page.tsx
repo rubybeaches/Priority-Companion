@@ -41,8 +41,8 @@ const Page = () => {
                     estTime={habit.est_time_seconds}
                     chronoType={habit.type}
                     plannedStart={habit.planned_start}
-                    dueBy={habit.due_date || undefined}
-                    link={habit.link || undefined}
+                    dueBy={habit.due_date}
+                    link={habit.link}
                     parent={"habit"}
                   />
                 </span>
