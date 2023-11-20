@@ -1,0 +1,43 @@
+:root {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    color: #427bde;
+    background-color: #F3F3F3;
+}
+
+body p {
+    margin-block: 0px;
+}
+
+.card {
+    background-color: #FFF;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 6px 0px #8888;
+}
+
+.roleWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.roleHeader {
+    font-weight: 400;
+    margin-block: 10px;
+}
+
+.pcHeader {
+    margin-bottom: 20px;
+}
+.pcHeader h1 {
+    font-size: 2.5em;
+    margin-block: 6px;
+}
+.pcHeader p {
+    margin-block: 0px;
+}
