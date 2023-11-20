@@ -3,7 +3,7 @@
 import TaskIcons from "@/app/components/Icons/icons";
 import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
 import "./Task.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Task = ({
   title,
@@ -17,14 +17,27 @@ const Task = ({
   parent,
 }: TaskProps) => {
   const [selected, setSelected] = useState("");
+  const taskWrapper = useRef<HTMLDivElement>(null);
+  const revealWrapper = useRef<HTMLDivElement>(null);
+  const tab = useRef<HTMLSpanElement>(null);
 
   const handleChecked = ({ target }: any) => {
     // console.log(target.checked);
-    const taskWrapper = target.parentElement.parentElement;
-    taskWrapper
-      .querySelector(".revealWrapper")
-      .setAttribute("style", "width:200px");
-    taskWrapper.querySelector(".tab").setAttribute("style", "left:200px");
+    const taskDiv = taskWrapper.current;
+    const reveal = revealWrapper.current;
+    const tabSpan = tab.current;
+
+    if (reveal && taskDiv && tabSpan) {
+      const width = taskDiv.clientWidth;
+      const height = `${taskDiv.clientHeight}px`;
+
+      reveal.style.width = `${width}px`;
+      reveal.style.height = height;
+
+      tabSpan.style.width = `${width / 2}px`;
+      tabSpan.style.height = height;
+      tabSpan.style.left = `${width}px`;
+    }
   };
 
   const toggleWrapperState = () => {
@@ -68,9 +81,9 @@ const Task = ({
   };
 
   return (
-    <div className="taskWrapper">
-      <div className="revealWrapper">
-        <span className="tab"></span>
+    <div className="taskWrapper" ref={taskWrapper}>
+      <span className="tab" ref={tab}></span>
+      <div className="revealWrapper" ref={revealWrapper}>
         <span className="taskBehindWrapper">
           <h4>Complete {title}</h4>
           <button>yes</button>
