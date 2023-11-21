@@ -17,7 +17,7 @@ const Page = async () => {
   const habitCount = await getHabitByRoleCount(1);
 
   return (
-    <main className="card" style={{ margin: "20px auto" }}>
+    <main className="card">
       <div className="pcHeader">
         <h1 className={`${dancer.className} antialiased`}>
           Priority Companion
@@ -40,6 +40,114 @@ const Page = async () => {
       />
   */}
       <div className="roleWrapper">
+        <div className="card">
+          {Roles.map((role, index) => (
+            <div key={role.id}>
+              <h2 className="roleHeader">{role.name}</h2>
+              <p>{role.description}</p>
+              <div>
+                <h3 className="roleHeader">
+                  Habits <span className="roleHeaderCount">({habitCount})</span>
+                </h3>
+                {habits.map((habit) => (
+                  <span key={habit.id}>
+                    <Task
+                      title={habit.name}
+                      description={habit.description}
+                      priority={habit.priority}
+                      estTime={habit.est_time_seconds}
+                      chronoType={habit.type}
+                      plannedStart={habit.planned_start}
+                      dueBy={habit.due_date}
+                      link={habit.link}
+                      parent={"habit"}
+                    />
+                  </span>
+                ))}
+
+                <h3 className="roleHeader">Initiatives</h3>
+                {initiatives.map((init) => (
+                  <p key={init.id}>{init.name}</p>
+                ))}
+              </div>
+              <button
+                key={role.id}
+                style={{
+                  border: "none",
+                  backgroundColor: "#B1CEFF",
+                  padding: "10px 10px",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "#427BDE",
+                    backgroundColor: "#B1CEFF",
+                  }}
+                  href={"/role/" + role.name}
+                >
+                  Explore
+                </Link>
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className="card">
+          {Roles.map((role, index) => (
+            <div key={role.id}>
+              <h2 className="roleHeader">{role.name}</h2>
+              <p>{role.description}</p>
+              <div>
+                <h3 className="roleHeader">
+                  Habits <span className="roleHeaderCount">({habitCount})</span>
+                </h3>
+                {habits.map((habit) => (
+                  <span key={habit.id}>
+                    <Task
+                      title={habit.name}
+                      description={habit.description}
+                      priority={habit.priority}
+                      estTime={habit.est_time_seconds}
+                      chronoType={habit.type}
+                      plannedStart={habit.planned_start}
+                      dueBy={habit.due_date}
+                      link={habit.link}
+                      parent={"habit"}
+                    />
+                  </span>
+                ))}
+
+                <h3 className="roleHeader">Initiatives</h3>
+                {initiatives.map((init) => (
+                  <p key={init.id}>{init.name}</p>
+                ))}
+              </div>
+              <button
+                key={role.id}
+                style={{
+                  border: "none",
+                  backgroundColor: "#B1CEFF",
+                  padding: "10px 10px",
+                  borderRadius: "10px",
+                }}
+              >
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "#427BDE",
+                    backgroundColor: "#B1CEFF",
+                  }}
+                  href={"/role/" + role.name}
+                >
+                  Explore
+                </Link>
+              </button>
+            </div>
+          ))}
+        </div>
+
         <div className="card">
           {Roles.map((role, index) => (
             <div key={role.id}>

@@ -12,19 +12,25 @@ body p {
     margin-block: 0px;
 }
 
+main.card {
+    margin: 20px auto;
+    width: 90%;
+}
+
 .card {
     background-color: #FFF;
-    margin: 20px;
     padding: 18px 24px;
     border-radius: 12px;
     box-shadow: 0px 3px 6px 0px #8888;
     width: min-content;
+    height: min-content;
+    margin: 20px;
 }
 
 .roleWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .roleHeader {
