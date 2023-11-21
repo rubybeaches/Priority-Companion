@@ -24,10 +24,9 @@ const Page = async () => {
         </h1>
         <p>
           A tool used to apply your unqiue gifts, skills, and talents
-          effecitvely as you participate in your daily initiatives. Partner
-          habits and initiatives to facilitate goals that provide personal
-          fufillment and rewards consistent with your values, goals, and
-          lifestyle.
+          effecitvely as you participate in your daily work. Partner habits and
+          initiatives to facilitate goals that provide personal fufillment and
+          rewards consistent with your values, goals, and lifestyle.
         </p>
       </div>
       {/*
