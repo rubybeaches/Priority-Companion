@@ -17,28 +17,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export { prisma }
-
-/*
-    const user = await prisma.user.create({
-      data: {
-        name: 'Patrick',
-        email: 'patrick.mclain.jr@gmail.com',
-        tasks: {
-          create: {
-            title: 'My First Task',
-            description: "this is a new task created by prisma",
-          },
-        },
-      },
-    })
-    console.log(user)
-
-    const users = await prisma.user.findMany()
-
-    const usersWithPosts = await prisma.user.findMany({
-      include: {
-        tasks: true,
-      },
-    })
-    console.dir(usersWithPosts, { depth: null })
-  */
