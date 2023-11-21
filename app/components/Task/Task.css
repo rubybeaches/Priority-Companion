@@ -37,7 +37,7 @@
     width: 0px;
     height: 0px;
     border-radius: 10px;
-    z-index: 2;
+    z-index: 3;
     background-color: #5693ff;
     box-shadow: -10px 0px 12px 0px #8c8c8c8c,-10px 0px 12px 0px #8c8c8c8c;
     background: linear-gradient(0.25turn, #5693ffc7, #B1CEFF, #f8f8f8, #B1CEFF, #5693ffc7);

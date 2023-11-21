@@ -15,20 +15,25 @@ body p {
 .card {
     background-color: #FFF;
     margin: 20px;
-    padding: 20px;
+    padding: 18px 24px;
     border-radius: 12px;
     box-shadow: 0px 3px 6px 0px #8888;
+    width: min-content;
 }
 
 .roleWrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
 }
 
 .roleHeader {
     font-weight: 400;
     margin-block: 10px;
+}
+
+.roleHeaderCount {
+    font-size: .8em;
 }
 
 .pcHeader {
