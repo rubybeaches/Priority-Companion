@@ -21,8 +21,7 @@ const Task = ({
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
 
-  const handleChecked = ({ target }: any) => {
-    // console.log(target.checked);
+  const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
     const reveal = revealWrapper.current;
     const tabSpan = tab.current;
@@ -91,7 +90,10 @@ const Task = ({
         </span>
       </div>
       <label className="checkboxWrapper">
-        <input onChange={handleChecked} type="checkbox" />
+        <input
+          onChange={(e) => handleChecked(e.target.checked)}
+          type="checkbox"
+        />
         <span className="checkcircle"></span>
       </label>
       <div className="taskHeader">
