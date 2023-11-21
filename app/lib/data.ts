@@ -1,7 +1,20 @@
 import { Roles, Habits, Initiatives, Tasks } from "./starter-build";
 import { prisma } from "./script";
 
+
 /*
+export const deleteTask = async () => {
+    const tasks = await prisma.task.findMany()
+    console.log("Found:", tasks)
+
+    const deleteTask = await prisma.task.delete({
+        where: {
+          id: 1,
+        },
+      })
+    console.log("Delete", deleteTask)
+}
+
 export const getStaticProps: GetStaticProps = async () => {
     const feed = await prisma.post.findMany({
       where: { published: true },

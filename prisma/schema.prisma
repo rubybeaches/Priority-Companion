@@ -14,12 +14,50 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  tasks Task[]
+  role  Roles[]
+}
+
+model Roles {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String
+  habits      Habit[]
+  initiatives Initiative[]
+  User        User?        @relation(fields: [userId], references: [id])
+  userId      Int?
+}
+
+model Habit {
+  id        Int     @id @default(autoincrement())
+  frequency String?
+  Roles     Roles   @relation(fields: [rolesId], references: [id])
+  rolesId   Int
+  tasks     Task[]
+}
+
+model Initiative {
+  id            Int     @id @default(autoincrement())
+  name          String
+  description   String
+  duration      String
+  durationCount Int
+  completed     Boolean @default(false)
+  Roles         Roles   @relation(fields: [rolesId], references: [id])
+  rolesId       Int
+  goals         Goals[]
+  tasks         Task[]
+}
+
+model Goals {
+  id           Int        @id @default(autoincrement())
+  description  String
+  Initiative   Initiative @relation(fields: [initiativeId], references: [id])
+  initiativeId Int
 }
 
 model Task {
   id           Int       @id @default(autoincrement())
-  title        String
+  name         String
   description  String
   priority     String?
   estTime      Int?
@@ -27,8 +65,12 @@ model Task {
   plannedStart DateTime  @default(now())
   dueBy        DateTime?
   link         String?
-  user         User      @relation(fields: [userId], references: [id])
-  userId       Int
+  completed    Boolean   @default(false)
+
+  Habit        Habit?      @relation(fields: [habitId], references: [id])
+  habitId      Int?
+  Initiative   Initiative? @relation(fields: [initiativeId], references: [id])
+  initiativeId Int?
 
   //published Boolean @default(false)
   // updatedAt DateTime @updatedAt
