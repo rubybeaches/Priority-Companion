@@ -1,9 +1,11 @@
 import { Inter } from "next/font/google";
+import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Priority Companion",
-  description: "A website for mastering your habits and creating goals",
+export const metadata: Metadata = {
+  title: "Priority Companion: Your personal system based task manager.",
+  description:
+    "The Priority Companion provides a useful system to apply your unqiue gifts, skills, and talents effecitvely as you participate in your daily roles. Partner habits and initiatives to facilitate outcomes that provide personal fufillment and rewards consistent with your values, goals, and lifestyle.",
 };
 
 export default function RootLayout({

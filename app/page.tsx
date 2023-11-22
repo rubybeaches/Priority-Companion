@@ -23,10 +23,10 @@ const Page = async () => {
           Priority Companion
         </h1>
         <p>
-          A useful tool system to apply your unqiue gifts, skills, and talents
+          A useful system to apply your unqiue gifts, skills, and talents
           effecitvely as you participate in your daily roles. Partner habits and
-          initiatives to facilitate goals that provide personal fufillment and
-          rewards consistent with your values, goals, and lifestyle.
+          initiatives to facilitate outcomes that provide personal fufillment
+          and rewards consistent with your values, goals, and lifestyle.
         </p>
       </div>
       {/*
