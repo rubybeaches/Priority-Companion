@@ -1,6 +1,4 @@
-import { Roles, Habits, Initiatives, Tasks } from "./starter-build";
 import { prisma } from "./script";
-import { use } from "react";
 
 export const getUserSeedData = async (user_id: number) => {
     const user = await prisma.user.findUnique({
@@ -27,7 +25,6 @@ export const getUserSeedData = async (user_id: number) => {
     return user
 }
 
-//////////////// NEW PRISMA FUNCS
 
 export const getRoleData = async (role_id: number) => {
     const role = await prisma.roles.findUnique({
@@ -88,9 +85,8 @@ export const getRoleDataByName = async (role_name: string) => {
 }
 
 export const getRoles = async () => {
-    const roles = await prisma.roles.findMany();
+    const roles = await prisma.roles.findMany({include: {habits: {include:{tasks:true}}, initiatives:{include:{tasks:true}}}});
 
-    console.log(roles)
     return roles
 }
 
@@ -107,31 +103,4 @@ export const getHabitByRoleCount = async (role_id:number) => {
       const habitCount = habitCountRes?._count.habits
 
     return habitCount;
-}
-
-
-//////////////// STARTER DATA
-
-export const fetchRoleByName = (name:string) => {
-    if (!name) {
-        return Roles[0]
-    }
-    const Role = Roles.filter((role) => role.name == name)
-    return Role[0]
-}
-
-export const fetchRoleData = (role_id: string) => {
-    const habitBase = Habits.filter((habit) => habit.role_id == role_id)
-    const initiatives = Initiatives.filter((init) => init.role_id == role_id)
-    
-    const habits = []
-    for (const habit in habitBase) {
-        const tasks = Tasks.filter((task) => task.parent_id == habitBase[habit].id)
-        habits.push({...tasks[0], name: habitBase[habit].name, frequency: habitBase[habit].frequency})
-    }
-
-    return {
-        habits,
-        initiatives
-    }
 }
