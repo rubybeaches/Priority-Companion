@@ -14,7 +14,7 @@ const dancer = Dancing_Script({ subsets: ["latin"] });
 const Page = async () => {
   const { habits, initiatives } = fetchRoleData(Roles[0].id);
 
-  /* const habitCount = await getHabitByRoleCount(1);*/
+  const habitCount = await getHabitByRoleCount(1);
 
   return (
     <main className="card">
@@ -46,8 +46,7 @@ const Page = async () => {
               <p>{role.description}</p>
               <div>
                 <h3 className="roleHeader">
-                  Habits{" "}
-                  {/* <span className="roleHeaderCount">({habitCount})</span>*/}
+                  Habits <span className="roleHeaderCount">({habitCount})</span>
                 </h3>
                 {habits.map((habit) => (
                   <span key={habit.id}>
