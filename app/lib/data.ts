@@ -1,5 +1,31 @@
 import { Roles, Habits, Initiatives, Tasks } from "./starter-build";
 import { prisma } from "./script";
+import { use } from "react";
+
+export const getUserSeedData = async (user_id: number) => {
+    const user = await prisma.user.findUnique({
+        where: { id: user_id },
+        include: {
+            roles: {
+                include: {
+                habits: {
+                    include: { tasks: true,},
+                },
+                initiatives: {
+                    include: { tasks: true, },
+                },
+            },
+            }
+        },
+        });
+        console.log(user)
+        console.log(user?.roles[0].habits)
+        console.log(user?.roles[0].habits[0].tasks)
+        console.log(user?.roles[0].habits[1].tasks)
+        console.log(user?.roles[0].initiatives)
+        console.log(user?.roles[0].initiatives[0].tasks)
+    return user
+}
 
 //////////////// NEW PRISMA FUNCS
 
