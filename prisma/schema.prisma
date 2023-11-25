@@ -83,5 +83,5 @@ model Task {
 enum chronoType {
   peak
   trough
-  analytical
+  creative
 }

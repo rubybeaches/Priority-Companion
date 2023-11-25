@@ -1,8 +1,6 @@
 import { Dancing_Script } from "next/font/google";
-import { getRoles, getRoleData, getHabitByRoleCount } from "./lib/data";
-import Link from "next/link";
-import Task from "./components/Task/Task";
-import TaskIcons from "./components/Icons/icons";
+import { getRoles } from "./lib/data";
+import Role from "./components/Role/Role";
 import Image from "next/image";
 import "./page.css";
 
@@ -10,7 +8,6 @@ const dancer = Dancing_Script({ subsets: ["latin"] });
 
 const Page = async () => {
   const roles = await getRoles();
-  const habitCount = await getHabitByRoleCount(1);
 
   return (
     <main className="card">
@@ -36,8 +33,25 @@ const Page = async () => {
   */}
       <div className="roleWrapper">
         <div className="card">
-          {roles.map((role, index) => (
-            <div key={role.id}></div>
+          {roles.map((role) => (
+            <div key={role.id}>
+              <Role
+                role={role}
+                habits={role.habits}
+                initiatives={role.initiatives}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="card">
+          {roles.map((role) => (
+            <div key={role.id}>
+              <Role
+                role={role}
+                habits={role.habits}
+                initiatives={role.initiatives}
+              />
+            </div>
           ))}
         </div>
       </div>

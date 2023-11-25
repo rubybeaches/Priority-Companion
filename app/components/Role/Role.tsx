@@ -1,6 +1,20 @@
-import { Roles } from "@prisma/client";
+import Link from "next/link";
+import Task from "../Task/Task";
+import { Role, Habit, Initiative } from "@/app/lib/definitions";
+import { getHabitByRoleCount } from "@/app/lib/data";
+import "./Role.css";
 
-const Role = ({ role }) => {
+const Role = async ({
+  role,
+  habits,
+  initiatives,
+}: {
+  role: Role;
+  habits: Habit[];
+  initiatives: Initiative[];
+}) => {
+  const habitCount = await getHabitByRoleCount(role.id);
+
   return (
     <>
       <h2 className="roleHeader">{role.name}</h2>
@@ -9,28 +23,24 @@ const Role = ({ role }) => {
         <h3 className="roleHeader">
           Habits <span className="roleHeaderCount">({habitCount})</span>
         </h3>
-        {role.habits.map((habit) => (
+        {habits.map((habit: Habit) => (
           <span key={habit.id}>
             <Task
-              title={habit.tasks[0].name}
-              description={habit.tasks[0].description}
-              priority={habit.tasks[0].priority || undefined}
-              estTime={habit.tasks[0].estTime?.toString() || undefined}
-              chronoType={
-                habit.tasks[0].chronoType == "peak"
-                  ? habit.tasks[0].chronoType
-                  : undefined
-              }
-              plannedStart={habit.tasks[0].plannedStart.toDateString()}
-              dueBy={habit.tasks[0].dueBy?.toDateString() || undefined}
-              link={habit.tasks[0].link || undefined}
+              title={habit.task.name}
+              description={habit.task.description}
+              priority={habit.task.priority || undefined}
+              estTime={habit.task.estTime?.toString() || undefined}
+              chronoType={habit.task.chronoType || undefined}
+              plannedStart={habit.task.plannedStart.toDateString()}
+              dueBy={habit.task.dueBy?.toDateString() || undefined}
+              link={habit.task.link || undefined}
               parent={"habit"}
             />
           </span>
         ))}
 
         <h3 className="roleHeader">Initiatives</h3>
-        {role.initiatives.map((init) => (
+        {initiatives.map((init: Initiative) => (
           <p key={init.id}>{init.name}</p>
         ))}
       </div>
@@ -57,3 +67,5 @@ const Role = ({ role }) => {
     </>
   );
 };
+
+export default Role;

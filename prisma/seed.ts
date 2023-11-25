@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import { chronoType } from '@prisma/client';
 const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient()
@@ -23,7 +22,6 @@ async function main() {
     });
 
     const today = new Date();
-    const trough = chronoType.trough
 
     const companionTask = await prisma.task.create({
         data: {
@@ -31,7 +29,7 @@ async function main() {
             description: 'open the planner and set a plan for todays tasks',
             priority: 'do now',
             estTime: 600,
-            chronoType: trough,
+            chronoType: 'trough',
             plannedStart: today.toISOString(),
             dueBy: null,
             link: 'priority-companion.vercel.app/planner',
@@ -62,7 +60,7 @@ async function main() {
                     description: 'create a new role to represent a role you play in your career',
                     priority: 'decide',
                     estTime: 300,
-                    chronoType: 'analytical',
+                    chronoType: 'peak',
                     plannedStart: today.toISOString(),
                     dueBy: null,
                     link: null,
