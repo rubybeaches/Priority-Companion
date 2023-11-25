@@ -2,7 +2,7 @@ import Link from "next/link";
 import Task from "../Task/Task";
 import { Role, Habit, Initiative } from "@/app/lib/definitions";
 import { getHabitByRoleCount } from "@/app/lib/data";
-import "./Role.css";
+import "./RoleCard.css";
 
 const Role = async ({
   role,
@@ -44,26 +44,9 @@ const Role = async ({
           <p key={init.id}>{init.name}</p>
         ))}
       </div>
-      <button
-        key={role.id}
-        style={{
-          border: "none",
-          backgroundColor: "#B1CEFF",
-          padding: "10px 10px",
-          borderRadius: "10px",
-        }}
-      >
-        <Link
-          style={{
-            textDecoration: "none",
-            color: "#427BDE",
-            backgroundColor: "#B1CEFF",
-          }}
-          href={"/role/" + role.name}
-        >
-          Explore
-        </Link>
-      </button>
+      <Link className="linkButton" href={"/role/" + role.name}>
+        <span className="linkIcon">&#x2b;</span> Explore
+      </Link>
     </>
   );
 };

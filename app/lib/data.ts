@@ -70,7 +70,9 @@ setting and achieving clear goals.',
 
 export const getRoleDataByName = async (role_name: string) => {
     const role = await prisma.roles.findMany({
-        where: { name: role_name },
+        where: { 
+            name: role_name
+        },
         include: {
             habits: {
                 include: { task: true,},

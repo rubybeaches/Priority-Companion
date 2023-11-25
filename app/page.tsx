@@ -1,7 +1,7 @@
 import { Dancing_Script } from "next/font/google";
 import { getRoles } from "./lib/data";
-import Role from "./components/Role/Role";
-import Image from "next/image";
+import RoleCard from "./components/RoleCard/RoleCard";
+import Link from "next/link";
 import "./page.css";
 
 const dancer = Dancing_Script({ subsets: ["latin"] });
@@ -11,6 +11,9 @@ const Page = async () => {
 
   return (
     <main className="card">
+      <Link className="linkButton linkRight" href={"/role/create"}>
+        <span className="linkIcon">&#x2b;</span> Role
+      </Link>
       <div className="pcHeader">
         <h1 className={`${dancer.className} antialiased`}>
           Priority Companion
@@ -32,28 +35,15 @@ const Page = async () => {
       />
   */}
       <div className="roleWrapper">
-        <div className="card">
-          {roles.map((role) => (
-            <div key={role.id}>
-              <Role
-                role={role}
-                habits={role.habits}
-                initiatives={role.initiatives}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="card">
-          {roles.map((role) => (
-            <div key={role.id}>
-              <Role
-                role={role}
-                habits={role.habits}
-                initiatives={role.initiatives}
-              />
-            </div>
-          ))}
-        </div>
+        {roles.map((role) => (
+          <div key={role.id} className="card">
+            <RoleCard
+              role={role}
+              habits={role.habits}
+              initiatives={role.initiatives}
+            />
+          </div>
+        ))}
       </div>
     </main>
   );

@@ -15,6 +15,7 @@ body p {
 main.card {
     margin: 20px auto;
     width: 90%;
+    position: relative;
 }
 
 .card {
@@ -42,4 +43,22 @@ main.card {
 }
 .pcHeader p {
     margin-block: 0px;
+}
+
+.linkButton {
+    border: none;
+    background-color: #D8E6FF;
+    padding: 4px 12px;
+    border-radius: 6px;
+    color: #427BDE;
+    text-decoration: none;
+}
+
+.linkRight {
+    position: absolute;
+    right: 10px;
+}
+
+.linkIcon {
+    font-size: 24px;
 }
