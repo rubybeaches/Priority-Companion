@@ -1,0 +1,21 @@
+.initTitle {
+    color: #427BDE;
+    margin-block: 0;
+}
+
+.initDesc {
+    color:#333;
+    font-size: .88em;
+    margin-block: 5px 10px;
+}
+
+.initWrapper {
+    position: relative;
+    border: 2px solid #5693FF;
+    border-radius: 10px;
+    background-color: #FFF;
+    padding: 10px;
+    padding-bottom: 5px;
+    margin-block: 10px;
+    width: 380px;
+}

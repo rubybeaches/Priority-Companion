@@ -1,6 +1,7 @@
 "use client";
 
 import { taskIconsProp, colorSchema, chronoType } from "../../lib/definitions";
+import "./icons.css";
 
 const set = {
   circle: "#FFF",

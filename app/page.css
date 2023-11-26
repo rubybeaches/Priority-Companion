@@ -23,7 +23,7 @@ main.card {
     padding: 18px 24px;
     border-radius: 12px;
     box-shadow: 0px 3px 6px 0px #8888;
-    width: min-content;
+    width: 400px;
     height: min-content;
     margin: 20px;
 }

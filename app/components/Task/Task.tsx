@@ -47,7 +47,8 @@ const Task = ({
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
-    expand: boolean
+    expand: boolean,
+    type: string
   ) => {
     if (!selected) {
       setSelected(description);
@@ -74,7 +75,7 @@ const Task = ({
           state={state}
           clickFunc={() => triggerSelect()}
         />
-        <input type="text" defaultValue={field} />
+        <input type={type} defaultValue={field} />
       </span>
     );
   };
@@ -107,12 +108,17 @@ const Task = ({
         </span>
       </div>
       <div className="iconFieldWrapper">
-        {expandSelected("task", description, description == selected)}
-        {expandSelected("square", priority, priority == selected)}
-        {expandSelected("clock", estTime, estTime == selected)}
-        {expandSelected("chart", chronoType, chronoType == selected)}
-        {expandSelected("calendar", plannedStart, plannedStart == selected)}
-        {expandSelected("link", link, link == selected)}
+        {expandSelected("task", description, description == selected, "text")}
+        {expandSelected("square", priority, priority == selected, "text")}
+        {expandSelected("clock", estTime, estTime == selected, "number")}
+        {expandSelected("chart", chronoType, chronoType == selected, "text")}
+        {expandSelected(
+          "calendar",
+          plannedStart,
+          plannedStart == selected,
+          "text"
+        )}
+        {expandSelected("link", link, link == selected, "url")}
       </div>
     </div>
   );

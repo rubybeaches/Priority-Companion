@@ -1,0 +1,286 @@
+/* SVG Animations */
+/* Clock Icon */
+.minimizedField .clockAnimate {
+    animation: 1s ease-in-out 1 spinClock;
+    transform-origin: center;
+}
+.minimizedField .clockAnimate > #Path_665 {
+    animation: 1s ease-in-out 1 spinClockHand;
+}
+
+@keyframes spinClock {
+    0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+}
+@keyframes spinClockHand {
+    0% {
+        transform: translate(76.492px, 77.025px) rotate(0deg);
+      }
+      50% {
+        transform: translate(76.492px, 77.025px) rotate(30deg);
+      }
+      100% {
+        transform: translate(76.492px, 77.025px) rotate(0deg);
+      }
+}
+
+/* Calendar Icon */
+.minimizedField .calendarAnimate > #Path_797 {
+    animation: 1s ease-in-out 1 calendarPulse1;
+    animation-delay: .1s;
+}
+.minimizedField .calendarAnimate > #Path_796 {
+    animation: 1s ease-in-out 1 calendarPulse2;
+    animation-delay: .3s;
+}
+.minimizedField .calendarAnimate > #Path_800 {
+    animation: 1s ease-in-out 1 calendarPulse3;
+    animation-delay: .3s;
+}
+.minimizedField .calendarAnimate > #Path_799 {
+    animation: 1s ease-in-out 1 calendarPulse4;
+    animation-delay: .5s;
+}
+.minimizedField .calendarAnimate > #Path_798 {
+    animation: 1s ease-in-out 1 calendarPulse5;
+    animation-delay: .7s;
+}
+
+@keyframes calendarPulse1 {
+    0% {
+        transform: translate(71.22px, 66.816px) scale(.6);
+      }
+      50% {
+        transform: translate(71.22px, 66.816px) scale(1.2);
+        fill: #B1CEFF;
+      }
+      100% {
+        transform: translate(71.22px, 66.816px) scale(1);
+      }
+}
+@keyframes calendarPulse2 {
+    0% {
+        transform: translate(97.642px, 66.816px) scale(.6);
+      }
+      50% {
+        transform: translate(97.642px, 66.816px) scale(1.2);
+        fill: #B1CEFF;
+      }
+      100% {
+        transform: translate(97.642px, 66.816px) scale(1);
+      }
+}
+@keyframes calendarPulse3 {
+    0% {
+        transform: translate(44.798px, 93.238px) scale(.6);
+      }
+      50% {
+        transform: translate(44.798px, 93.238px) scale(1.2);
+        fill: #B1CEFF;
+      }
+      100% {
+        transform: translate(44.798px, 93.238px) scale(1);
+      }
+}
+@keyframes calendarPulse4 {
+    0% {
+        transform: translate(71.22px, 93.238px) scale(.6);
+      }
+      50% {
+        transform: translate(71.22px, 93.238px) scale(1.2);
+        fill: #B1CEFF;
+      }
+      100% {
+        transform: translate(71.22px, 93.238px) scale(1);
+      }
+}
+@keyframes calendarPulse5 {
+    0% {
+        transform: translate(97.642px, 93.238px) scale(.6);
+      }
+      50% {
+        transform: translate(97.642px, 93.238px) scale(1.2);
+        fill: #B1CEFF;
+      }
+      100% {
+        transform: translate(97.642px, 93.238px) scale(1);
+      }
+}
+
+/* Square Icon */
+.minimizedField .squareAnimate > #Rectangle_3658 {
+    animation: 1s ease-out 1 squareShift1;
+}
+.minimizedField .squareAnimate #Rectangle_3658_-_Outline {
+    animation: 1s ease-out 1 squareShift1;
+}
+.minimizedField .squareAnimate #Line_389 {
+    animation: 1s ease-out 1 squareShift2;
+}
+.minimizedField .squareAnimate #Path_794 {
+    animation: 1s ease-out 1 squareShift3;
+}
+
+@keyframes squareShift1 {
+    0% {
+        transform: translate(34.646px, 32.595px);
+      }
+      35% { 
+        transform: translate(34.646px, 32.595px) scale(1.1);
+        transform-origin: right;
+      }
+      70% { 
+        transform: translate(34.646px, 32.595px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(34.646px, 32.595px);
+      }
+}
+@keyframes squareShift2 {
+    0% {
+        transform: translate(77.021px, 38.261px);
+      }
+      35% { 
+        transform: translate(67.021px, 38.261px) scale(1.1);
+        transform-origin: right;
+      }
+      70% {  
+        transform: translate(97.021px, 38.261px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(77.021px, 38.261px);
+      }
+}
+@keyframes squareShift3 {
+    0% {
+        transform: translate(38.261px, 77.022px);
+      }
+      35% { 
+        transform: translate(38.261px, 67.022px) scale(1.1);
+        transform-origin: right;
+      }
+      70% { 
+        transform: translate(38.261px, 97.022px) scale(1.1);
+        transform-origin: left;
+      }
+      100% {
+        transform: translate(38.261px, 77.022px);
+      }
+}
+
+/* Chart Icon */
+.minimizedField .chartAnimate .inside  {
+    animation: 1s ease-in-out 1 chartSqueeze;
+    animation-delay: .2s;
+    transform-origin: center;
+}
+.minimizedField .chartAnimate .outline  {
+    animation: 1s ease-in-out 1 chartSqueeze;
+    transform-origin: center;
+}
+
+@keyframes chartSqueeze {
+    0% {
+        transform: scaleY(1);
+      }
+      35% {
+        transform: scaleY(.5);
+      }
+      70% { 
+        transform: scaleY(1.5);
+      }
+      100% {
+        transform: scaleY(1);
+      }
+}
+
+/* Task Icon */
+.minimizedField .taskAnimate  {
+    animation: 1s ease-out 1 taskDip;
+}
+
+@keyframes taskDip {
+    0% {
+        transform: translate(0px, 1.5px);
+      }
+      25% {
+        transform: translate(10px, 21.5px) rotate(30deg);
+      }
+      50% {
+        transform: translate(0px, 31.5px) rotate(0deg);
+      }
+      75% { 
+        transform: translate(0px, 21.5px) rotate(-30deg);
+      }
+      100% {
+        transform: translate(0px, 1.5px) rotate(0deg);
+      }
+}
+
+/* Link Icon */
+.minimizedField .linkAnimate #Rectangle_3659_-_Outline {
+    animation: 1s ease-in-out 1 linkSqueeze1;
+}
+.minimizedField .linkAnimate #Rectangle_3657_-_Outline {
+    animation: 1s ease-in-out 1 linkSqueeze2;
+}
+.minimizedField .linkAnimate #Path_804 {
+    animation: 1s ease-in-out 1 linkSqueeze1;
+}
+.minimizedField .linkAnimate #Path_805 {
+    animation: 1s ease-in-out 1 linkSqueeze2;
+}
+
+@keyframes linkSqueeze1 {
+    0% {
+        transform: translate(114.857px, 25.367px) rotate(51deg);
+      }
+      50% {
+        transform: translate(104.857px, 35.367px) rotate(51deg);
+      }
+      100% {
+        transform: translate(114.857px, 25.367px) rotate(51deg);
+      }
+}
+@keyframes linkSqueeze2 {
+    0% {
+        transform: translate(73.587px, 58.791px) rotate(51deg);
+      }
+      50% {
+        transform: translate(83.587px, 48.791px) rotate(51deg);
+      }
+      100% {
+        transform: translate(73.587px, 58.791px) rotate(51deg);
+      }
+}
+
+/* Expand Icon */
+.expand .expandAnimate > #Path_664 {
+    animation: 1s ease 1 expandShift1;
+}
+.expand .expandAnimate > #Path_808 {
+    animation: 1s ease 1 expandShift2;
+}
+
+@keyframes expandShift1 {
+    0% {  
+        transform: translate(92.411px, 76.147px) rotate(180deg);
+      }
+      100% {
+        transform: translate(92.411px, 116.147px) rotate(180deg);
+      }
+}
+@keyframes expandShift2 {
+    0% {  
+        transform: translate(94.286px, 116.147px) rotate(180deg);
+      }
+      100% {
+        transform: translate(54.286px, 116.147px) rotate(180deg);
+      }
+}

@@ -49,7 +49,7 @@ async function main() {
     const companionInitiative = await prisma.initiative.create({
         data: {
             name: 'Setup your companion',
-            description: 'An inititive is a short term project based series of tasks, designed to complete set of preconfigured outcomes within a set timeline.',
+            description: 'Initiatives are short term project-based series of tasks, designed to complete preconfigured outcomes within a set timeline.',
             duration: 'month',
             durationCount: 2,
             completed: false,

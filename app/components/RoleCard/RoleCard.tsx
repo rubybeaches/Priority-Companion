@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Task from "../Task/Task";
+import InitiativeCard from "../InitiativeCard/InitiativeCard";
 import { Role, Habit, Initiative } from "@/app/lib/definitions";
-import { getHabitByRoleCount } from "@/app/lib/data";
 import "./RoleCard.css";
 
-const Role = async ({
+const Role = ({
   role,
   habits,
   initiatives,
@@ -13,15 +13,13 @@ const Role = async ({
   habits: Habit[];
   initiatives: Initiative[];
 }) => {
-  const habitCount = await getHabitByRoleCount(role.id);
-
   return (
     <>
       <h2 className="roleHeader">{role.name}</h2>
       <p>{role.description}</p>
       <div>
         <h3 className="roleHeader">
-          Habits <span className="roleHeaderCount">({habitCount})</span>
+          Habits <span className="roleHeaderCount">({habits.length})</span>
         </h3>
         {habits.map((habit: Habit) => (
           <span key={habit.id}>
@@ -39,9 +37,14 @@ const Role = async ({
           </span>
         ))}
 
-        <h3 className="roleHeader">Initiatives</h3>
+        <h3 className="roleHeader">
+          Initiatives{" "}
+          <span className="roleHeaderCount">({initiatives.length})</span>
+        </h3>
         {initiatives.map((init: Initiative) => (
-          <p key={init.id}>{init.name}</p>
+          <span key={init.id}>
+            <InitiativeCard {...init} />
+          </span>
         ))}
       </div>
       <Link className="linkButton" href={"/role/" + role.name}>
