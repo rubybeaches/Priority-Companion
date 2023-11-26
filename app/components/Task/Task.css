@@ -127,6 +127,30 @@
     }
   }
 
+.expandedWrapper {
+    animation: 1s ease-in-out 1 slideDownFromTop;
+    background-color: #F8F8F8;
+    height: 80px;
+    padding: 6px;
+    margin-bottom: -4px;
+}
+
+.expandedField {
+    background-color: #FFF;
+    border: #5693FF 2px solid;
+    border-radius: 8px;
+    height: 100%;
+}
+
+@keyframes slideDownFromTop {
+    0% {
+      height: 5px;
+    }
+    100% {
+      height: 80px;
+    }
+  }
+
 .minimizedField > *, .collapseField > * { 
     vertical-align: text-bottom;
     padding: 2px 2px 0px 2px;

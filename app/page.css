@@ -20,7 +20,7 @@ main.card {
 
 .card {
     background-color: #FFF;
-    padding: 18px 24px;
+    padding: 12px 24px 18px 24px;
     border-radius: 12px;
     box-shadow: 0px 3px 6px 0px #8888;
     width: 400px;

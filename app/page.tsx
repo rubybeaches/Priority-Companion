@@ -1,6 +1,7 @@
 import { Dancing_Script } from "next/font/google";
 import { getRoles } from "./lib/data";
 import RoleCard from "./components/RoleCard/RoleCard";
+import Image from "next/image";
 import Link from "next/link";
 import "./page.css";
 
@@ -25,7 +26,6 @@ const Page = async () => {
           and rewards consistent with your values, goals, and lifestyle.
         </p>
       </div>
-      {/*
       <Image
         src="/colors.png"
         width={534}
@@ -33,7 +33,6 @@ const Page = async () => {
         priority={false}
         alt="Screenshots of the dashboard project showing desktop and mobile versions"
       />
-  */}
       <div className="roleWrapper">
         {roles.map((role) => (
           <div key={role.id} className="card">
