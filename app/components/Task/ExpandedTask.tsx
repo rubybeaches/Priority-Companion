@@ -52,7 +52,15 @@ const ExpandedTask = ({
 
   const toggleWrapperState = () => {
     // changed to expanded or minimized state
-    expandFunc(false);
+    const areaDiv = textArea.current;
+    const parent = areaDiv ? areaDiv.parentElement : null;
+    if (parent) {
+      parent.style.height = "10px";
+    }
+
+    setTimeout(() => {
+      expandFunc(false);
+    }, 500);
   };
 
   const xTransform = {
