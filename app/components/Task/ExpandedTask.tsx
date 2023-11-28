@@ -4,6 +4,7 @@ import TaskIcons from "@/app/components/Icons/icons";
 import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
 import "./Task.css";
 import { useRef, useState } from "react";
+import { Space_Mono } from "next/font/google";
 
 const ExpandedTask = ({
   title,
@@ -20,6 +21,7 @@ const ExpandedTask = ({
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
+  const active = useRef<HTMLDivElement>(null);
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -44,6 +46,16 @@ const ExpandedTask = ({
     // document.getElementsByClassName(".expand")[0].classList.add(".collaspe")
   };
 
+  const xTransform = {
+    task: 31,
+    square: 63,
+    clock: 95,
+    chart: 127,
+    calendar: 159,
+    link: 191,
+    expand: 31,
+  };
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -51,13 +63,18 @@ const ExpandedTask = ({
     type: string
   ) => {
     if (!selected) {
-      //setSelected(description);
+      setSelected(description);
     }
     const triggerSelect = () => {
-      // setSelected((selected) => field || "");
+      setSelected((selected) => field || "");
     };
 
     const state = field ? (expand ? "selected" : "set") : "unset";
+    const activeDiv = active.current;
+    if (activeDiv && expand) {
+      const activeXTransform = xTransform[icon];
+      activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
+    }
 
     if (!expand) {
       return (
@@ -69,13 +86,12 @@ const ExpandedTask = ({
       );
     }
     return (
-      <span className="minimizedField" id={icon}>
+      <span style={{ zIndex: "1" }}>
         <TaskIcons
           icon={icon}
           state={state}
           clickFunc={() => triggerSelect()}
         />
-        <input type={type} defaultValue={field} />
       </span>
     );
   };
@@ -108,20 +124,25 @@ const ExpandedTask = ({
         </span>
       </div>
       <div className="expandedWrapper">
-        <div className="expandedField"></div>
-      </div>
-      <div className="iconFieldWrapper">
-        {expandSelected("task", description, description == selected, "text")}
-        {expandSelected("square", priority, priority == selected, "text")}
-        {expandSelected("clock", estTime, estTime == selected, "number")}
-        {expandSelected("chart", chronoType, chronoType == selected, "text")}
-        {expandSelected(
-          "calendar",
-          plannedStart,
-          plannedStart == selected,
-          "text"
-        )}
-        {expandSelected("link", link, link == selected, "url")}
+        <div className="expandedField">
+          <div className="activeSelector" ref={active}>
+            <span className="before"></span>
+            <span className="after"></span>
+          </div>
+        </div>
+        <div className="iconFieldWrapper">
+          {expandSelected("task", description, description == selected, "text")}
+          {expandSelected("square", priority, priority == selected, "text")}
+          {expandSelected("clock", estTime, estTime == selected, "number")}
+          {expandSelected("chart", chronoType, chronoType == selected, "text")}
+          {expandSelected(
+            "calendar",
+            plannedStart,
+            plannedStart == selected,
+            "text"
+          )}
+          {expandSelected("link", link, link == selected, "url")}
+        </div>
       </div>
     </div>
   );
