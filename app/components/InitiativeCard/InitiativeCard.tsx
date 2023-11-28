@@ -17,7 +17,14 @@ const InitiativeCard = ({
       <span style={{ fontSize: ".75em" }}>
         Expected Completion: {durationCount} {duration}s
       </span>
-      <span style={{ fontSize: ".75em", position: "absolute", right: "10px" }}>
+      <span
+        style={{
+          fontSize: ".75em",
+          position: "absolute",
+          right: "10px",
+          bottom: "5px",
+        }}
+      >
         {tasks.length} task(s)
       </span>
     </div>
