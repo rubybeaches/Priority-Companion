@@ -13,7 +13,7 @@ const Page = async () => {
   return (
     <main className="card">
       <Link className="linkButton linkRight" href={"/role/create"}>
-        <span className="linkIcon">&#x2b;</span> Role
+        <span className="linkPlusIcon">&#x2b;</span> Role
       </Link>
       <div className="pcHeader">
         <h1 className={`${dancer.className} antialiased`}>

@@ -50,7 +50,7 @@ const Role = ({
         ))}
       </div>
       <Link className="linkButton" href={"/role/" + role.name}>
-        <span className="linkIcon">&#x2b;</span> Explore
+        <span className="linkPlusIcon">&#x2b;</span> Explore
       </Link>
     </>
   );
