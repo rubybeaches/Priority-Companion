@@ -36,10 +36,15 @@ main .card:hover .linkButton {
     margin: 20px;
 }
 
+.columnWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .roleWrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pcHeader {
@@ -73,6 +78,7 @@ main .card:hover .linkButton {
 .linkRight {
     position: absolute;
     right: 10px;
+    margin: 0;
 }
 
 .linkPlusIcon {

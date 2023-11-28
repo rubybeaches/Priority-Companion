@@ -26,23 +26,44 @@ const Page = async () => {
           and rewards consistent with your values, goals, and lifestyle.
         </p>
       </div>
-      <Image
+      {/*<Image
         src="/colors.png"
         width={534}
         height={259}
         priority={false}
         alt="Screenshots of the dashboard project showing desktop and mobile versions"
-      />
-      <div className="roleWrapper">
-        {roles.map((role) => (
-          <div key={role.id} className="card">
-            <RoleCard
-              role={role}
-              habits={role.habits}
-              initiatives={role.initiatives}
-            />
-          </div>
-        ))}
+  /> */}
+      <div className="columnWrapper">
+        <div className="roleWrapper">
+          {roles.map((role, index) => (
+            <span key={index}>
+              {index % 2 == 0 && (
+                <div className="card">
+                  <RoleCard
+                    role={role}
+                    habits={role.habits}
+                    initiatives={role.initiatives}
+                  />
+                </div>
+              )}
+            </span>
+          ))}
+        </div>
+        <div className="roleWrapper">
+          {roles.map((role, index) => (
+            <span key={index}>
+              {index % 2 != 0 && (
+                <div className="card">
+                  <RoleCard
+                    role={role}
+                    habits={role.habits}
+                    initiatives={role.initiatives}
+                  />
+                </div>
+              )}
+            </span>
+          ))}
+        </div>
       </div>
     </main>
   );
