@@ -1,0 +1,23 @@
+.roleHeader {
+    font-weight: 400;
+    margin-block: 12px 8px;
+}
+
+.roleDesc {
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrapper .initWrapper, .wrapper .taskWrapper {
+    margin-block: 0px;
+    margin: 0px 16px 16px 0px;
+}
+
+.wrapper .linkRight {
+    top: -35px;
+}
