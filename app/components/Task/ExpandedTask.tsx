@@ -83,7 +83,7 @@ const ExpandedTask = ({
       setSelected((selected) => icon || "");
       const updateText = textArea.current;
       if (updateText) {
-        updateText.style.opacity = ".1";
+        updateText.style.opacity = ".2";
         setTimeout(() => {
           updateText.value = field || "";
           updateText.style.opacity = "1";
