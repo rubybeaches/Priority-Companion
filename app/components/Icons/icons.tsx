@@ -125,6 +125,7 @@ const TaskIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="taskIcon"
     >
       <circle
         fill={fill.circle}
@@ -180,6 +181,7 @@ const ChartIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="chartIcon"
     >
       <circle
         fill={fill.circle}
@@ -234,6 +236,7 @@ const CalendarIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="calendarIcon"
     >
       <circle
         fill={fill.circle}
@@ -351,6 +354,7 @@ const ClockIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="clockIcon"
     >
       <circle
         fill={fill.circle}
@@ -464,7 +468,7 @@ const SquareIcon = ({
   return (
     <svg
       onClick={() => clickFunc()}
-      className="squareAnimate"
+      className="squareAnimate squareIcon"
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"
@@ -527,7 +531,7 @@ const LinkIcon = ({
   return (
     <svg
       onClick={() => clickFunc()}
-      className="linkAnimate"
+      className="linkAnimate linkIcon"
       xmlns="http://www.w3.org/2000/svg"
       width="24px"
       height="24px"

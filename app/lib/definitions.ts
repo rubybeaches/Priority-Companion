@@ -32,3 +32,16 @@ export interface TaskProps {
     link?: string,
     parent: string,
 }
+
+export interface TaskStateProps {
+  title: string,
+  description: string,
+  priority?: string,
+  estTime?: string,
+  chronoType: chronoType;
+  plannedStart: string,
+  dueBy?: string,
+  link?: string,
+  parent: string,
+  expandFunc: (state: boolean) => void,
+}

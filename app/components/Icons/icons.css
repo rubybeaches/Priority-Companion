@@ -1,10 +1,29 @@
 /* SVG Animations */
 /* Clock Icon */
-.minimizedField .clockAnimate {
+.clockIcon:hover circle, 
+.squareIcon:hover circle, 
+.taskIcon:hover circle,
+.chartIcon:hover circle,
+.linkIcon:hover circle,
+.calendarIcon:hover circle {
+    fill:#D8E6FF;
+}
+
+.animate .clockIcon circle, 
+.animate .squareIcon circle, 
+.animate .taskIcon circle,
+.animate .chartIcon circle,
+.animate .linkIcon circle,
+.animate .calendarIcon circle {
+    fill:#B1CEFF;
+}
+
+
+.animate .clockAnimate {
     animation: 1s ease-in-out 1 spinClock;
     transform-origin: center;
 }
-.minimizedField .clockAnimate > #Path_665 {
+.animate .clockAnimate > #Path_665 {
     animation: 1s ease-in-out 1 spinClockHand;
 }
 
@@ -29,23 +48,23 @@
 }
 
 /* Calendar Icon */
-.minimizedField .calendarAnimate > #Path_797 {
+.animate .calendarAnimate > #Path_797 {
     animation: 1s ease-in-out 1 calendarPulse1;
     animation-delay: .1s;
 }
-.minimizedField .calendarAnimate > #Path_796 {
+.animate .calendarAnimate > #Path_796 {
     animation: 1s ease-in-out 1 calendarPulse2;
     animation-delay: .3s;
 }
-.minimizedField .calendarAnimate > #Path_800 {
+.animate .calendarAnimate > #Path_800 {
     animation: 1s ease-in-out 1 calendarPulse3;
     animation-delay: .3s;
 }
-.minimizedField .calendarAnimate > #Path_799 {
+.animate .calendarAnimate > #Path_799 {
     animation: 1s ease-in-out 1 calendarPulse4;
     animation-delay: .5s;
 }
-.minimizedField .calendarAnimate > #Path_798 {
+.animate .calendarAnimate > #Path_798 {
     animation: 1s ease-in-out 1 calendarPulse5;
     animation-delay: .7s;
 }
@@ -112,16 +131,16 @@
 }
 
 /* Square Icon */
-.minimizedField .squareAnimate > #Rectangle_3658 {
+.animate .squareAnimate > #Rectangle_3658 {
     animation: 1s ease-out 1 squareShift1;
 }
-.minimizedField .squareAnimate #Rectangle_3658_-_Outline {
+.animate .squareAnimate #Rectangle_3658_-_Outline {
     animation: 1s ease-out 1 squareShift1;
 }
-.minimizedField .squareAnimate #Line_389 {
+.animate .squareAnimate #Line_389 {
     animation: 1s ease-out 1 squareShift2;
 }
-.minimizedField .squareAnimate #Path_794 {
+.animate .squareAnimate #Path_794 {
     animation: 1s ease-out 1 squareShift3;
 }
 
@@ -175,12 +194,12 @@
 }
 
 /* Chart Icon */
-.minimizedField .chartAnimate .inside  {
+.animate .chartAnimate .inside  {
     animation: 1s ease-in-out 1 chartSqueeze;
     animation-delay: .2s;
     transform-origin: center;
 }
-.minimizedField .chartAnimate .outline  {
+.animate .chartAnimate .outline  {
     animation: 1s ease-in-out 1 chartSqueeze;
     transform-origin: center;
 }
@@ -201,7 +220,7 @@
 }
 
 /* Task Icon */
-.minimizedField .taskAnimate  {
+.animate .taskAnimate  {
     animation: 1s ease-out 1 taskDip;
 }
 
@@ -224,16 +243,16 @@
 }
 
 /* Link Icon */
-.minimizedField .linkAnimate #Rectangle_3659_-_Outline {
+.animate .linkAnimate #Rectangle_3659_-_Outline {
     animation: 1s ease-in-out 1 linkSqueeze1;
 }
-.minimizedField .linkAnimate #Rectangle_3657_-_Outline {
+.animate .linkAnimate #Rectangle_3657_-_Outline {
     animation: 1s ease-in-out 1 linkSqueeze2;
 }
-.minimizedField .linkAnimate #Path_804 {
+.animate .linkAnimate #Path_804 {
     animation: 1s ease-in-out 1 linkSqueeze1;
 }
-.minimizedField .linkAnimate #Path_805 {
+.animate .linkAnimate #Path_805 {
     animation: 1s ease-in-out 1 linkSqueeze2;
 }
 
@@ -263,9 +282,23 @@
 /* Expand Icon */
 .expand .expandAnimate > #Path_664 {
     animation: 1s ease 1 expandShift1;
+    transform: translate(92.411px, 116.147px) rotate(180deg);
 }
 .expand .expandAnimate > #Path_808 {
     animation: 1s ease 1 expandShift2;
+    transform: translate(54.286px, 116.147px) rotate(180deg);
+}
+
+.expand:hover circle {
+    fill:#D8E6FF;
+}
+.expand:hover .expandAnimate > #Path_664 {
+    animation: 1s ease 1 collapseShift1;
+    transform: translate(92.411px, 76.147px) rotate(180deg);
+}
+.expand:hover .expandAnimate > #Path_808 {
+    animation: 1s ease 1 collapseShift2;
+    transform: translate(94.286px, 116.147px) rotate(180deg);
 }
 
 @keyframes expandShift1 {
@@ -282,5 +315,44 @@
       }
       100% {
         transform: translate(54.286px, 116.147px) rotate(180deg);
+      }
+}
+
+/* Collapse Icon */
+.collapse .expandAnimate > #Path_664 {
+    animation: 1s ease 1 collapseShift1;
+    transform: translate(92.411px, 76.147px) rotate(180deg);
+}
+.collapse .expandAnimate > #Path_808 {
+    animation: 1s ease 1 collapseShift2;
+    transform: translate(94.286px, 116.147px) rotate(180deg);
+}
+
+.collapse:hover circle {
+    fill:#D8E6FF;
+}
+.collapse:hover .expandAnimate > #Path_664 {
+    animation: 1s ease 1 expandShift1;
+    transform: translate(92.411px, 116.147px) rotate(180deg);
+}
+.collapse:hover .expandAnimate > #Path_808 {
+    animation: 1s ease 1 expandShift2;
+    transform: translate(54.286px, 116.147px) rotate(180deg);
+}
+
+@keyframes collapseShift1 {
+    0% {  
+        transform: translate(92.411px, 116.147px) rotate(180deg);
+      }
+      100% {
+        transform: translate(92.411px, 76.147px) rotate(180deg);
+      }
+}
+@keyframes collapseShift2 {
+    0% { 
+        transform: translate(54.286px, 116.147px) rotate(180deg); 
+      }
+      100% {
+        transform: translate(94.286px, 116.147px) rotate(180deg);
       }
 }

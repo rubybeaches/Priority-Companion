@@ -9,11 +9,8 @@ import {
 } from "@/app/lib/definitions";
 import "./Task.css";
 import { useRef, useState } from "react";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const ExpandedTask = ({
+const MinimizedTask = ({
   title,
   description,
   priority,
@@ -29,8 +26,6 @@ const ExpandedTask = ({
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
-  const active = useRef<HTMLDivElement>(null);
-  const textArea = useRef<HTMLTextAreaElement>(null);
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -52,17 +47,7 @@ const ExpandedTask = ({
 
   const toggleWrapperState = () => {
     // changed to expanded or minimized state
-    expandFunc(false);
-  };
-
-  const xTransform = {
-    task: 25,
-    square: 57,
-    clock: 89,
-    chart: 121,
-    calendar: 153,
-    link: 185,
-    expand: 25,
+    expandFunc(true);
   };
 
   const expandSelected = (
@@ -72,19 +57,14 @@ const ExpandedTask = ({
     type: string
   ) => {
     const triggerSelect = () => {
-      setSelected((selected) => icon || "");
-      const updateText = textArea.current;
-      if (updateText) {
-        updateText.value = field || "";
+      if (field) {
+        setSelected((selected) => icon);
+      } else {
+        toggleWrapperState();
       }
     };
 
     const state = field ? (expand ? "selected" : "set") : "unset";
-    const activeDiv = active.current;
-    if (activeDiv && expand) {
-      const activeXTransform = xTransform[icon];
-      activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
-    }
 
     if (!expand) {
       return (
@@ -96,12 +76,13 @@ const ExpandedTask = ({
       );
     }
     return (
-      <span className="animate" style={{ zIndex: "1" }}>
+      <span className="minimizedField animate" id={icon}>
         <TaskIcons
           icon={icon}
           state={state}
           clickFunc={() => triggerSelect()}
         />
+        <input type={type} defaultValue={field} />
       </span>
     );
   };
@@ -125,7 +106,7 @@ const ExpandedTask = ({
       </label>
       <div className="taskHeader">
         <p className="taskTitle">{title}</p>
-        <span className="taskHeaderIcons collapse">
+        <span className="taskHeaderIcons expand">
           <TaskIcons
             icon="expand"
             state="set"
@@ -133,34 +114,21 @@ const ExpandedTask = ({
           />
         </span>
       </div>
-      <div className="expandedWrapper">
-        <div className="expandedField">
-          <textarea
-            className={`${inter.className}`}
-            defaultValue={description}
-            ref={textArea}
-          />
-          <div className="activeSelector" ref={active}>
-            <span className="before"></span>
-            <span className="after"></span>
-          </div>
-        </div>
-        <div className="iconFieldWrapper">
-          {expandSelected("task", description, "task" == selected, "text")}
-          {expandSelected("square", priority, "square" == selected, "text")}
-          {expandSelected("clock", estTime, "clock" == selected, "number")}
-          {expandSelected("chart", chronoType, "chart" == selected, "text")}
-          {expandSelected(
-            "calendar",
-            plannedStart,
-            "calendar" == selected,
-            "text"
-          )}
-          {expandSelected("link", link, "link" == selected, "url")}
-        </div>
+      <div className="iconFieldWrapper">
+        {expandSelected("task", description, "task" == selected, "text")}
+        {expandSelected("square", priority, "square" == selected, "text")}
+        {expandSelected("clock", estTime, "clock" == selected, "number")}
+        {expandSelected("chart", chronoType, "chart" == selected, "text")}
+        {expandSelected(
+          "calendar",
+          plannedStart,
+          "calendar" == selected,
+          "text"
+        )}
+        {expandSelected("link", link, "link" == selected, "url")}
       </div>
     </div>
   );
 };
 
-export default ExpandedTask;
+export default MinimizedTask;
