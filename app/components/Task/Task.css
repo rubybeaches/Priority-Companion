@@ -109,7 +109,7 @@
     border-top: 0;
     transform: translate(25px, 0px);
 
-    transition: transform 500ms ease-in-out
+    transition: transform 700ms ease-in-out;
 }
 
 .activeSelector .before {
@@ -159,9 +159,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border: 2px solid transparent;
+}
+
+.minimizedFieldBack {
     background-color: #FFF;
     border: #5693FF 2px solid;
     border-radius: 20px;
+    position: absolute;
+    z-index: 0;
+    width: 210px;
+    height: 30px;
+    top: 0px;
+    left: 0px;
+    transform: translate(5px, 0px);
+
+    transition: transform 500ms ease-in-out, width 500ms ease-in-out;
 }
 
 @keyframes slideInFromLeft {
@@ -240,6 +253,10 @@
     outline: none;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    opacity: 1;
+
+    transition: opacity 500ms ease;
 }
 
 /* Checkbox styles */

@@ -83,16 +83,20 @@ const ExpandedTask = ({
       setSelected((selected) => icon || "");
       const updateText = textArea.current;
       if (updateText) {
-        updateText.value = field || "";
+        updateText.style.opacity = ".1";
+        setTimeout(() => {
+          updateText.value = field || "";
+          updateText.style.opacity = "1";
+        }, 500);
+      }
+      const activeDiv = active.current;
+      if (activeDiv) {
+        const activeXTransform = xTransform[icon];
+        activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
       }
     };
 
     const state = field ? (expand ? "selected" : "set") : "unset";
-    const activeDiv = active.current;
-    if (activeDiv && expand) {
-      const activeXTransform = xTransform[icon];
-      activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
-    }
 
     if (!expand) {
       return (

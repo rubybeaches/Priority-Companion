@@ -26,6 +26,7 @@ const MinimizedTask = ({
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
+  const active = useRef<HTMLSpanElement>(null);
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -50,6 +51,16 @@ const MinimizedTask = ({
     expandFunc(true);
   };
 
+  const xTransform = {
+    task: 4,
+    square: 36,
+    clock: 68,
+    chart: 100,
+    calendar: 132,
+    link: 164,
+    expand: 4,
+  };
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -61,6 +72,17 @@ const MinimizedTask = ({
         setSelected((selected) => icon);
       } else {
         toggleWrapperState();
+      }
+
+      const activeSpan = active.current;
+      if (activeSpan) {
+        const activeXTransform = xTransform[icon];
+
+        activeSpan.style.width = "120px";
+        setTimeout(() => {
+          activeSpan.style.width = "210px";
+        }, 500);
+        activeSpan.style.transform = `translate(${activeXTransform}px, 0px)`;
       }
     };
 
@@ -114,7 +136,8 @@ const MinimizedTask = ({
           />
         </span>
       </div>
-      <div className="iconFieldWrapper">
+      <div className="iconFieldWrapper" style={{ position: "relative" }}>
+        <span className="minimizedField minimizedFieldBack" ref={active}></span>
         {expandSelected("task", description, "task" == selected, "text")}
         {expandSelected("square", priority, "square" == selected, "text")}
         {expandSelected("clock", estTime, "clock" == selected, "number")}
