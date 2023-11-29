@@ -6,7 +6,6 @@ import { Initiative, Habit } from "@/app/lib/definitions";
 import Link from "next/link";
 import "./page.css";
 import CreateTask from "@/app/components/Task/CreateTask";
-// import { redirect } from "next/navigation";
 
 export default async function Role({
   params,
@@ -17,13 +16,6 @@ export default async function Role({
 }) {
   const Role: Role = await getRoleDataByName(params.role);
   const query = searchParams?.modal || "";
-  /*
-  const closeRoute = () => {
-    if (query == "habit") {
-      redirect("/role/" + params.role);
-    }
-  };
-  */
 
   return (
     <>
@@ -101,6 +93,13 @@ export default async function Role({
       {query == "habit" && (
         <span className="createModal">
           <CreateTask parent="habit" />
+          <Link
+            className="linkButton linkRight"
+            href={`/role/${params.role}`}
+            replace
+          >
+            <span className="linkPlusIcon">&#10006;</span> Close
+          </Link>
         </span>
       )}
     </>
