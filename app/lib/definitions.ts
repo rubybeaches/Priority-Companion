@@ -38,7 +38,7 @@ export interface TaskStateProps {
   description: string,
   priority?: string,
   estTime?: string,
-  chronoType: chronoType;
+  chronoType?: chronoType;
   plannedStart: string,
   dueBy?: string,
   link?: string,

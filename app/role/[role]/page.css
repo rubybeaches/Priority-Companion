@@ -21,3 +21,13 @@
 .wrapper .linkRight {
     top: -35px;
 }
+
+.createModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.darken {
+    opacity: .3;
+}

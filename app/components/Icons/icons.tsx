@@ -18,7 +18,7 @@ const selected = {
 };
 
 const unset = {
-  circle: "#FFF",
+  circle: "#F3F3F3",
   outline: "#FFF",
   shape: "#707070",
   shapeInner: "#F8F8F8",
