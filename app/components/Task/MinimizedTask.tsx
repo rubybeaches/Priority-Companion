@@ -69,6 +69,9 @@ const MinimizedTask = ({
     type: string
   ) => {
     const triggerSelect = () => {
+      if (icon == selected) {
+        return;
+      }
       if (field) {
         setSelected((selected) => icon);
       } else {

@@ -81,6 +81,9 @@ const ExpandedTask = ({
     type: string
   ) => {
     const triggerSelect = () => {
+      if (icon == selected) {
+        return;
+      }
       setSelected((selected) => icon || "");
       const updateText = textArea.current;
       if (updateText) {
