@@ -18,6 +18,10 @@
     fill:#B1CEFF;
 }
 
+.save:hover #Group_1820 {
+    fill: #427BDE;
+}
+
 
 .animate .clockAnimate {
     animation: 1s ease-in-out 1 spinClock;

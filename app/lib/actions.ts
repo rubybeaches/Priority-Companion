@@ -3,6 +3,9 @@
 import { prisma } from "./script";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { TaskProps } from "./definitions";
+import CreateTask from "../components/Task/CreateTask";
+import { type } from "os";
 
 // const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
@@ -30,4 +33,46 @@ export async function createRole(formData: FormData) {
    
     revalidatePath('/');
     redirect('/');
+  }
+
+
+  interface CreateTask extends TaskProps {
+    roleID: number,
+    roleName: string,
+  }
+
+  export async function createHabit({roleID, roleName, title, description, priority, estTime, chronoType, plannedStart, link}:CreateTask) {
+    const today = new Date();
+
+    const companionTask = await prisma.task.create({
+        data: {
+            name: title,
+            description: description,
+            priority: priority,
+            estTime: Number(estTime),
+            chronoType: chronoType,
+            plannedStart: today.toISOString(),
+            dueBy: null,
+            link: link,
+            completed: false,
+        }
+    })
+
+    const companionHabit = await prisma.habit.create({
+        data: {
+            frequency: 'daily',
+            rolesId: roleID,
+            taskId: companionTask.id,
+            }
+        }
+    );
+   
+    /*
+    try {
+    } catch (error) {
+    }
+    */
+   
+    revalidatePath("/");
+    redirect(`/role/${roleName}`);
   }

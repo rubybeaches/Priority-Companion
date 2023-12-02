@@ -9,6 +9,21 @@
     margin-left: 6px;
 }
 
+.inputTitle {
+    box-sizing: border-box;
+    width: 60%;
+    border-color: #DBE6FF;
+    border-style: solid;
+    background-color: #D8E6FF;
+    color: #427BDE;
+    outline: none;
+    padding: 2px;
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .taskHeader {
     display: flex;
     justify-content: space-between;
@@ -109,7 +124,7 @@
     border-top: 0;
     transform: translate(25px, 0px);
 
-    transition: transform 700ms ease-in-out;
+    transition: transform 600ms ease-in-out;
 }
 
 .activeSelector .before {

@@ -71,6 +71,7 @@ const ExpandedTask = ({
     calendar: 153,
     link: 185,
     expand: 25,
+    save: 25,
   };
 
   const expandSelected = (
@@ -87,7 +88,7 @@ const ExpandedTask = ({
         setTimeout(() => {
           updateText.value = field || "";
           updateText.style.opacity = "1";
-        }, 500);
+        }, 400);
       }
       const activeDiv = active.current;
       if (activeDiv) {
@@ -108,7 +109,7 @@ const ExpandedTask = ({
       );
     }
     return (
-      <span className="animate" style={{ zIndex: "1" }}>
+      <span className={field ? "animate" : ""} style={{ zIndex: "1" }}>
         <TaskIcons
           icon={icon}
           state={state}

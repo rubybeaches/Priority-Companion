@@ -59,6 +59,7 @@ const MinimizedTask = ({
     calendar: 132,
     link: 164,
     expand: 4,
+    save: 4,
   };
 
   const expandSelected = (
@@ -98,7 +99,10 @@ const MinimizedTask = ({
       );
     }
     return (
-      <span className="minimizedField animate" id={icon}>
+      <span
+        className={field ? "minimizedField animate" : "minimizedField"}
+        id={icon}
+      >
         <TaskIcons
           icon={icon}
           state={state}

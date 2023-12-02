@@ -39,10 +39,13 @@ export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
     square: <SquareIcon fill={colors[state]} clickFunc={clickFunc} />,
     link: <LinkIcon fill={colors[state]} clickFunc={clickFunc} />,
     expand: <ExpandIcon fill={colors[state]} clickFunc={clickFunc} />,
+    save: <SaveIcon fill={colors[state]} clickFunc={clickFunc} />,
   };
 
   return svg[icon];
 };
+
+export default TaskIcons;
 
 const ExpandIcon = ({
   fill,
@@ -109,7 +112,43 @@ const ExpandIcon = ({
   );
 };
 
-export default TaskIcons;
+const SaveIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
+  return (
+    <svg
+      onClick={() => clickFunc()}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+    >
+      <g
+        fill={fill.outline}
+        id="Group_1820"
+        data-name="Group 1820"
+        transform="translate(-6819.99 -2362.564)"
+      >
+        <path
+          id="Path_809"
+          data-name="Path 809"
+          d="M28.235,120h-.01l-18.231-.01A10.014,10.014,0,0,1,0,109.979V9.995A10.005,10.005,0,0,1,9.994,0h100a10.01,10.01,0,0,1,10,9.994v99.985a10.018,10.018,0,0,1-10,10.011H91.765V91.751H28.235V120ZM14.115,14.12V63.53H105.87V14.12Z"
+          transform="translate(6820 2362.563)"
+        />
+        <path
+          id="Path_808"
+          data-name="Path 808"
+          d="M0,0H30V30H0Z"
+          transform="translate(6877.856 2452.547)"
+        />
+      </g>
+    </svg>
+  );
+};
 
 const TaskIcon = ({
   fill,
