@@ -7,7 +7,7 @@ import {
   iconName,
   state,
 } from "@/app/lib/definitions";
-import { UpdateTask } from "@/app/lib/actions";
+import { UpdateTask, DeleteTask } from "@/app/lib/actions";
 import "./Task.css";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
@@ -30,6 +30,7 @@ const EditTask = ({
   dueBy,
   link,
   parent,
+  parentID,
   expandFunc,
 }: EditProps) => {
   const [selected, setSelected] = useState("task");
@@ -169,7 +170,13 @@ const EditTask = ({
             <TaskIcons
               icon="trash"
               state={"set"}
-              clickFunc={() => (taskTitle && newDescription ? "" : "")}
+              clickFunc={() =>
+                DeleteTask({
+                  pathName: pathname,
+                  taskID: id,
+                  parentID: parentID || undefined,
+                })
+              }
             />
             <span
               className={`${

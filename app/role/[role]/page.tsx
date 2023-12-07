@@ -60,6 +60,7 @@ export default async function Role({
                 dueBy={habit.task.dueBy?.toDateString() || undefined}
                 link={habit.task.link || undefined}
                 parent={"habit"}
+                parentID={habit.id}
               />
             </span>
           ))}
@@ -68,7 +69,7 @@ export default async function Role({
             <>
               <span className={"" /*"createModal"*/}>
                 <CreateTask
-                  parent="habit"
+                  parentType="habit"
                   roleID={Role.id}
                   roleName={Role.name}
                 />

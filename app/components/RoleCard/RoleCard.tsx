@@ -36,6 +36,7 @@ const Role = ({
               dueBy={habit.task.dueBy?.toDateString() || undefined}
               link={habit.task.link || undefined}
               parent={"habit"}
+              parentID={habit.id}
             />
           </span>
         ))}

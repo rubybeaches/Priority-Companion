@@ -1,60 +1,39 @@
 "use client";
 
 import TaskIcons from "@/app/components/Icons/icons";
-import {
-  TaskStateProps,
-  chronoType,
-  iconName,
-  state,
-} from "@/app/lib/definitions";
+import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
 import { createHabit } from "@/app/lib/actions";
 import "./Task.css";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
+import { useRouter, usePathname } from "next/navigation";
+import path from "path";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface CreateProps {
-  title?: string;
-  description?: string;
-  priority?: string;
-  estTime?: string;
-  chronoType?: chronoType;
-  plannedStart?: string;
-  dueBy?: string;
-  link?: string;
-  parent?: string;
   roleID: number;
   roleName: string;
+  parentType?: string;
 }
 
-const CreateTask = ({
-  title,
-  description,
-  priority,
-  estTime,
-  chronoType,
-  plannedStart,
-  dueBy,
-  link,
-  parent,
-  roleID,
-  roleName,
-}: CreateProps) => {
+const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
   const [selected, setSelected] = useState("task");
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const scrollToRef = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   // Fields for task submission
   const [taskTitle, setTaskTitle] = useState("");
-  const [newDescription, setNeDescription] = useState(description);
-  const [newPriority, setNewPriority] = useState(priority);
-  const [newTime, setNewTime] = useState(estTime);
-  const [newChronotype, setNewChronotype] = useState<chronoType>(chronoType);
-  const [newPlannedDate, setNewPlannedDate] = useState(plannedStart);
-  const [newLink, setNewLink] = useState(link);
+  const [newDescription, setNeDescription] = useState();
+  const [newPriority, setNewPriority] = useState();
+  const [newTime, setNewTime] = useState();
+  const [newChronotype, setNewChronotype] = useState<chronoType>();
+  const [newPlannedDate, setNewPlannedDate] = useState();
+  const [newLink, setNewLink] = useState();
 
   const taskStates: any = {
     task: { getter: newDescription, setter: setNeDescription },
@@ -151,7 +130,7 @@ const CreateTask = ({
             chronoType: newChronotype,
             plannedStart: newPlannedDate || "",
             link: newLink,
-            parent: parent || "",
+            parent: parentType || "",
           })
         }
       />
@@ -168,7 +147,7 @@ const CreateTask = ({
           <TaskIcons
             icon="trash"
             state={"set"}
-            clickFunc={() => (taskTitle && newDescription ? "" : "")}
+            clickFunc={() => router.push(pathname)}
           />
           <span className={`${taskTitle && newDescription ? "set" : "unset"}`}>
             <TaskIcons

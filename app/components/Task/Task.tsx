@@ -22,6 +22,7 @@ const Task = ({
   dueBy,
   link,
   parent,
+  parentID,
 }: Task) => {
   const [expand, setExpand] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -47,6 +48,7 @@ const Task = ({
         dueBy={dueBy}
         link={link}
         parent={parent}
+        parentID={parentID}
         expandFunc={toggleState}
       />
     );

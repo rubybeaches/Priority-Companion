@@ -106,3 +106,31 @@ export async function createRole(formData: FormData) {
     revalidatePath("/");
     redirect(pathName);
   }
+
+  interface DeleteTask {
+    taskID: number,
+    pathName: string,
+    parentID?: number
+  }
+
+  export async function DeleteTask({pathName, taskID, parentID}:DeleteTask) {
+    const today = new Date();
+
+    if (parentID) {
+      const parentHabit = await prisma.habit.delete({
+        where: {
+          id: parentID,
+          taskId: taskID
+        }
+      })
+    }
+   
+    /*
+    try {
+    } catch (error) {
+    }
+    */
+   
+    revalidatePath("/");
+    redirect(pathName);
+  }

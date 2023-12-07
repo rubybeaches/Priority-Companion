@@ -26,22 +26,14 @@ export interface TaskProps {
     description: string,
     priority?: string,
     estTime?: string,
-    chronoType: chronoType;
+    chronoType?: chronoType;
     plannedStart: string,
     dueBy?: string,
     link?: string,
-    parent: string,
+    parent?: string,
+    parentID?: number,
 }
 
-export interface TaskStateProps {
-  title: string,
-  description: string,
-  priority?: string,
-  estTime?: string,
-  chronoType?: chronoType;
-  plannedStart: string,
-  dueBy?: string,
-  link?: string,
-  parent?: string,
+export interface TaskStateProps extends TaskProps {
   expandFunc: (toggle: "edit" | "expand", state: boolean) => void,
 }
