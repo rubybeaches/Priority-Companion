@@ -61,6 +61,7 @@ const MinimizedTask = ({
     expand: 4,
     save: 4,
     edit: 4,
+    trash: 4,
   };
 
   const expandSelected = (

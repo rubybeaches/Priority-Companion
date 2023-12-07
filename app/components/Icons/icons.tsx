@@ -41,6 +41,7 @@ export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
     expand: <ExpandIcon fill={colors[state]} clickFunc={clickFunc} />,
     save: <SaveIcon fill={colors[state]} clickFunc={clickFunc} />,
     edit: <EditIcon fill={colors[state]} clickFunc={clickFunc} />,
+    trash: <TrashIcon fill={colors[state]} clickFunc={clickFunc} />,
   };
 
   return svg[icon];
@@ -62,6 +63,7 @@ const ExpandIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="expandIcon"
     >
       <circle
         fill={fill.circle}
@@ -127,9 +129,10 @@ const EditIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="pencilIcon"
     >
       <path
-        id="pencil-icon"
+        id="pencil"
         fill={fill.outline}
         data-name="Path 110"
         d="M61.075,23.047,18.438,66.837,0,119.845,53.009,102.56,95.646,59.923Zm54.161-3.457L100.255,4.609C96.8,1.152,93.341,0,89.884,0S82.97,1.152,79.513,4.609L66.837,17.285l34.571,35.723L115.236,39.18a14.607,14.607,0,0,0,4.609-10.371C119.845,25.352,117.541,21.895,115.236,19.59Z"
@@ -152,10 +155,11 @@ const SaveIcon = ({
       width="24px"
       height="24px"
       viewBox="0 0 160 160"
+      className="saveIcon"
     >
       <g
         fill={fill.outline}
-        id="Group_1820"
+        id="save"
         data-name="Group 1820"
         transform="translate(-6819.99 -2362.564)"
       >
@@ -170,6 +174,69 @@ const SaveIcon = ({
           data-name="Path 808"
           d="M0,0H30V30H0Z"
           transform="translate(6877.856 2452.547)"
+        />
+      </g>
+    </svg>
+  );
+};
+
+const TrashIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
+  return (
+    <svg
+      onClick={() => clickFunc()}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+      className="trashIcon"
+    >
+      <g
+        id="trash"
+        fill={fill.outline}
+        data-name="Group 1819"
+        transform="translate(-6597.281 -2362)"
+      >
+        <path
+          id="Path_808"
+          data-name="Path 808"
+          d="M5,0H75a5,5,0,0,1,0,10H5A5,5,0,0,1,5,0Z"
+          transform="translate(6617.281 2369.5)"
+        />
+        <path
+          id="Path_807"
+          data-name="Path 807"
+          d="M7.5,0h25a7.5,7.5,0,0,1,0,15H7.5a7.5,7.5,0,0,1,0-15Z"
+          transform="translate(6637.281 2362)"
+        />
+        <path
+          id="Rectangle_4197_-_Outline"
+          data-name="Rectangle 4197 - Outline"
+          d="M10,10V85H70V10H10M10,0H70A10,10,0,0,1,80,10V85A10,10,0,0,1,70,95H10A10,10,0,0,1,0,85V10A10,10,0,0,1,10,0Z"
+          transform="translate(6617.281 2387)"
+        />
+        <path
+          id="Line_421"
+          data-name="Line 421"
+          d="M9.5,83.477H-.5V0h10Z"
+          transform="translate(6632.781 2393.523)"
+        />
+        <path
+          id="Line_422"
+          data-name="Line 422"
+          d="M9.5,83.477H-.5V0h10Z"
+          transform="translate(6652.781 2393.523)"
+        />
+        <path
+          id="Line_423"
+          data-name="Line 423"
+          d="M9.5,83.477H-.5V0h10Z"
+          transform="translate(6672.781 2393.523)"
         />
       </g>
     </svg>

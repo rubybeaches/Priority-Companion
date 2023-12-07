@@ -7,7 +7,7 @@ export interface colorSchema {
   }
 
 export type state = "set" | "selected" | "unset";
-export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save" | "edit";
+export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save" | "edit" | "trash";
 export type chronoType = "peak" | "trough" | "creative" | undefined;
 
 

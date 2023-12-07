@@ -73,6 +73,7 @@ const ExpandedTask = ({
     expand: 25,
     save: 25,
     edit: 25,
+    trash: 25,
   };
 
   const expandSelected = (

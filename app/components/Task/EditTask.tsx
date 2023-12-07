@@ -98,6 +98,7 @@ const EditTask = ({
     expand: 25,
     save: 25,
     edit: 25,
+    trash: 25,
   };
 
   const expandSelected = (
@@ -164,20 +165,27 @@ const EditTask = ({
               updateForm(e.target.value, setTaskTitle);
             }}
           />
-          <span
-            className={`taskHeaderIcons save ${
-              taskTitle && newDescription && !pending ? "set" : "unset"
-            }`}
-          >
+          <span className="taskHeaderIcons save">
             <TaskIcons
-              icon="save"
+              icon="trash"
               state={"set"}
-              clickFunc={() =>
-                taskTitle && newDescription
-                  ? createForm.current?.requestSubmit()
-                  : ""
-              }
+              clickFunc={() => (taskTitle && newDescription ? "" : "")}
             />
+            <span
+              className={`${
+                taskTitle && newDescription && !pending ? "set" : "unset"
+              }`}
+            >
+              <TaskIcons
+                icon="save"
+                state={"set"}
+                clickFunc={() =>
+                  taskTitle && newDescription
+                    ? createForm.current?.requestSubmit()
+                    : ""
+                }
+              />
+            </span>
           </span>
         </div>
         <div className="expandedWrapper">

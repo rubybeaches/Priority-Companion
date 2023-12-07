@@ -18,18 +18,14 @@
     fill:#B1CEFF;
 }
 
-.collapse #pencil-icon:hover {
+.collapse .pencilIcon:hover #pencil, 
+.save .set .saveIcon:hover #save, 
+.save .trashIcon:hover #trash {
     fill:#427BDE;
 }
 
-.save.set:hover #Group_1820 {
-    fill: #427BDE;
-}
-
-.save.unset #Group_1820 {
-    fill: #d8e6ff;
-}
-.save.unset:hover #Group_1820 {
+.save .unset .saveIcon #save, 
+.save .unset .saveIcon:hover #save {
     fill: #d8e6ff;
 }
 
@@ -342,14 +338,14 @@
     transform: translate(94.286px, 116.147px) rotate(180deg);
 }
 
-.collapse circle:hover {
+.collapse .expandIcon:hover circle {
     fill:#D8E6FF;
 }
-.collapse:hover .expandAnimate > #Path_664 {
+.collapse .expandIcon:hover .expandAnimate > #Path_664 {
     animation: 1s ease 1 expandShift1;
     transform: translate(92.411px, 116.147px) rotate(180deg);
 }
-.collapse:hover .expandAnimate > #Path_808 {
+.collapse .expandIcon:hover .expandAnimate > #Path_808 {
     animation: 1s ease 1 expandShift2;
     transform: translate(54.286px, 116.147px) rotate(180deg);
 }
