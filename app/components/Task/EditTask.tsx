@@ -34,6 +34,7 @@ const EditTask = ({
 }: EditProps) => {
   const [selected, setSelected] = useState("task");
   const active = useRef<HTMLDivElement>(null);
+  const editWrapper = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
   const [pending, setPending] = useState(false);
@@ -62,7 +63,6 @@ const EditTask = ({
   };
 
   const postEdit = async () => {
-    setPending((pending) => true);
     const updated = await UpdateTask({
       taskID: id,
       pathName: pathname,
@@ -77,6 +77,15 @@ const EditTask = ({
     });
 
     expandFunc("edit", false);
+  };
+
+  const asyncPend = () => {
+    setPending(true);
+    const editDiv = editWrapper.current;
+
+    if (editDiv) {
+      editDiv.classList.add("animate");
+    }
   };
 
   const xTransform = {
@@ -140,11 +149,11 @@ const EditTask = ({
   };
 
   return (
-    <div className="taskWrapper">
+    <div className="taskWrapper edit" ref={editWrapper}>
       <form
         ref={createForm}
         action={() => postEdit()}
-        onSubmit={() => setPending(true)}
+        onSubmit={() => asyncPend()}
       >
         <div className="taskHeader">
           <input

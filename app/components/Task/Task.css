@@ -328,3 +328,20 @@
     top: 2px;
     left: 2px;
   }
+
+  .edit.animate .taskHeader input {
+    animation: pulse 750ms linear infinite alternate;
+  }
+
+  .edit.animate textarea {
+    animation: pulse 750ms linear infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% {
+      opacity: .3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
