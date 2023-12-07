@@ -18,10 +18,20 @@
     fill:#B1CEFF;
 }
 
-.save:hover #Group_1820 {
+.collapse #pencil-icon:hover {
+    fill:#427BDE;
+}
+
+.save.set:hover #Group_1820 {
     fill: #427BDE;
 }
 
+.save.unset #Group_1820 {
+    fill: #d8e6ff;
+}
+.save.unset:hover #Group_1820 {
+    fill: #d8e6ff;
+}
 
 .animate .clockAnimate {
     animation: 1s ease-in-out 1 spinClock;
@@ -332,7 +342,7 @@
     transform: translate(94.286px, 116.147px) rotate(180deg);
 }
 
-.collapse:hover circle {
+.collapse circle:hover {
     fill:#D8E6FF;
 }
 .collapse:hover .expandAnimate > #Path_664 {

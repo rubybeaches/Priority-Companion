@@ -7,15 +7,17 @@ import {
   iconName,
   state,
 } from "@/app/lib/definitions";
-import { createHabit } from "@/app/lib/actions";
+import { UpdateTask } from "@/app/lib/actions";
 import "./Task.css";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface CreateProps {
-  title?: string;
+  id: number;
+  title: string;
   description?: string;
   priority?: string;
   estTime?: string;
@@ -24,11 +26,10 @@ interface CreateProps {
   dueBy?: string;
   link?: string;
   parent?: string;
-  roleID: number;
-  roleName: string;
 }
 
-const CreateTask = ({
+const EditTask = ({
+  id,
   title,
   description,
   priority,
@@ -38,17 +39,16 @@ const CreateTask = ({
   dueBy,
   link,
   parent,
-  roleID,
-  roleName,
 }: CreateProps) => {
   const [selected, setSelected] = useState("task");
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const scrollToRef = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
+  const pathname = usePathname();
 
   // Fields for task submission
-  const [taskTitle, setTaskTitle] = useState("");
+  const [taskTitle, setTaskTitle] = useState(title);
   const [newDescription, setNeDescription] = useState(description);
   const [newPriority, setNewPriority] = useState(priority);
   const [newTime, setNewTime] = useState(estTime);
@@ -140,9 +140,9 @@ const CreateTask = ({
       <form
         ref={createForm}
         action={() =>
-          createHabit({
-            roleID,
-            roleName,
+          UpdateTask({
+            taskID: id,
+            pathName: pathname,
             title: taskTitle,
             description: newDescription || "",
             priority: newPriority,
@@ -150,7 +150,7 @@ const CreateTask = ({
             chronoType: newChronotype,
             plannedStart: newPlannedDate || "",
             link: newLink,
-            parent: parent || "",
+            parent: "",
           })
         }
       />
@@ -212,4 +212,4 @@ const CreateTask = ({
   );
 };
 
-export default CreateTask;
+export default EditTask;

@@ -59,7 +59,7 @@ const ExpandedTask = ({
     }
 
     setTimeout(() => {
-      expandFunc(false);
+      expandFunc("expand", false);
     }, 500);
   };
 
@@ -72,6 +72,7 @@ const ExpandedTask = ({
     link: 185,
     expand: 25,
     save: 25,
+    edit: 25,
   };
 
   const expandSelected = (
@@ -143,6 +144,11 @@ const ExpandedTask = ({
         <p className="taskTitle">{title}</p>
         <span className="taskHeaderIcons collapse">
           <TaskIcons
+            icon="edit"
+            state="set"
+            clickFunc={() => expandFunc("edit", true)}
+          />
+          <TaskIcons
             icon="expand"
             state="set"
             clickFunc={() => toggleWrapperState()}
@@ -153,6 +159,7 @@ const ExpandedTask = ({
         <div className="expandedField">
           <textarea
             className={`${inter.className}`}
+            readOnly={true}
             defaultValue={description}
             ref={textArea}
           />

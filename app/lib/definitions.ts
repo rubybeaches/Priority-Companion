@@ -7,7 +7,7 @@ export interface colorSchema {
   }
 
 export type state = "set" | "selected" | "unset";
-export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save";
+export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save" | "edit";
 export type chronoType = "peak" | "trough" | "creative" | undefined;
 
 
@@ -43,5 +43,5 @@ export interface TaskStateProps {
   dueBy?: string,
   link?: string,
   parent: string,
-  expandFunc: (state: boolean) => void,
+  expandFunc: (toggle: "edit" | "expand", state: boolean) => void,
 }

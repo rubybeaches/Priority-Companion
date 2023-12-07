@@ -50,6 +50,7 @@ export default async function Role({
           {Role.habits.map((habit: Habit) => (
             <span key={habit.id}>
               <Task
+                id={habit.task.id}
                 title={habit.task.name}
                 description={habit.task.description}
                 priority={habit.task.priority || undefined}

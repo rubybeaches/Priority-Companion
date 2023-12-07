@@ -5,9 +5,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { TaskProps } from "./definitions";
 import CreateTask from "../components/Task/CreateTask";
-import { type } from "os";
-
-// const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function createRole(formData: FormData) {
     const { role, description } = {
@@ -75,4 +72,41 @@ export async function createRole(formData: FormData) {
    
     revalidatePath("/");
     redirect(`/role/${roleName}`);
+  }
+
+  interface EditTask extends TaskProps {
+    taskID: number,
+    pathName: string,
+  }
+
+  export async function UpdateTask({pathName, taskID, title, description, priority, estTime, chronoType, plannedStart, link}:EditTask) {
+    const today = new Date();
+
+    const companionTask = await prisma.task.update({
+      where: {id: taskID},
+        data: {
+            name: title,
+            description: description,
+            priority: priority,
+            estTime: Number(estTime),
+            chronoType: chronoType,
+            plannedStart: today.toISOString(),
+            dueBy: null,
+            link: link,
+            completed: false,
+        }
+    })
+
+    console.log(companionTask)
+   
+    /*
+    try {
+    } catch (error) {
+    }
+    */
+
+    console.log(pathName);
+   
+    revalidatePath("/");
+    redirect(pathName);
   }

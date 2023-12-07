@@ -48,7 +48,7 @@ const MinimizedTask = ({
 
   const toggleWrapperState = () => {
     // changed to expanded or minimized state
-    expandFunc(true);
+    expandFunc("expand", true);
   };
 
   const xTransform = {
@@ -60,6 +60,7 @@ const MinimizedTask = ({
     link: 164,
     expand: 4,
     save: 4,
+    edit: 4,
   };
 
   const expandSelected = (
@@ -111,7 +112,7 @@ const MinimizedTask = ({
           state={state}
           clickFunc={() => triggerSelect()}
         />
-        <input type={type} defaultValue={field} />
+        <input readOnly={true} type={type} defaultValue={field} />
       </span>
     );
   };

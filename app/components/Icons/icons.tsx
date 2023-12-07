@@ -40,6 +40,7 @@ export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
     link: <LinkIcon fill={colors[state]} clickFunc={clickFunc} />,
     expand: <ExpandIcon fill={colors[state]} clickFunc={clickFunc} />,
     save: <SaveIcon fill={colors[state]} clickFunc={clickFunc} />,
+    edit: <EditIcon fill={colors[state]} clickFunc={clickFunc} />,
   };
 
   return svg[icon];
@@ -108,6 +109,31 @@ const ExpandIcon = ({
           transform="translate(92.411 116.147) rotate(180)"
         />
       </g>
+    </svg>
+  );
+};
+
+const EditIcon = ({
+  fill,
+  clickFunc,
+}: {
+  fill: colorSchema;
+  clickFunc: () => void;
+}) => {
+  return (
+    <svg
+      onClick={() => clickFunc()}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24px"
+      height="24px"
+      viewBox="0 0 160 160"
+    >
+      <path
+        id="pencil-icon"
+        fill={fill.outline}
+        data-name="Path 110"
+        d="M61.075,23.047,18.438,66.837,0,119.845,53.009,102.56,95.646,59.923Zm54.161-3.457L100.255,4.609C96.8,1.152,93.341,0,89.884,0S82.97,1.152,79.513,4.609L66.837,17.285l34.571,35.723L115.236,39.18a14.607,14.607,0,0,0,4.609-10.371C119.845,25.352,117.541,21.895,115.236,19.59Z"
+      />
     </svg>
   );
 };
