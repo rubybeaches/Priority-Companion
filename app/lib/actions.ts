@@ -96,16 +96,12 @@ export async function createRole(formData: FormData) {
             completed: false,
         }
     })
-
-    console.log(companionTask)
    
     /*
     try {
     } catch (error) {
     }
     */
-
-    console.log(pathName);
    
     revalidatePath("/");
     redirect(pathName);

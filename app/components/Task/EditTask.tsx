@@ -15,17 +15,8 @@ import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-interface CreateProps {
+interface EditProps extends TaskStateProps {
   id: number;
-  title: string;
-  description?: string;
-  priority?: string;
-  estTime?: string;
-  chronoType?: chronoType;
-  plannedStart?: string;
-  dueBy?: string;
-  link?: string;
-  parent?: string;
 }
 
 const EditTask = ({
@@ -39,12 +30,13 @@ const EditTask = ({
   dueBy,
   link,
   parent,
-}: CreateProps) => {
+  expandFunc,
+}: EditProps) => {
   const [selected, setSelected] = useState("task");
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
-  const scrollToRef = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
+  const [pending, setPending] = useState(false);
   const pathname = usePathname();
 
   // Fields for task submission
@@ -65,14 +57,26 @@ const EditTask = ({
     link: { getter: newLink, setter: setNewLink },
   };
 
-  useEffect(() => {
-    if (scrollToRef.current) {
-      scrollToRef.current.scrollIntoView({ block: "end" });
-    }
-  }, []);
-
   const updateForm = (inputText: string, setter: (text: string) => void) => {
     setter(inputText);
+  };
+
+  const postEdit = async () => {
+    setPending((pending) => true);
+    const updated = await UpdateTask({
+      taskID: id,
+      pathName: pathname,
+      title: taskTitle,
+      description: newDescription || "",
+      priority: newPriority,
+      estTime: newTime,
+      chronoType: newChronotype,
+      plannedStart: newPlannedDate || "",
+      link: newLink,
+      parent: "",
+    });
+
+    expandFunc("edit", false);
   };
 
   const xTransform = {
@@ -136,78 +140,77 @@ const EditTask = ({
   };
 
   return (
-    <div className="taskWrapper" ref={scrollToRef}>
+    <div className="taskWrapper">
       <form
         ref={createForm}
-        action={() =>
-          UpdateTask({
-            taskID: id,
-            pathName: pathname,
-            title: taskTitle,
-            description: newDescription || "",
-            priority: newPriority,
-            estTime: newTime,
-            chronoType: newChronotype,
-            plannedStart: newPlannedDate || "",
-            link: newLink,
-            parent: "",
-          })
-        }
-      />
-      <div className="taskHeader">
-        <input
-          type="text"
-          defaultValue={taskTitle}
-          className={`${inter.className} inputTitle `}
-          onChange={(e) => {
-            updateForm(e.target.value, setTaskTitle);
-          }}
-        />
-        <span
-          className={`taskHeaderIcons save ${
-            taskTitle && newDescription ? "set" : "unset"
-          }`}
-        >
-          <TaskIcons
-            icon="save"
-            state={"set"}
-            clickFunc={() =>
-              taskTitle && newDescription
-                ? createForm.current?.requestSubmit()
-                : ""
-            }
-          />
-        </span>
-      </div>
-      <div className="expandedWrapper">
-        <div className="expandedField">
-          <textarea
-            className={`${inter.className}`}
+        action={() => postEdit()}
+        onSubmit={() => setPending(true)}
+      >
+        <div className="taskHeader">
+          <input
+            type="text"
+            defaultValue={taskTitle}
+            className={`${inter.className} inputTitle `}
             onChange={(e) => {
-              updateForm(e.target.value, taskStates[selected].setter);
+              updateForm(e.target.value, setTaskTitle);
             }}
-            defaultValue={taskStates[selected].getter}
-            ref={textArea}
           />
-          <div className="activeSelector" ref={active}>
-            <span className="before"></span>
-            <span className="after"></span>
+          <span
+            className={`taskHeaderIcons save ${
+              taskTitle && newDescription && !pending ? "set" : "unset"
+            }`}
+          >
+            <TaskIcons
+              icon="save"
+              state={"set"}
+              clickFunc={() =>
+                taskTitle && newDescription
+                  ? createForm.current?.requestSubmit()
+                  : ""
+              }
+            />
+          </span>
+        </div>
+        <div className="expandedWrapper">
+          <div className="expandedField">
+            <textarea
+              className={`${inter.className}`}
+              onChange={(e) => {
+                updateForm(e.target.value, taskStates[selected].setter);
+              }}
+              defaultValue={taskStates[selected].getter}
+              ref={textArea}
+            />
+            <div className="activeSelector" ref={active}>
+              <span className="before"></span>
+              <span className="after"></span>
+            </div>
+          </div>
+          <div className="iconFieldWrapper">
+            {expandSelected("task", newDescription, "task" == selected, "text")}
+            {expandSelected(
+              "square",
+              newPriority,
+              "square" == selected,
+              "text"
+            )}
+            {expandSelected("clock", newTime, "clock" == selected, "number")}
+            {expandSelected(
+              "chart",
+              newChronotype,
+              "chart" == selected,
+              "text"
+            )}
+            {expandSelected(
+              "calendar",
+              newPlannedDate,
+              "calendar" == selected,
+              "text"
+            )}
+            {expandSelected("link", newLink, "link" == selected, "url")}
           </div>
         </div>
-        <div className="iconFieldWrapper">
-          {expandSelected("task", newDescription, "task" == selected, "text")}
-          {expandSelected("square", newPriority, "square" == selected, "text")}
-          {expandSelected("clock", newTime, "clock" == selected, "number")}
-          {expandSelected("chart", newChronotype, "chart" == selected, "text")}
-          {expandSelected(
-            "calendar",
-            newPlannedDate,
-            "calendar" == selected,
-            "text"
-          )}
-          {expandSelected("link", newLink, "link" == selected, "url")}
-        </div>
-      </div>
+      </form>
     </div>
   );
 };

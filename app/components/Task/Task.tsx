@@ -47,6 +47,7 @@ const Task = ({
         dueBy={dueBy}
         link={link}
         parent={parent}
+        expandFunc={toggleState}
       />
     );
   }

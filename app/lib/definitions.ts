@@ -42,6 +42,6 @@ export interface TaskStateProps {
   plannedStart: string,
   dueBy?: string,
   link?: string,
-  parent: string,
+  parent?: string,
   expandFunc: (toggle: "edit" | "expand", state: boolean) => void,
 }
