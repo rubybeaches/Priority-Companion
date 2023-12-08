@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "chronoType" AS ENUM ('peak', 'trough', 'recovery');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
@@ -56,7 +59,7 @@ CREATE TABLE "Task" (
     "description" TEXT NOT NULL,
     "priority" TEXT,
     "estTime" INTEGER,
-    "chronoType" TEXT,
+    "chronoType" "chronoType",
     "plannedStart" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "dueBy" TIMESTAMP(3),
     "link" TEXT,
