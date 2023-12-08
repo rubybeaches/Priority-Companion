@@ -34,8 +34,7 @@ model Habit {
   frequency String?
   Roles     Roles   @relation(fields: [rolesId], references: [id])
   rolesId   Int
-  task      Task    @relation(fields: [taskId], references: [id])
-  taskId    Int     @unique
+  tasks     Task[]
 }
 
 model Initiative {
@@ -70,7 +69,8 @@ model Task {
   link         String?
   completed    Boolean     @default(false)
 
-  Habit        Habit?
+  Habit        Habit?      @relation(fields: [habitId], references: [id])
+  habitId      Int?
   Initiative   Initiative? @relation(fields: [initiativeId], references: [id])
   initiativeId Int?
 
@@ -83,5 +83,5 @@ model Task {
 enum chronoType {
   peak
   trough
-  creative
+  recovery
 }

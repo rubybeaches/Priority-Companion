@@ -8,11 +8,11 @@ export interface colorSchema {
 
 export type state = "set" | "selected" | "unset";
 export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save" | "edit" | "trash";
-export type chronoType = "peak" | "trough" | "creative" | undefined;
+export type chronoType = "peak" | "trough" | "recovery" | undefined;
 
 
 export type Role = {id: number, name: string, description: string, habits: Habit[], initiatives: Initiative[]}
-export type Habit = {id: number, frequency: string | null, task: TaskProp};
+export type Habit = {id: number, frequency: string | null, tasks: TaskProp[]};
 export type Initiative = {id: number, name: string, description: string, duration: string, durationCount: number, completed: boolean, tasks: TaskProp[]};
 
 export interface taskIconsProp {

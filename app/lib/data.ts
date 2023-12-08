@@ -7,7 +7,7 @@ export const getUserSeedData = async (user_id: number) => {
             roles: {
                 include: {
                 habits: {
-                    include: { task: true,},
+                    include: { tasks: true,},
                 },
                 initiatives: {
                     include: { tasks: true, },
@@ -18,8 +18,8 @@ export const getUserSeedData = async (user_id: number) => {
         });
         console.log(user)
         console.log(user?.roles[0].habits)
-        console.log(user?.roles[0].habits[0].task)
-        console.log(user?.roles[0].habits[1].task)
+        console.log(user?.roles[0].habits[0].tasks)
+        console.log(user?.roles[0].habits[1].tasks)
         console.log(user?.roles[0].initiatives)
         console.log(user?.roles[0].initiatives[0].tasks)
     return user
@@ -31,7 +31,7 @@ export const getRoleData = async (role_id: number) => {
         where: { id: role_id },
         include: {
             habits: {
-                include: { task: true,},
+                include: { tasks: true,},
             },
             initiatives: {
                 include: { tasks: true, },
@@ -76,7 +76,7 @@ export const getRoleDataByName = async (role_name: string) => {
         },
         include: {
             habits: {
-                include: { task: true,},
+                include: { tasks: true,},
             },
             initiatives: {
                 include: { tasks: true, },
@@ -88,7 +88,7 @@ export const getRoleDataByName = async (role_name: string) => {
 }
 
 export const getRoles = async () => {
-    const roles = await prisma.roles.findMany({include: {habits: {include:{task:true}}, initiatives:{include:{tasks:true}}}});
+    const roles = await prisma.roles.findMany({include: {habits: {include:{tasks:true}}, initiatives:{include:{tasks:true}}}});
 
     return roles
 }

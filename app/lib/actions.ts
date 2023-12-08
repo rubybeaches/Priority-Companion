@@ -41,25 +41,23 @@ export async function createRole(formData: FormData) {
   export async function createHabit({roleID, roleName, title, description, priority, estTime, chronoType, plannedStart, link}:CreateTask) {
     const today = new Date();
 
-    const companionTask = await prisma.task.create({
-        data: {
-            name: title,
-            description: description,
-            priority: priority,
-            estTime: Number(estTime),
-            chronoType: chronoType,
-            plannedStart: today.toISOString(),
-            dueBy: null,
-            link: link,
-            completed: false,
-        }
-    })
-
     const companionHabit = await prisma.habit.create({
         data: {
             frequency: 'daily',
             rolesId: roleID,
-            taskId: companionTask.id,
+            tasks:{
+              create: {
+                name: title,
+                description: description,
+                priority: priority,
+                estTime: Number(estTime),
+                chronoType: chronoType,
+                plannedStart: today.toISOString(),
+                dueBy: null,
+                link: link,
+                completed: false,
+              }
+            },
             }
         }
     );
@@ -117,11 +115,19 @@ export async function createRole(formData: FormData) {
     const today = new Date();
 
     if (parentID) {
-      const parentHabit = await prisma.habit.delete({
+
+      const deleteTasks = await prisma.task.deleteMany ({
+        where: {habitId: parentID}
+      })
+
+      const deleteHabit = await prisma.habit.delete({
         where: {
           id: parentID,
-          taskId: taskID
         }
+      })
+    } else {
+      const deleteTasks = await prisma.task.deleteMany ({
+        where: {id: taskID}
       })
     }
    
