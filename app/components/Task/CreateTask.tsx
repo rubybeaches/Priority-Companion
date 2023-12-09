@@ -27,7 +27,7 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
   const router = useRouter();
 
   // Fields for task submission
-  const [taskTitle, setTaskTitle] = useState("");
+  const [taskTitle, setTaskTitle] = useState("Task Title");
   const [newDescription, setNeDescription] = useState();
   const [newPriority, setNewPriority] = useState();
   const [newTime, setNewTime] = useState();

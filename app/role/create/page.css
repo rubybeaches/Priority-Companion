@@ -1,0 +1,38 @@
+.inputBox {
+    box-sizing: border-box;
+    border-color: #DBE6FF;
+    border-style: solid;
+    background-color: #D8E6FF;
+    color: #427BDE;
+    outline: none;
+    padding: 5px;
+    font-size: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px;
+}
+
+.roleLabel {
+    color: #f3f3f3;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.roleTitle {
+    font-size: 1.5em;
+}
+
+.linkSaveIcon {
+    position: absolute;
+    left: 6px;
+}
+
+.saveButton {
+    font-size: 1em;
+    padding-left: 30px;
+}
