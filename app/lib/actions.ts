@@ -5,14 +5,20 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { TaskProps } from "./definitions";
 import CreateTask from "../components/Task/CreateTask";
+import {z} from 'zod'
+
+
+const RoleSchema = z.object({
+  role: z.string(),
+  description: z.string(),
+});
 
 export async function createRole(formData: FormData) {
-    const { role, description } = {
-      role: formData.get('role')?.toString(),
-      description: formData.get('description')?.toString(),
-    };
+    const { role, description } = RoleSchema.parse ({
+      role: formData.get('role'),
+      description: formData.get('description'),
+    });
 
-    if (role && description) {
     const companionRole = await prisma.roles.create({
         data: {
             name: role,
@@ -20,7 +26,6 @@ export async function createRole(formData: FormData) {
             userId: 1,
         }
     });
-    }
    
     /*
     try {
@@ -29,7 +34,7 @@ export async function createRole(formData: FormData) {
     */
    
     revalidatePath('/');
-    redirect('/');
+    redirect(`/role/${companionRole.name}`);
   }
 
 
