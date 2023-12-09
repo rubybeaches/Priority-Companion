@@ -1,5 +1,32 @@
 import "./Skeleton.css";
 
+export function RoleSkeleton() {
+  return (
+    <>
+      <h1 className="skeletonRoleHeader"></h1>
+      <p className="skeletonDesc"></p>
+
+      <h3 className="skeletonTitle"></h3>
+      <span className="wrapper">
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+      </span>
+
+      <h3 className="skeletonTitle"></h3>
+      <span className="wrapper">
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+      </span>
+    </>
+  );
+}
+
 export function TaskSkeleton() {
   return (
     <div className="skeletonWrapper">
