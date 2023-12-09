@@ -21,6 +21,16 @@ const Role = ({
       </p>
       <div>
         <h3 className="roleHeader">
+          Initiatives{" "}
+          <span className="roleHeaderCount">({initiatives.length})</span>
+        </h3>
+        {initiatives.map((init: Initiative) => (
+          <span key={init.id}>
+            <InitiativeCard {...init} />
+          </span>
+        ))}
+
+        <h3 className="roleHeader">
           Habits <span className="roleHeaderCount">({habits.length})</span>
         </h3>
         {habits.map((habit: Habit) => (
@@ -42,16 +52,6 @@ const Role = ({
                 />
               </span>
             ))}
-          </span>
-        ))}
-
-        <h3 className="roleHeader">
-          Initiatives{" "}
-          <span className="roleHeaderCount">({initiatives.length})</span>
-        </h3>
-        {initiatives.map((init: Initiative) => (
-          <span key={init.id}>
-            <InitiativeCard {...init} />
           </span>
         ))}
       </div>

@@ -246,6 +246,7 @@
     box-sizing: border-box;
     width: auto;
     border-color: #FFF;
+    background-color: transparent;
     border-style: solid;
     outline: none;
     padding-bottom: 1px;

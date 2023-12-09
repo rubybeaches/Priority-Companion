@@ -1,0 +1,18 @@
+.bread {
+    list-style: none;
+    display: flex;
+}
+
+.crum a {
+    padding: 6px 12px;
+    background-color: #D8E6FF;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #427bde;
+    font-size: 1.2em;
+}
+
+.dash {
+    margin: 0 10px;
+    font-size: 1.2em;
+}
