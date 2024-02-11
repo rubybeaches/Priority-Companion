@@ -8,7 +8,7 @@ import {
   state,
 } from "@/app/lib/definitions";
 import "./Task.css";
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 
 const MinimizedTask = ({
   title,
@@ -21,8 +21,9 @@ const MinimizedTask = ({
   link,
   parent,
   expandFunc,
+  selected,
+  setSelected,
 }: TaskStateProps) => {
-  const [selected, setSelected] = useState("task");
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
@@ -64,6 +65,19 @@ const MinimizedTask = ({
     trash: 4,
   };
 
+  useEffect(() => {
+    const activeSpan = active.current;
+    if (activeSpan) {
+      const activeXTransform = xTransform[selected];
+
+      activeSpan.style.width = "120px";
+      setTimeout(() => {
+        activeSpan.style.width = "210px";
+      }, 500);
+      activeSpan.style.transform = `translate(${activeXTransform}px, 0px)`;
+    }
+  });
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -75,20 +89,9 @@ const MinimizedTask = ({
         return;
       }
       if (field) {
-        setSelected((selected) => icon);
+        setSelected(icon);
       } else {
         toggleWrapperState();
-      }
-
-      const activeSpan = active.current;
-      if (activeSpan) {
-        const activeXTransform = xTransform[icon];
-
-        activeSpan.style.width = "120px";
-        setTimeout(() => {
-          activeSpan.style.width = "210px";
-        }, 500);
-        activeSpan.style.transform = `translate(${activeXTransform}px, 0px)`;
       }
     };
 

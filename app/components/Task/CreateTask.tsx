@@ -3,7 +3,6 @@
 import TaskIcons from "@/app/components/Icons/icons";
 import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
 import { createHabit } from "@/app/lib/actions";
-import "./Task.css";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import { useRouter, usePathname } from "next/navigation";

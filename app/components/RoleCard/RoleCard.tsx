@@ -2,7 +2,6 @@ import Link from "next/link";
 import Task from "../Task/Task";
 import InitiativeCard from "../InitiativeCard/InitiativeCard";
 import { Role, Habit, Initiative } from "@/app/lib/definitions";
-import "./RoleCard.css";
 
 const Role = ({
   role,

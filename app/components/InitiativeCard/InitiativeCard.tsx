@@ -1,5 +1,4 @@
 import { Initiative } from "@/app/lib/definitions";
-import "./InitiativeCard.css";
 
 const InitiativeCard = ({
   id,

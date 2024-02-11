@@ -1,7 +1,6 @@
 "use client";
 
-import { TaskProps } from "@/app/lib/definitions";
-import "./Task.css";
+import { TaskProps, iconName } from "@/app/lib/definitions";
 import ExpandedTask from "./ExpandedTask";
 import MinimizedTask from "./MinimizedTask";
 import EditTask from "./EditTask";
@@ -26,6 +25,7 @@ const Task = ({
 }: Task) => {
   const [expand, setExpand] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [selected, setSelected] = useState<iconName>("task");
 
   const toggleState = (toggle: "edit" | "expand", state: boolean) => {
     if (toggle == "edit") {
@@ -33,6 +33,10 @@ const Task = ({
     } else if (toggle == "expand") {
       setExpand((expand) => state);
     }
+  };
+
+  const setSelectedState = (icon: iconName) => {
+    setSelected((selected) => icon);
   };
 
   if (edit) {
@@ -50,6 +54,8 @@ const Task = ({
         parent={parent}
         parentID={parentID}
         expandFunc={toggleState}
+        selected={selected}
+        setSelected={setSelectedState}
       />
     );
   }
@@ -67,6 +73,8 @@ const Task = ({
         link={link}
         parent={parent}
         expandFunc={toggleState}
+        selected={selected}
+        setSelected={setSelectedState}
       />
     );
   } else {
@@ -82,6 +90,8 @@ const Task = ({
         link={link}
         parent={parent}
         expandFunc={toggleState}
+        selected={selected}
+        setSelected={setSelectedState}
       />
     );
   }

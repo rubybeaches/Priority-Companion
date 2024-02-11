@@ -8,7 +8,6 @@ import {
   state,
 } from "@/app/lib/definitions";
 import { UpdateTask, DeleteTask } from "@/app/lib/actions";
-import "./Task.css";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
@@ -32,8 +31,9 @@ const EditTask = ({
   parent,
   parentID,
   expandFunc,
+  selected,
+  setSelected,
 }: EditProps) => {
-  const [selected, setSelected] = useState("task");
   const active = useRef<HTMLDivElement>(null);
   const editWrapper = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
@@ -102,6 +102,44 @@ const EditTask = ({
     trash: 25,
   };
 
+  useEffect(() => {
+    const activeDiv = active.current;
+    const updateText = textArea.current;
+
+    if (activeDiv && updateText) {
+      const activeXTransform = xTransform[selected];
+      activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
+
+      updateText.style.opacity = ".2";
+      setTimeout(() => {
+        updateText.style.opacity = "1";
+        switch (selected) {
+          case "task":
+            updateText.value = description;
+            break;
+          case "square":
+            updateText.value = priority || "";
+            break;
+          case "clock":
+            updateText.value = estTime || "";
+            break;
+          case "chart":
+            updateText.value = chronoType || "";
+            break;
+          case "calendar":
+            updateText.value = plannedStart || "";
+            break;
+          case "link":
+            updateText.value = link || "";
+            break;
+          default:
+            updateText.value = description;
+        }
+      }, 400);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -112,7 +150,7 @@ const EditTask = ({
       if (icon == selected) {
         return;
       }
-      setSelected((selected) => icon || "");
+      setSelected(icon);
       const updateText = textArea.current;
       if (updateText) {
         updateText.style.opacity = ".2";

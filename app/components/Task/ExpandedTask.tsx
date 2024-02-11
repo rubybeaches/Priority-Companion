@@ -8,7 +8,7 @@ import {
   state,
 } from "@/app/lib/definitions";
 import "./Task.css";
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,8 +24,9 @@ const ExpandedTask = ({
   link,
   parent,
   expandFunc,
+  selected,
+  setSelected,
 }: TaskStateProps) => {
-  const [selected, setSelected] = useState("task");
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
@@ -76,6 +77,43 @@ const ExpandedTask = ({
     trash: 25,
   };
 
+  useEffect(() => {
+    const activeDiv = active.current;
+    const updateText = textArea.current;
+
+    if (activeDiv && updateText) {
+      const activeXTransform = xTransform[selected];
+      activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
+
+      updateText.style.opacity = ".2";
+      setTimeout(() => {
+        updateText.style.opacity = "1";
+        switch (selected) {
+          case "task":
+            updateText.value = description;
+            break;
+          case "square":
+            updateText.value = priority || "";
+            break;
+          case "clock":
+            updateText.value = estTime || "";
+            break;
+          case "chart":
+            updateText.value = chronoType || "";
+            break;
+          case "calendar":
+            updateText.value = plannedStart || "";
+            break;
+          case "link":
+            updateText.value = link || "";
+            break;
+          default:
+            updateText.value = description;
+        }
+      }, 400);
+    }
+  });
+
   const expandSelected = (
     icon: iconName,
     field: string | chronoType | undefined,
@@ -86,20 +124,7 @@ const ExpandedTask = ({
       if (icon == selected) {
         return;
       }
-      setSelected((selected) => icon || "");
-      const updateText = textArea.current;
-      if (updateText) {
-        updateText.style.opacity = ".2";
-        setTimeout(() => {
-          updateText.value = field || "";
-          updateText.style.opacity = "1";
-        }, 400);
-      }
-      const activeDiv = active.current;
-      if (activeDiv) {
-        const activeXTransform = xTransform[icon];
-        activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
-      }
+      setSelected(icon);
     };
 
     const state = field ? (expand ? "selected" : "set") : "unset";
@@ -161,7 +186,6 @@ const ExpandedTask = ({
           <textarea
             className={`${inter.className}`}
             readOnly={true}
-            defaultValue={description}
             ref={textArea}
           />
           <div className="activeSelector" ref={active}>
