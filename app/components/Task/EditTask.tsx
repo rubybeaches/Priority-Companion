@@ -4,6 +4,7 @@ import TaskIcons from "@/app/components/Icons/icons";
 import {
   TaskStateProps,
   chronoType,
+  prioritySquare,
   iconName,
   state,
 } from "@/app/lib/definitions";
@@ -45,7 +46,7 @@ const EditTask = ({
   // Fields for task submission
   const [taskTitle, setTaskTitle] = useState(title);
   const [newDescription, setNeDescription] = useState(description);
-  const [newPriority, setNewPriority] = useState(priority);
+  const [newPriority, setNewPriority] = useState<prioritySquare>(priority);
   const [newTime, setNewTime] = useState(estTime);
   const [newChronotype, setNewChronotype] = useState<chronoType>(chronoType);
   const [newPlannedDate, setNewPlannedDate] = useState(plannedStart);
@@ -124,7 +125,7 @@ const EditTask = ({
 
   const expandSelected = (
     icon: iconName,
-    field: string | chronoType | undefined,
+    field: string | chronoType | prioritySquare | undefined,
     expand: boolean,
     type: string
   ) => {

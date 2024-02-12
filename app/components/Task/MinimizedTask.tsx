@@ -4,6 +4,7 @@ import TaskIcons from "@/app/components/Icons/icons";
 import {
   TaskStateProps,
   chronoType,
+  prioritySquare,
   iconName,
   state,
 } from "@/app/lib/definitions";
@@ -81,7 +82,7 @@ const MinimizedTask = ({
 
   const expandSelected = (
     icon: iconName,
-    field: string | chronoType | undefined,
+    field: string | chronoType | prioritySquare | undefined,
     expand: boolean,
     type: string
   ) => {

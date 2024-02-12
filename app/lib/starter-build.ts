@@ -1,4 +1,4 @@
-import { chronoType } from "./definitions"; 
+import { chronoType, prioritySquare } from "./definitions"; 
 
   export const Roles = [
     {
@@ -51,7 +51,7 @@ import { chronoType } from "./definitions";
     parent_id: string,
     parent_type: string,
     description: string,
-    priority?: string,
+    priority?: prioritySquare,
     est_time_seconds?: string,
     type: chronoType;
     planned_start: string,
@@ -66,7 +66,7 @@ import { chronoType } from "./definitions";
       parent_type: 'initiative',
       description: 'create a new role for my job or career',
       est_time_seconds: "300",
-      priority: 'schedule',
+      priority: 'DO',
       type: 'trough',
       planned_start: '2023-11-16',
       due_date: undefined,
@@ -78,22 +78,10 @@ import { chronoType } from "./definitions";
         parent_type: 'habit',
         description: 'check weekly summary for completion outcomes',
         est_time_seconds: "600",
-        priority: 'schedule',
+        priority: 'DO',
         type: 'peak',
         planned_start: '2023-11-16',
         due_date: undefined,
         link: "google.com",
-      },
-      {
-        id: '4b6a6442a-85e9-6442-85e9-fec4b6a6442a',
-        parent_id: Habits[1].id,
-        parent_type: 'habit',
-        description: "it's a beep boop",
-        est_time_seconds: "400",
-        priority: 'schedule',
-        type: 'trough',
-        planned_start: '2023-11-19',
-        due_date: undefined,
-        link: undefined,
       },
   ];

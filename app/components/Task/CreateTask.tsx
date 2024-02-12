@@ -1,7 +1,13 @@
 "use client";
 
 import TaskIcons from "@/app/components/Icons/icons";
-import { TaskProps, chronoType, iconName, state } from "@/app/lib/definitions";
+import {
+  TaskProps,
+  chronoType,
+  prioritySquare,
+  iconName,
+  state,
+} from "@/app/lib/definitions";
 import { createHabit } from "@/app/lib/actions";
 import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
@@ -28,7 +34,7 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
   // Fields for task submission
   const [taskTitle, setTaskTitle] = useState("Task Title");
   const [newDescription, setNeDescription] = useState();
-  const [newPriority, setNewPriority] = useState();
+  const [newPriority, setNewPriority] = useState<prioritySquare>();
   const [newTime, setNewTime] = useState();
   const [newChronotype, setNewChronotype] = useState<chronoType>();
   const [newPlannedDate, setNewPlannedDate] = useState();
@@ -68,7 +74,7 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
 
   const expandSelected = (
     icon: iconName,
-    field: string | chronoType | undefined,
+    field: string | chronoType | prioritySquare | undefined,
     expand: boolean,
     type: string
   ) => {

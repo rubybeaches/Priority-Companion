@@ -58,16 +58,16 @@ model Goals {
 }
 
 model Task {
-  id           Int         @id @default(autoincrement())
+  id           Int             @id @default(autoincrement())
   name         String
   description  String
-  priority     String?
+  priority     prioritySquare?
   estTime      Int?
   chronoType   chronoType?
-  plannedStart DateTime    @default(now())
+  plannedStart DateTime        @default(now())
   dueBy        DateTime?
   link         String?
-  completed    Boolean     @default(false)
+  completed    Boolean         @default(false)
 
   Habit        Habit?      @relation(fields: [habitId], references: [id])
   habitId      Int?
@@ -84,4 +84,11 @@ enum chronoType {
   peak
   trough
   recovery
+}
+
+enum prioritySquare {
+  DO
+  DECIDE
+  DELEGATE
+  DELETE
 }
