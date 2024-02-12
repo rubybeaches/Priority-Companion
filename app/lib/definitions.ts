@@ -9,7 +9,7 @@ export interface colorSchema {
 export type state = "set" | "selected" | "unset";
 export type iconName = "task" | "chart" | "calendar" | "clock" | "square" | "link" | "expand" | "save" | "edit" | "trash";
 export type chronoType = "peak" | "trough" | "recovery" | undefined;
-export type prioritySquare = "DO" | "DECIDE" | "DELEGATE" | "DELEGATE" | undefined;
+export type prioritySquare = "DO" | "DECIDE" | "DELEGATE" | "DELETE" | undefined;
 
 
 export type Role = {id: number, name: string, description: string, habits: Habit[], initiatives: Initiative[]}

@@ -7,6 +7,5 @@
 -- CreateEnum
 CREATE TYPE "prioritySquare" AS ENUM ('DO', 'DECIDE', 'DELEGATE', 'DELETE');
 
--- AlterTable
-ALTER TABLE "Task" DROP COLUMN "priority",
-ADD COLUMN     "priority" "prioritySquare";
+-- AlterTable 
+ALTER TABLE "Task" RENAME "priority" TO "prioritySquare";

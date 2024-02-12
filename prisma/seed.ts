@@ -31,7 +31,7 @@ async function main() {
               create: {
                 name: "Review Today's Plan",
                 description: 'open the planner and set a plan for todays tasks',
-                priority: 'do now',
+                priority: 'DO',
                 estTime: 600,
                 chronoType: 'trough',
                 plannedStart: today.toISOString(),
@@ -56,7 +56,7 @@ async function main() {
                 create: {
                     name: 'Create A New Role',
                     description: 'create a new role to represent a role you play in your career',
-                    priority: 'decide',
+                    priority: 'DECIDE',
                     estTime: 300,
                     chronoType: 'peak',
                     plannedStart: today.toISOString(),
