@@ -347,3 +347,57 @@
       opacity: 1;
     }
   }
+
+#energyContainer {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.energy {
+  display: block;
+  position: relative;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border-radius: 20px;
+  width: fit-content;
+  font-size: small;
+  padding: 2px 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.energy input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.minimizedField .recovery, .minimizedField .peak, .minimizedField .trough {
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+.energy.peak, .minimizedField .peak {
+  border: 1.5px solid #56DBE5;
+  color: #1E9094;
+}
+.energy:has(input:checked).peak, .minimizedField .peak {
+  background: #D9FCFF;
+}
+
+.energy.trough, .minimizedField .trough {
+  border: 1.5px solid #E55686;
+  color: #8C1A43;
+}
+.energy:has(input:checked).trough, .minimizedField .trough {
+  background: #FFD9DF;
+}
+
+.energy.recovery, .minimizedField .recovery {
+  border: 1.5px solid #C956E5;
+  color: #9A28B5;
+}
+.energy:has(input:checked).recovery, .minimizedField .recovery {
+  background: #F8D9FF;
+}

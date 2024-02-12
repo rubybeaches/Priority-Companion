@@ -108,10 +108,11 @@ const EditTask = ({
     const activeDiv = active.current;
     const updateText = textArea.current;
 
-    if (activeDiv && updateText) {
+    if (activeDiv) {
       const activeXTransform = xTransform[selected];
       activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
-
+    }
+    if (updateText) {
       updateText.style.opacity = ".2";
       setTimeout(() => {
         updateText.style.opacity = "1";
@@ -216,14 +217,52 @@ const EditTask = ({
         </div>
         <div className="expandedWrapper">
           <div className="expandedField">
-            <textarea
-              className={`${inter.className}`}
-              onChange={(e) => {
-                updateForm(e.target.value, taskStates[selected].setter);
-              }}
-              defaultValue={taskStates[selected].getter}
-              ref={textArea}
-            />
+            {selected != "chart" ? (
+              <textarea
+                className={`${inter.className}`}
+                onChange={(e) => {
+                  updateForm(e.target.value, taskStates[selected].setter);
+                }}
+                defaultValue={taskStates[selected].getter}
+                ref={textArea}
+              />
+            ) : (
+              <div id="energyContainer">
+                <label className="energy peak">
+                  peak
+                  <input
+                    type="radio"
+                    checked={selectedField == "peak" ? true : false}
+                    name="peak"
+                    onChange={(e) => {
+                      updateForm(e.target.name, taskStates[selected].setter);
+                    }}
+                  />
+                </label>
+                <label className="energy trough">
+                  trough
+                  <input
+                    type="radio"
+                    checked={selectedField == "trough" ? true : false}
+                    name="trough"
+                    onChange={(e) => {
+                      updateForm(e.target.name, taskStates[selected].setter);
+                    }}
+                  />
+                </label>
+                <label className="energy recovery">
+                  recovery
+                  <input
+                    type="radio"
+                    checked={selectedField == "recovery" ? true : false}
+                    name="recovery"
+                    onChange={(e) => {
+                      updateForm(e.target.name, taskStates[selected].setter);
+                    }}
+                  />
+                </label>
+              </div>
+            )}
             <div className="activeSelector" ref={active}>
               <span className="before"></span>
               <span className="after"></span>

@@ -92,6 +92,7 @@ const MinimizedTask = ({
       if (field) {
         setSelected(icon, field);
       } else {
+        setSelected(icon, "");
         toggleWrapperState();
       }
     };
@@ -117,7 +118,12 @@ const MinimizedTask = ({
           state={state}
           clickFunc={() => triggerSelect()}
         />
-        <input readOnly={true} type={type} defaultValue={field} />
+        <input
+          readOnly={true}
+          type={type}
+          className={icon == "chart" ? field : ""}
+          value={field}
+        />
       </span>
     );
   };
@@ -154,7 +160,7 @@ const MinimizedTask = ({
         {expandSelected("task", description, "task" == selected, "text")}
         {expandSelected("square", priority, "square" == selected, "text")}
         {expandSelected("clock", estTime, "clock" == selected, "number")}
-        {expandSelected("chart", chronoType, "chart" == selected, "text")}
+        {expandSelected("chart", chronoType, "chart" == selected, "submit")}
         {expandSelected(
           "calendar",
           plannedStart,
