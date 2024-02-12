@@ -32,6 +32,7 @@ const EditTask = ({
   parentID,
   expandFunc,
   selected,
+  selectedField,
   setSelected,
 }: EditProps) => {
   const active = useRef<HTMLDivElement>(null);
@@ -113,28 +114,7 @@ const EditTask = ({
       updateText.style.opacity = ".2";
       setTimeout(() => {
         updateText.style.opacity = "1";
-        switch (selected) {
-          case "task":
-            updateText.value = description;
-            break;
-          case "square":
-            updateText.value = priority || "";
-            break;
-          case "clock":
-            updateText.value = estTime || "";
-            break;
-          case "chart":
-            updateText.value = chronoType || "";
-            break;
-          case "calendar":
-            updateText.value = plannedStart || "";
-            break;
-          case "link":
-            updateText.value = link || "";
-            break;
-          default:
-            updateText.value = description;
-        }
+        updateText.value = selectedField;
       }, 400);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -150,7 +130,7 @@ const EditTask = ({
       if (icon == selected) {
         return;
       }
-      setSelected(icon);
+      setSelected(icon, field || "");
       const updateText = textArea.current;
       if (updateText) {
         updateText.style.opacity = ".2";

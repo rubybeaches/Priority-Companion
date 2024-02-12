@@ -25,7 +25,8 @@ const Task = ({
 }: Task) => {
   const [expand, setExpand] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [selected, setSelected] = useState<iconName>("task");
+  const [selectedIcon, setSelectedIcon] = useState<iconName>("task");
+  const [selectedField, setSelectedField] = useState("");
 
   const toggleState = (toggle: "edit" | "expand", state: boolean) => {
     if (toggle == "edit") {
@@ -35,8 +36,9 @@ const Task = ({
     }
   };
 
-  const setSelectedState = (icon: iconName) => {
-    setSelected((selected) => icon);
+  const setSelectedState = (icon: iconName, field: string) => {
+    setSelectedIcon((selectedIcon) => icon);
+    setSelectedField((selectedField) => field);
   };
 
   if (edit) {
@@ -54,7 +56,8 @@ const Task = ({
         parent={parent}
         parentID={parentID}
         expandFunc={toggleState}
-        selected={selected}
+        selected={selectedIcon}
+        selectedField={selectedField}
         setSelected={setSelectedState}
       />
     );
@@ -73,7 +76,8 @@ const Task = ({
         link={link}
         parent={parent}
         expandFunc={toggleState}
-        selected={selected}
+        selected={selectedIcon}
+        selectedField={selectedField}
         setSelected={setSelectedState}
       />
     );
@@ -90,7 +94,8 @@ const Task = ({
         link={link}
         parent={parent}
         expandFunc={toggleState}
-        selected={selected}
+        selected={selectedIcon}
+        selectedField={selectedField}
         setSelected={setSelectedState}
       />
     );

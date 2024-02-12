@@ -22,6 +22,7 @@ const MinimizedTask = ({
   parent,
   expandFunc,
   selected,
+  selectedField,
   setSelected,
 }: TaskStateProps) => {
   const taskWrapper = useRef<HTMLDivElement>(null);
@@ -89,7 +90,7 @@ const MinimizedTask = ({
         return;
       }
       if (field) {
-        setSelected(icon);
+        setSelected(icon, field);
       } else {
         toggleWrapperState();
       }

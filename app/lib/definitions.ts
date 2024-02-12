@@ -37,5 +37,6 @@ export interface TaskProps {
 export interface TaskStateProps extends TaskProps {
   expandFunc: (toggle: "edit" | "expand", state: boolean) => void,
   selected: iconName,
-  setSelected: (icon: iconName) => void,
+  selectedField: string,
+  setSelected: (icon: iconName, field: string) => void,
 }

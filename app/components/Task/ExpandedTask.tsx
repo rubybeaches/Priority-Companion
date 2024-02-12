@@ -25,6 +25,7 @@ const ExpandedTask = ({
   parent,
   expandFunc,
   selected,
+  selectedField,
   setSelected,
 }: TaskStateProps) => {
   const taskWrapper = useRef<HTMLDivElement>(null);
@@ -88,28 +89,7 @@ const ExpandedTask = ({
       updateText.style.opacity = ".2";
       setTimeout(() => {
         updateText.style.opacity = "1";
-        switch (selected) {
-          case "task":
-            updateText.value = description;
-            break;
-          case "square":
-            updateText.value = priority || "";
-            break;
-          case "clock":
-            updateText.value = estTime || "";
-            break;
-          case "chart":
-            updateText.value = chronoType || "";
-            break;
-          case "calendar":
-            updateText.value = plannedStart || "";
-            break;
-          case "link":
-            updateText.value = link || "";
-            break;
-          default:
-            updateText.value = description;
-        }
+        updateText.value = selectedField;
       }, 400);
     }
   });
@@ -124,7 +104,7 @@ const ExpandedTask = ({
       if (icon == selected) {
         return;
       }
-      setSelected(icon);
+      setSelected(icon, field || "");
     };
 
     const state = field ? (expand ? "selected" : "set") : "unset";
