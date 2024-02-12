@@ -26,7 +26,7 @@ const Task = ({
   const [expand, setExpand] = useState(false);
   const [edit, setEdit] = useState(false);
   const [selectedIcon, setSelectedIcon] = useState<iconName>("task");
-  const [selectedField, setSelectedField] = useState("");
+  const [selectedField, setSelectedField] = useState(description);
 
   const toggleState = (toggle: "edit" | "expand", state: boolean) => {
     if (toggle == "edit") {
