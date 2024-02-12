@@ -62,6 +62,7 @@ const EditTask = ({
 
   const updateForm = (inputText: string, setter: (text: string) => void) => {
     setter(inputText);
+    setSelected(selected, inputText);
   };
 
   const postEdit = async () => {
