@@ -364,7 +364,7 @@
   -ms-user-select: none;
   user-select: none;
 }
-.radio:has(input:read-only) {
+.radio:has(input[readonly]), .radio input[readonly] {
   cursor: default;
 }
 .radio input {

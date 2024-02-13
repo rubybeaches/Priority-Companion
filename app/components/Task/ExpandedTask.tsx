@@ -56,7 +56,7 @@ const ExpandedTask = ({
 
   const toggleWrapperState = () => {
     // changed to expanded or minimized state
-    const areaDiv = textArea.current;
+    const areaDiv = textArea.current || radioDiv.current;
     const parent = areaDiv ? areaDiv.parentElement : null;
     if (parent) {
       parent.style.height = "10px";

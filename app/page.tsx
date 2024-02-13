@@ -4,6 +4,11 @@ import RoleCard from "./components/RoleCard/RoleCard";
 import Image from "next/image";
 import Link from "next/link";
 import "./page.css";
+import "./components/InitiativeCard/InitiativeCard.css";
+import "./components/Task/Task.css";
+import "./components/RoleCard/RoleCard.css";
+import "./components/Icons/icons.css";
+import "./components/Breadcrumbs/Breadcrumbs.css";
 
 const dancer = Dancing_Script({ subsets: ["latin"] });
 

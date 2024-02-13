@@ -1,11 +1,6 @@
 import { Inter } from "next/font/google";
 import { Metadata } from "next";
 import "./layout.css";
-import "./components/InitiativeCard/InitiativeCard.css";
-import "./components/Task/Task.css";
-import "./components/RoleCard/RoleCard.css";
-import "./components/Icons/icons.css";
-import "./components/Breadcrumbs/Breadcrumbs.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
