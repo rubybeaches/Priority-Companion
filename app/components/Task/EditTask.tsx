@@ -40,6 +40,7 @@ const EditTask = ({
   const editWrapper = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const radioDiv = useRef<HTMLDivElement>(null);
+  const minWrapper = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
   const [pending, setPending] = useState(false);
   const pathname = usePathname();
@@ -110,6 +111,7 @@ const EditTask = ({
     const activeDiv = active.current;
     const updateText = textArea.current;
     const radios = radioDiv.current;
+    const mins = minWrapper.current;
 
     if (activeDiv) {
       const activeXTransform = xTransform[selected];
@@ -126,6 +128,12 @@ const EditTask = ({
       radios.style.opacity = ".2";
       setTimeout(() => {
         radios.style.opacity = "1";
+      }, 500);
+    }
+    if (mins) {
+      mins.style.opacity = ".2";
+      setTimeout(() => {
+        mins.style.opacity = "1";
       }, 500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -242,7 +250,22 @@ const EditTask = ({
         </div>
       );
     }
-
+    if (selected == "clock") {
+      return (
+        <div id="inputContainer" ref={minWrapper}>
+          <div className="minBubble">
+            <input
+              type="number"
+              value={taskStates[selected].getter}
+              onChange={(e) => {
+                updateForm(e.target.value, taskStates[selected].setter);
+              }}
+            />
+            mins
+          </div>
+        </div>
+      );
+    }
     return (
       <textarea
         className={`${inter.className}`}

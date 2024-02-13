@@ -125,6 +125,11 @@ const MinimizedTask = ({
           className={icon == "chart" || icon == "square" ? field : ""}
           value={field}
         />
+        {icon == "clock" ? (
+          <input type="submit" className="minBubble" value="mins" />
+        ) : (
+          <></>
+        )}
       </span>
     );
   };
@@ -160,7 +165,7 @@ const MinimizedTask = ({
         <span className="minimizedField minimizedFieldBack" ref={active}></span>
         {expandSelected("task", description, "task" == selected, "text")}
         {expandSelected("square", priority, "square" == selected, "submit")}
-        {expandSelected("clock", estTime, "clock" == selected, "number")}
+        {expandSelected("clock", estTime, "clock" == selected, "submit")}
         {expandSelected("chart", chronoType, "chart" == selected, "submit")}
         {expandSelected(
           "calendar",

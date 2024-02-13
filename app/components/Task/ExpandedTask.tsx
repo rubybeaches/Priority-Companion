@@ -35,6 +35,7 @@ const ExpandedTask = ({
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const radioDiv = useRef<HTMLDivElement>(null);
+  const minWrapper = useRef<HTMLDivElement>(null);
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -56,7 +57,7 @@ const ExpandedTask = ({
 
   const toggleWrapperState = () => {
     // changed to expanded or minimized state
-    const areaDiv = textArea.current || radioDiv.current;
+    const areaDiv = textArea.current || radioDiv.current || minWrapper.current;
     const parent = areaDiv ? areaDiv.parentElement : null;
     if (parent) {
       parent.style.height = "10px";
@@ -84,6 +85,7 @@ const ExpandedTask = ({
     const activeDiv = active.current;
     const updateText = textArea.current;
     const radios = radioDiv.current;
+    const mins = minWrapper.current;
 
     if (activeDiv) {
       const activeXTransform = xTransform[selected];
@@ -100,6 +102,12 @@ const ExpandedTask = ({
       radios.style.opacity = ".2";
       setTimeout(() => {
         radios.style.opacity = "1";
+      }, 500);
+    }
+    if (mins) {
+      mins.style.opacity = ".2";
+      setTimeout(() => {
+        mins.style.opacity = "1";
       }, 500);
     }
   });
@@ -162,6 +170,16 @@ const ExpandedTask = ({
               />
             </label>
           ))}
+        </div>
+      );
+    }
+    if (selected == "clock") {
+      return (
+        <div id="inputContainer" ref={minWrapper}>
+          <div className="minBubble">
+            <input readOnly={true} type="text" value={selectedField} />
+            mins
+          </div>
         </div>
       );
     }

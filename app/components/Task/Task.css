@@ -111,7 +111,7 @@
 
 .activeSelector {
     position: absolute;
-    width: 29px;
+    width: 28px;
     height: 35px;
     background-color: white;
     border: 2px solid #5693FF;
@@ -462,4 +462,27 @@
   outline: none;
   padding: 4px;
   border-radius: 20px;
+}
+
+.minimizedField .minBubble, .expandedField .minBubble {
+  background-color: #d8e6ff;
+  border: 1.5px solid #5693ff;
+  outline: none;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.expandedField .minBubble {
+  font-size: small;
+  padding: 1px 8px 1px 1px;
+  width: fit-content;
+}
+
+.expandedField .minBubble input {
+  background: white;
+  border: #d8e6ff;
+  outline: none;
+  padding: 4px 8px;
+  border-radius: 20px 0px 0px 20px;
+  margin-right: 6px;
 }
