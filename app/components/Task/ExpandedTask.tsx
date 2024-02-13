@@ -148,7 +148,7 @@ const ExpandedTask = ({
       return (
         <div
           className={selected == "square" ? "priority" : ""}
-          id="radioContainer"
+          id="inputContainer"
           ref={radioDiv}
         >
           {radioTypes.map((type) => (

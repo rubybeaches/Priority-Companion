@@ -200,7 +200,7 @@ const EditTask = ({
       return (
         <div
           className={selected == "square" ? "priority" : ""}
-          id="radioContainer"
+          id="inputContainer"
           ref={radioDiv}
         >
           {radioTypes.map((type) => (
@@ -222,13 +222,21 @@ const EditTask = ({
     if (selected == "calendar") {
       const dueDate = getFormattedDate(new Date(taskStates[selected].getter));
       return (
-        <div>
-          <input type="text" defaultValue={taskStates[selected].getter} />
+        <div id="inputContainer">
+          <input
+            type="text"
+            readOnly={true}
+            className="editDateHeader"
+            value={taskStates[selected].getter}
+          />
           <input
             type="date"
+            className="editDatePicker"
             value={dueDate}
             onChange={(e) => {
-              updateForm(e.target.value, taskStates[selected].setter);
+              let setDate = e.target.value.replace(/-/g, "/");
+              setDate = new Date(setDate).toDateString();
+              updateForm(setDate, taskStates[selected].setter);
             }}
           />
         </div>

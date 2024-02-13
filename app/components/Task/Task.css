@@ -344,7 +344,7 @@
     }
   }
 
-#radioContainer {
+#inputContainer {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -447,4 +447,19 @@
 .radio.DELETE {
   border: solid 1.5px #E5C356;
   color: #917320;
+}
+
+.editDateHeader {
+  outline: none;
+  border: transparent;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.editDatePicker {
+  background-color: #d8e6ff;
+  border: 2px solid #5693ff;
+  outline: none;
+  padding: 4px;
+  border-radius: 20px;
 }
