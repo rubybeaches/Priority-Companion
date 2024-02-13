@@ -83,8 +83,6 @@ export async function createRole(formData: FormData) {
   }
 
   export async function UpdateTask({pathName, taskID, title, description, priority, estTime, chronoType, plannedStart, link}:EditTask) {
-    const today = new Date();
-
     const companionTask = await prisma.task.update({
       where: {id: taskID},
         data: {
@@ -93,7 +91,7 @@ export async function createRole(formData: FormData) {
             priority: priority,
             estTime: Number(estTime),
             chronoType: chronoType,
-            plannedStart: today.toISOString(),
+            plannedStart: new Date(plannedStart).toISOString(),
             dueBy: null,
             link: link,
             completed: false,

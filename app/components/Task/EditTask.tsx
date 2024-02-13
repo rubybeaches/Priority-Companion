@@ -39,6 +39,7 @@ const EditTask = ({
   const active = useRef<HTMLDivElement>(null);
   const editWrapper = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
+  const radioDiv = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
   const [pending, setPending] = useState(false);
   const pathname = usePathname();
@@ -108,6 +109,7 @@ const EditTask = ({
   useEffect(() => {
     const activeDiv = active.current;
     const updateText = textArea.current;
+    const radios = radioDiv.current;
 
     if (activeDiv) {
       const activeXTransform = xTransform[selected];
@@ -119,6 +121,12 @@ const EditTask = ({
         updateText.style.opacity = "1";
         updateText.value = selectedField;
       }, 400);
+    }
+    if (radios) {
+      radios.style.opacity = ".2";
+      setTimeout(() => {
+        radios.style.opacity = "1";
+      }, 500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -171,93 +179,58 @@ const EditTask = ({
     );
   };
 
+  function getFormattedDate(date: Date) {
+    const year = date.getFullYear();
+
+    let month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : "0" + month;
+
+    let day = date.getDate().toString();
+    day = day.length > 1 ? day : "0" + day;
+
+    return year + "-" + month + "-" + day;
+  }
+
   const inputContainer = () => {
-    if (selected == "chart") {
+    if (selected == "chart" || selected == "square") {
+      const radioTypes =
+        selected == "chart"
+          ? ["peak", "trough", "recovery"]
+          : ["DO", "DECIDE", "DELEGATE", "DELETE"];
       return (
-        <div id="radioContainer">
-          <label className="radio peak">
-            peak
-            <input
-              type="radio"
-              checked={selectedField == "peak" ? true : false}
-              name="peak"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
-          <label className="radio trough">
-            trough
-            <input
-              type="radio"
-              checked={selectedField == "trough" ? true : false}
-              name="trough"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
-          <label className="radio recovery">
-            recovery
-            <input
-              type="radio"
-              checked={selectedField == "recovery" ? true : false}
-              name="recovery"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
+        <div
+          className={selected == "square" ? "priority" : ""}
+          id="radioContainer"
+          ref={radioDiv}
+        >
+          {radioTypes.map((type) => (
+            <label key={type} className={`radio ${type}`}>
+              {type}
+              <input
+                type="radio"
+                checked={selectedField == type ? true : false}
+                name={type}
+                onChange={(e) => {
+                  updateForm(e.target.name, taskStates[selected].setter);
+                }}
+              />
+            </label>
+          ))}
         </div>
       );
     }
-    if (selected == "square") {
+    if (selected == "calendar") {
+      const dueDate = getFormattedDate(new Date(taskStates[selected].getter));
       return (
-        <div className="priority" id="radioContainer">
-          <label className="radio DO">
-            DO
-            <input
-              type="radio"
-              checked={selectedField == "DO" ? true : false}
-              name="DO"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
-          <label className="radio DECIDE">
-            DECIDE
-            <input
-              type="radio"
-              checked={selectedField == "DECIDE" ? true : false}
-              name="DECIDE"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
-          <label className="radio DELEGATE">
-            DELEGATE
-            <input
-              type="radio"
-              checked={selectedField == "DELEGATE" ? true : false}
-              name="DELEGATE"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
-          <label className="radio DELETE">
-            DELETE
-            <input
-              type="radio"
-              checked={selectedField == "DELETE" ? true : false}
-              name="DELETE"
-              onChange={(e) => {
-                updateForm(e.target.name, taskStates[selected].setter);
-              }}
-            />
-          </label>
+        <div>
+          <input type="text" defaultValue={taskStates[selected].getter} />
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => {
+              updateForm(e.target.value, taskStates[selected].setter);
+            }}
+          />
         </div>
       );
     }

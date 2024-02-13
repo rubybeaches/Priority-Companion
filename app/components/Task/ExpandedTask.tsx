@@ -89,7 +89,6 @@ const ExpandedTask = ({
       const activeXTransform = xTransform[selected];
       activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
     }
-
     if (updateText) {
       updateText.style.opacity = ".2";
       setTimeout(() => {
@@ -97,7 +96,6 @@ const ExpandedTask = ({
         updateText.value = selectedField;
       }, 400);
     }
-
     if (radios) {
       radios.style.opacity = ".2";
       setTimeout(() => {
@@ -142,35 +140,24 @@ const ExpandedTask = ({
   };
 
   const inputContainer = () => {
-    if (selected == "chart") {
-      const chronotypes = ["peak", "trough", "recovery"];
+    if (selected == "chart" || selected == "square") {
+      const radioTypes =
+        selected == "chart"
+          ? ["peak", "trough", "recovery"]
+          : ["DO", "DECIDE", "DELEGATE", "DELETE"];
       return (
-        <div id="radioContainer" ref={radioDiv}>
-          {chronotypes.map((type) => (
+        <div
+          className={selected == "square" ? "priority" : ""}
+          id="radioContainer"
+          ref={radioDiv}
+        >
+          {radioTypes.map((type) => (
             <label key={type} className={`radio ${type}`}>
               {type}
               <input
                 type="radio"
                 checked={selectedField == type ? true : false}
                 name={type}
-                readOnly={true}
-              />
-            </label>
-          ))}
-        </div>
-      );
-    }
-    if (selected == "square") {
-      const prioritySquare = ["DO", "DECIDE", "DELEGATE", "DELETE"];
-      return (
-        <div className="priority" id="radioContainer" ref={radioDiv}>
-          {prioritySquare.map((square) => (
-            <label key={square} className={`radio ${square}`}>
-              {square}
-              <input
-                type="radio"
-                checked={selectedField == square ? true : false}
-                name={square}
                 readOnly={true}
               />
             </label>
