@@ -34,6 +34,7 @@ const ExpandedTask = ({
   const tab = useRef<HTMLSpanElement>(null);
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
+  const radioDiv = useRef<HTMLDivElement>(null);
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -82,16 +83,26 @@ const ExpandedTask = ({
   useEffect(() => {
     const activeDiv = active.current;
     const updateText = textArea.current;
+    const radios = radioDiv.current;
 
-    if (activeDiv && updateText) {
+    if (activeDiv) {
       const activeXTransform = xTransform[selected];
       activeDiv.style.transform = `translate(${activeXTransform}px, 0px)`;
+    }
 
+    if (updateText) {
       updateText.style.opacity = ".2";
       setTimeout(() => {
         updateText.style.opacity = "1";
         updateText.value = selectedField;
       }, 400);
+    }
+
+    if (radios) {
+      radios.style.opacity = ".2";
+      setTimeout(() => {
+        radios.style.opacity = "1";
+      }, 500);
     }
   });
 
@@ -130,6 +141,52 @@ const ExpandedTask = ({
     );
   };
 
+  const inputContainer = () => {
+    if (selected == "chart") {
+      const chronotypes = ["peak", "trough", "recovery"];
+      return (
+        <div id="radioContainer" ref={radioDiv}>
+          {chronotypes.map((type) => (
+            <label key={type} className={`radio ${type}`}>
+              {type}
+              <input
+                type="radio"
+                checked={selectedField == type ? true : false}
+                name={type}
+                readOnly={true}
+              />
+            </label>
+          ))}
+        </div>
+      );
+    }
+    if (selected == "square") {
+      const prioritySquare = ["DO", "DECIDE", "DELEGATE", "DELETE"];
+      return (
+        <div className="priority" id="radioContainer" ref={radioDiv}>
+          {prioritySquare.map((square) => (
+            <label key={square} className={`radio ${square}`}>
+              {square}
+              <input
+                type="radio"
+                checked={selectedField == square ? true : false}
+                name={square}
+                readOnly={true}
+              />
+            </label>
+          ))}
+        </div>
+      );
+    }
+    return (
+      <textarea
+        className={`${inter.className}`}
+        readOnly={true}
+        ref={textArea}
+      />
+    );
+  };
+
   return (
     <div className="taskWrapper" ref={taskWrapper}>
       <span className="tab" ref={tab}></span>
@@ -164,11 +221,7 @@ const ExpandedTask = ({
       </div>
       <div className="expandedWrapper">
         <div className="expandedField">
-          <textarea
-            className={`${inter.className}`}
-            readOnly={true}
-            ref={textArea}
-          />
+          {inputContainer()}
           <div className="activeSelector" ref={active}>
             <span className="before"></span>
             <span className="after"></span>

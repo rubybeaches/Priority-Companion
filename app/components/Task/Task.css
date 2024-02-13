@@ -212,23 +212,19 @@
     background-color: #FFF;
     border: #5693FF 2px solid;
     border-radius: 8px;
-    height: 80px;
     position: relative;
     padding: 6px;
-
-    transition: height 550ms;
 }
 
 .expandedField {
-    animation: 1s ease-in-out 1 slideDownFromTop;
-    background-color: #FFF;
-    border: #5693FF 2px solid;
-    border-radius: 8px;
-    height: 80px;
-    position: relative;
-    padding: 6px;
+  height: 80px;
+  transition: height 550ms;
 }
 
+.expandedField:has(.priority) {
+  height: 110px;
+  transition: height 550ms;
+}
 
 @keyframes slideDownFromTop {
     0% {
@@ -348,12 +344,13 @@
     }
   }
 
-#energyContainer {
+#radioContainer {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  transition: opacity 500ms;
 }
-.energy {
+.radio {
   display: block;
   position: relative;
   margin-bottom: 6px;
@@ -367,37 +364,87 @@
   -ms-user-select: none;
   user-select: none;
 }
-.energy input {
+.radio:has(input:read-only) {
+  cursor: default;
+}
+.radio input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.minimizedField .recovery, .minimizedField .peak, .minimizedField .trough {
+.minimizedField .recovery, 
+.minimizedField .peak, 
+.minimizedField .trough,
+.minimizedField .DO, 
+.minimizedField .DECIDE, 
+.minimizedField .DELEGATE, 
+.minimizedField .DELETE {
   border-radius: 20px;
-  padding: 2px 8px;
+  padding: 2px 10px;
 }
 
-.energy.peak, .minimizedField .peak {
+.radio.peak, 
+.minimizedField .peak {
   border: 1.5px solid #56DBE5;
   color: #1E9094;
 }
-.energy:has(input:checked).peak, .minimizedField .peak {
+.radio:has(input:checked).peak, 
+.minimizedField .peak {
   background: #D9FCFF;
 }
-
-.energy.trough, .minimizedField .trough {
+.radio.trough, 
+.minimizedField .trough {
   border: 1.5px solid #E55686;
   color: #8C1A43;
 }
-.energy:has(input:checked).trough, .minimizedField .trough {
+.radio:has(input:checked).trough, 
+.minimizedField .trough {
   background: #FFD9DF;
 }
-
-.energy.recovery, .minimizedField .recovery {
+.radio.recovery, 
+.minimizedField .recovery {
   border: 1.5px solid #C956E5;
   color: #9A28B5;
 }
-.energy:has(input:checked).recovery, .minimizedField .recovery {
+.radio:has(input:checked).recovery, 
+.minimizedField .recovery {
   background: #F8D9FF;
+}
+ 
+.radio:has(input:checked).DO,
+.minimizedField .DO {
+  background: #E55686;
+  color: #FFF;
+}
+.radio.DO {
+  border: solid 1.5px #E55686;
+  color: #8C1A43;
+}
+.radio:has(input:checked).DECIDE,
+.minimizedField .DECIDE {
+  background: #7356E5;
+  color: #FFF;
+}
+.radio.DECIDE {
+  border: solid 1.5px #7356E5;
+  color: #5B28B5;
+}
+.radio:has(input:checked).DELEGATE,
+.minimizedField .DELEGATE {
+  background: #C956E5;
+  color: #FFF;
+}
+.radio.DELEGATE {
+  border: solid 1.5px #C956E5;
+  color: #9A28B5;
+}
+.radio:has(input:checked).DELETE,
+.minimizedField .DELETE {
+  background: #E5C356;
+  color: #FFF;
+}
+.radio.DELETE {
+  border: solid 1.5px #E5C356;
+  color: #917320;
 }

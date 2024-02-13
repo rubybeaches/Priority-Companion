@@ -122,7 +122,7 @@ const MinimizedTask = ({
         <input
           readOnly={true}
           type={type}
-          className={icon == "chart" ? field : ""}
+          className={icon == "chart" || icon == "square" ? field : ""}
           value={field}
         />
       </span>
@@ -159,7 +159,7 @@ const MinimizedTask = ({
       <div className="iconFieldWrapper" style={{ position: "relative" }}>
         <span className="minimizedField minimizedFieldBack" ref={active}></span>
         {expandSelected("task", description, "task" == selected, "text")}
-        {expandSelected("square", priority, "square" == selected, "text")}
+        {expandSelected("square", priority, "square" == selected, "submit")}
         {expandSelected("clock", estTime, "clock" == selected, "number")}
         {expandSelected("chart", chronoType, "chart" == selected, "submit")}
         {expandSelected(

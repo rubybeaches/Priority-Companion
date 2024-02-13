@@ -22,8 +22,8 @@ const Page = async () => {
         <p>
           A useful system to apply your unqiue gifts, skills, and talents
           effecitvely as you participate in your daily roles. Partner habits and
-          initiatives to facilitate outcomes that provide personal fufillment
-          and rewards consistent with your values, goals, and lifestyle.
+          initiatives to facilitate actions that provide personal fufillment and
+          rewards consistent with your values, goals, and lifestyle.
         </p>
       </div>
       {/*<Image

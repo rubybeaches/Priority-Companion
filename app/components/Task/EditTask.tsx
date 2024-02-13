@@ -171,6 +171,109 @@ const EditTask = ({
     );
   };
 
+  const inputContainer = () => {
+    if (selected == "chart") {
+      return (
+        <div id="radioContainer">
+          <label className="radio peak">
+            peak
+            <input
+              type="radio"
+              checked={selectedField == "peak" ? true : false}
+              name="peak"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+          <label className="radio trough">
+            trough
+            <input
+              type="radio"
+              checked={selectedField == "trough" ? true : false}
+              name="trough"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+          <label className="radio recovery">
+            recovery
+            <input
+              type="radio"
+              checked={selectedField == "recovery" ? true : false}
+              name="recovery"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+        </div>
+      );
+    }
+    if (selected == "square") {
+      return (
+        <div className="priority" id="radioContainer">
+          <label className="radio DO">
+            DO
+            <input
+              type="radio"
+              checked={selectedField == "DO" ? true : false}
+              name="DO"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+          <label className="radio DECIDE">
+            DECIDE
+            <input
+              type="radio"
+              checked={selectedField == "DECIDE" ? true : false}
+              name="DECIDE"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+          <label className="radio DELEGATE">
+            DELEGATE
+            <input
+              type="radio"
+              checked={selectedField == "DELEGATE" ? true : false}
+              name="DELEGATE"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+          <label className="radio DELETE">
+            DELETE
+            <input
+              type="radio"
+              checked={selectedField == "DELETE" ? true : false}
+              name="DELETE"
+              onChange={(e) => {
+                updateForm(e.target.name, taskStates[selected].setter);
+              }}
+            />
+          </label>
+        </div>
+      );
+    }
+
+    return (
+      <textarea
+        className={`${inter.className}`}
+        onChange={(e) => {
+          updateForm(e.target.value, taskStates[selected].setter);
+        }}
+        defaultValue={taskStates[selected].getter}
+        ref={textArea}
+      />
+    );
+  };
+
   return (
     <div className="taskWrapper edit" ref={editWrapper}>
       <form
@@ -218,52 +321,7 @@ const EditTask = ({
         </div>
         <div className="expandedWrapper">
           <div className="expandedField">
-            {selected != "chart" ? (
-              <textarea
-                className={`${inter.className}`}
-                onChange={(e) => {
-                  updateForm(e.target.value, taskStates[selected].setter);
-                }}
-                defaultValue={taskStates[selected].getter}
-                ref={textArea}
-              />
-            ) : (
-              <div id="energyContainer">
-                <label className="energy peak">
-                  peak
-                  <input
-                    type="radio"
-                    checked={selectedField == "peak" ? true : false}
-                    name="peak"
-                    onChange={(e) => {
-                      updateForm(e.target.name, taskStates[selected].setter);
-                    }}
-                  />
-                </label>
-                <label className="energy trough">
-                  trough
-                  <input
-                    type="radio"
-                    checked={selectedField == "trough" ? true : false}
-                    name="trough"
-                    onChange={(e) => {
-                      updateForm(e.target.name, taskStates[selected].setter);
-                    }}
-                  />
-                </label>
-                <label className="energy recovery">
-                  recovery
-                  <input
-                    type="radio"
-                    checked={selectedField == "recovery" ? true : false}
-                    name="recovery"
-                    onChange={(e) => {
-                      updateForm(e.target.name, taskStates[selected].setter);
-                    }}
-                  />
-                </label>
-              </div>
-            )}
+            {inputContainer()}
             <div className="activeSelector" ref={active}>
               <span className="before"></span>
               <span className="after"></span>
