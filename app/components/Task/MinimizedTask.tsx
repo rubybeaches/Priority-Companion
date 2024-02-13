@@ -38,14 +38,14 @@ const MinimizedTask = ({
 
     if (reveal && taskDiv && tabSpan) {
       const width = taskDiv.clientWidth;
-      const height = `${taskDiv.clientHeight}px`;
+      const height = taskDiv.clientHeight;
 
-      reveal.style.width = `${width}px`;
-      reveal.style.height = height;
+      reveal.style.width = `${checked ? width : 0}px`;
+      reveal.style.height = `${height}px`;
 
-      tabSpan.style.width = `${width / 2}px`;
-      tabSpan.style.height = height;
-      tabSpan.style.left = `${width}px`;
+      tabSpan.style.width = `${checked ? width / 2 : 0}px`;
+      tabSpan.style.height = `${height}px`;
+      tabSpan.style.left = `${checked ? width : 0}px`;
     }
   };
 
