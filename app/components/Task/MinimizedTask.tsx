@@ -91,7 +91,7 @@ const MinimizedTask = ({
         return;
       }
       if (field) {
-        setSelected(icon, field);
+        setSelected(icon, icon == "clock" ? estTime || "" : field);
       } else {
         setSelected(icon, "");
         toggleWrapperState();
@@ -122,14 +122,9 @@ const MinimizedTask = ({
         <input
           readOnly={true}
           type={type}
-          className={icon == "chart" || icon == "square" ? field : ""}
+          className={icon == "chart" || icon == "square" ? field : icon}
           value={field}
         />
-        {icon == "clock" ? (
-          <input type="submit" className="minBubble" value="mins" />
-        ) : (
-          <></>
-        )}
       </span>
     );
   };
@@ -165,7 +160,12 @@ const MinimizedTask = ({
         <span className="minimizedField minimizedFieldBack" ref={active}></span>
         {expandSelected("task", description, "task" == selected, "text")}
         {expandSelected("square", priority, "square" == selected, "submit")}
-        {expandSelected("clock", estTime, "clock" == selected, "submit")}
+        {expandSelected(
+          "clock",
+          estTime + " mins",
+          "clock" == selected,
+          "submit"
+        )}
         {expandSelected("chart", chronoType, "chart" == selected, "submit")}
         {expandSelected(
           "calendar",
