@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const Planner = async ({ pathname }: { pathname: string }) => {
   const tasks = await getTasks();
-  console.log(tasks);
   return (
     <div className="sidebar" id="planner">
       <div style={{ position: "relative", width: "40%" }}>
