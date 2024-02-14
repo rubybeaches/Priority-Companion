@@ -117,6 +117,12 @@ export const getRoles = async () => {
     return roles
 }
 
+export const getTasks = async () => {
+    const tasks = await prisma.task.findMany({where: { completed: false,}});
+
+    return tasks;
+}
+
 export const getHabitByRoleCount = async (role_id:number) => {
     const habitCountRes = await prisma.roles.findUnique({
         where: { id: role_id },

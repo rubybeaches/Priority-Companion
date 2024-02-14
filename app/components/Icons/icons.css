@@ -29,6 +29,37 @@
     fill: #d8e6ff;
 }
 
+#planner {
+  .clockIcon:hover circle, 
+  .squareIcon:hover circle, 
+  .taskIcon:hover circle,
+  .chartIcon:hover circle,
+  .linkIcon:hover circle,
+  .calendarIcon:hover circle {
+      fill:#ffd8f1;
+  }
+
+  .animate .clockIcon circle, 
+  .animate .squareIcon circle, 
+  .animate .taskIcon circle,
+  .animate .chartIcon circle,
+  .animate .linkIcon circle,
+  .animate .calendarIcon circle {
+      fill:#F8D9FF;
+  }
+
+  .collapse .pencilIcon:hover #pencil, 
+  .save .set .saveIcon:hover #save, 
+  .save .trashIcon:hover #trash {
+      fill:#9A28B5;
+  }
+
+  .save .unset .saveIcon #save, 
+  .save .unset .saveIcon:hover #save {
+      fill: #ffd8f1;
+  }
+}
+
 .animate .clockAnimate {
     animation: 1s ease-in-out 1 spinClock;
     transform-origin: center;

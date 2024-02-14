@@ -25,6 +25,7 @@ const ExpandedTask = ({
   dueBy,
   link,
   parent,
+  planner,
   expandFunc,
   selected,
   selectedField,
@@ -128,7 +129,13 @@ const ExpandedTask = ({
       setSelected(icon, field || "");
     };
 
-    const state = field ? (expand ? "selected" : "set") : "unset";
+    const taskState = field ? (expand ? "selected" : "set") : "unset";
+    const plannerState = field
+      ? expand
+        ? "plannerselected"
+        : "plannerset"
+      : "unset";
+    const state = planner ? plannerState : taskState;
 
     if (!expand) {
       return (
@@ -220,12 +227,12 @@ const ExpandedTask = ({
         <span className="taskHeaderIcons collapse">
           <TaskIcons
             icon="edit"
-            state="set"
+            state={planner ? "plannerset" : "set"}
             clickFunc={() => expandFunc("edit", true)}
           />
           <TaskIcons
             icon="expand"
-            state="set"
+            state={planner ? "plannerset" : "set"}
             clickFunc={() => toggleWrapperState()}
           />
         </span>

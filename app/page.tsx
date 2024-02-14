@@ -1,6 +1,7 @@
 import { Dancing_Script } from "next/font/google";
 import { getRoles } from "./lib/data";
 import RoleCard from "./components/RoleCard/RoleCard";
+import Planner from "./components/Planner/Planner";
 import Image from "next/image";
 import Link from "next/link";
 import "./page.css";
@@ -9,68 +10,95 @@ import "./components/Task/Task.css";
 import "./components/RoleCard/RoleCard.css";
 import "./components/Icons/icons.css";
 import "./components/Breadcrumbs/Breadcrumbs.css";
+import "./components/Planner/Planner.css";
 
 const dancer = Dancing_Script({ subsets: ["latin"] });
 
-const Page = async () => {
+const Page = async ({
+  searchParams,
+}: {
+  searchParams?: { modal?: string };
+}) => {
   const roles = await getRoles();
-
+  const query = searchParams?.modal || "";
   return (
-    <main className="card">
-      <Link className="linkButton linkRight" href={"/role/create"}>
-        <span className="linkPlusIcon">&#x2b;</span> Role
-      </Link>
-      <div className="pcHeader">
-        <h1 className={`${dancer.className} antialiased`}>
-          Priority Companion
-        </h1>
-        <p>
-          A useful system to apply your unqiue gifts, skills, and talents
-          effecitvely as you participate in your daily roles. Partner habits and
-          initiatives to facilitate actions that provide personal fufillment and
-          rewards consistent with your values, goals, and lifestyle.
-        </p>
-      </div>
-      {/*<Image
+    <>
+      <main className="card">
+        <div className="linkRight">
+          <Link className="linkButton" href={"/role/create"}>
+            <span className="linkPlusIcon">&#x2b;</span> Role
+          </Link>
+          <Link
+            className="linkButton plannerButton"
+            href={{
+              pathname: `/`,
+              query: { modal: "planner" },
+            }}
+            replace
+          >
+            Planner
+          </Link>
+        </div>
+        <div className="pcHeader">
+          <h1 className={`${dancer.className} antialiased`}>
+            Priority Companion
+          </h1>
+          <p>
+            A useful system to apply your unqiue gifts, skills, and talents
+            effecitvely as you participate in your daily roles. Partner habits
+            and initiatives to facilitate actions that provide personal
+            fufillment and rewards consistent with your values, goals, and
+            lifestyle.
+          </p>
+        </div>
+        {/*<Image
         src="/colors.png"
         width={534}
         height={259}
         priority={false}
         alt="Screenshots of the dashboard project showing desktop and mobile versions"
   /> */}
-      <div className="columnWrapper">
-        <div className="roleWrapper">
-          {roles.map((role, index) => (
-            <span key={index}>
-              {index % 2 == 0 && (
-                <div className="card">
-                  <RoleCard
-                    role={role}
-                    habits={role.habits}
-                    initiatives={role.initiatives}
-                  />
-                </div>
-              )}
-            </span>
-          ))}
+        <div className="columnWrapper">
+          <div className="roleWrapper">
+            {roles.map((role, index) => (
+              <span key={index}>
+                {index % 2 == 0 && (
+                  <div className="card">
+                    <RoleCard
+                      role={role}
+                      habits={role.habits}
+                      initiatives={role.initiatives}
+                    />
+                  </div>
+                )}
+              </span>
+            ))}
+          </div>
+          <div className="roleWrapper">
+            {roles.map((role, index) => (
+              <span key={index}>
+                {index % 2 != 0 && (
+                  <div className="card">
+                    <RoleCard
+                      role={role}
+                      habits={role.habits}
+                      initiatives={role.initiatives}
+                    />
+                  </div>
+                )}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="roleWrapper">
-          {roles.map((role, index) => (
-            <span key={index}>
-              {index % 2 != 0 && (
-                <div className="card">
-                  <RoleCard
-                    role={role}
-                    habits={role.habits}
-                    initiatives={role.initiatives}
-                  />
-                </div>
-              )}
-            </span>
-          ))}
-        </div>
-      </div>
-    </main>
+      </main>
+      {query == "planner" && (
+        <>
+          <div className="overlay">
+            <Planner pathname={"/"} />
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

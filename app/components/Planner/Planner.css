@@ -1,0 +1,72 @@
+#planner {
+    color: #CE4FDE;
+}
+
+#planner .linkButton {
+    color: #CE4FDE;
+    background-color: #FFF;
+}
+
+#planner h4 {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+#planner { 
+    .taskWrapper { 
+        border: 2px solid #CE65E7;
+        /* border: 2px solid #5693FF; */
+    }
+    .taskTitle {
+        color: #9A28B5;
+        /* color: #427BDE; */
+    }
+    .inputTitle {
+        /* border-color: #DBE6FF; */
+        border-color: #ffd8f1;
+        background-color: #ffd8f1;
+        color: #9A28B5;
+    }
+    .tab {
+        background-color: #CE65E7;
+        /* background: linear-gradient(0.25turn, #5693FF, #B1CEFF, #f8f8f8, #B1CEFF, #5693FF); */
+        background: linear-gradient(0.25turn, #CE65E7c7, #F8D9FF, #f8f8f8, #F8D9FF, #CE65E7c7);
+    }
+    .taskBehindWrapper {
+        background-color: #F8D9FF;
+    }
+    .taskBehindWrapper h4 {
+        color: #9A28B5;
+    }
+    .activeSelector {
+        border: 2px solid #CE65E7;
+        border-top: 0;
+    }
+    .activeSelector .before {
+        border-right: #CE65E7 2px solid;
+        border-top: #CE65E7 2px solid;
+    }
+    .activeSelector .after {
+        border-left: #CE65E7 2px solid;
+        border-top: #CE65E7 2px solid;
+    }
+    .minimizedFieldBack {
+        border: #CE65E7 2px solid;
+    }
+    .expandedField {
+        border: #CE65E7 2px solid;
+    }
+    .checkcircle {
+        border: 2px solid #9A28B5;
+    }
+    .checkboxWrapper .checkcircle:after {
+        background-color: #9A28B5;
+    }
+    .editDatePicker {
+        border: 2px solid #CE65E7;
+    }
+    .minimizedField .clock, .expandedField .minBubble {
+        background-color: #ffd8f1;
+        border: 1.5px solid #CE65E7;
+    }
+}

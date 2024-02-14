@@ -8,14 +8,12 @@ const set = {
   shape: "#427BDE",
   shapeInner: "#B1CEFF",
 };
-
 const selected = {
   circle: "#B1CEFF",
   outline: "#5693FF",
   shape: "#427BDE",
   shapeInner: "#FFF",
 };
-
 const unset = {
   circle: "#F3F3F3",
   outline: "#FFF",
@@ -23,11 +21,26 @@ const unset = {
   shapeInner: "#F8F8F8",
 };
 
+const plannerset = {
+  circle: "#FFF",
+  outline: "#CE65E7",
+  shape: "#9A28B5",
+  shapeInner: "#F8D9FF",
+};
+const plannerselected = {
+  circle: "#F8D9FF",
+  outline: "#CE65E7",
+  shape: "#9A28B5",
+  shapeInner: "#FFF",
+};
+
 export const TaskIcons = ({ icon, state, clickFunc }: taskIconsProp) => {
   const colors: any = {
     set: set,
     selected: selected,
     unset: unset,
+    plannerset: plannerset,
+    plannerselected: plannerselected,
   };
 
   const svg: any = {
