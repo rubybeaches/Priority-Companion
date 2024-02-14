@@ -165,14 +165,24 @@ const MinimizedTask = ({
       <div className="iconFieldWrapper" style={{ position: "relative" }}>
         <span className="minimizedField minimizedFieldBack" ref={active}></span>
         {expandSelected("task", description, "task" == selected, "text")}
-        {expandSelected("square", priority, "square" == selected, "submit")}
+        {expandSelected(
+          "square",
+          priority,
+          "square" == selected,
+          priority ? "submit" : "text"
+        )}
         {expandSelected(
           "clock",
-          estTime + " mins",
+          estTime ? estTime + " mins" : "",
           "clock" == selected,
-          "submit"
+          estTime ? "submit" : "number"
         )}
-        {expandSelected("chart", chronoType, "chart" == selected, "submit")}
+        {expandSelected(
+          "chart",
+          chronoType,
+          "chart" == selected,
+          chronoType ? "submit" : "text"
+        )}
         {expandSelected(
           "calendar",
           plannedStart,

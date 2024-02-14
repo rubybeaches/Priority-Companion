@@ -33,7 +33,8 @@ export async function createRole(formData: FormData) {
     }
     */
    
-    revalidatePath('/');
+    revalidatePath("/");
+    revalidatePath(`/role/${companionRole.name}`);
     redirect(`/role/${companionRole.name}`);
   }
 
@@ -74,6 +75,7 @@ export async function createRole(formData: FormData) {
     */
    
     revalidatePath("/");
+    revalidatePath(`/role/${roleName}`);
     redirect(`/role/${roleName}`);
   }
 
@@ -105,6 +107,7 @@ export async function createRole(formData: FormData) {
     */
    
     revalidatePath("/");
+    revalidatePath(pathName);
     redirect(pathName);
   }
 
@@ -128,6 +131,7 @@ export async function createRole(formData: FormData) {
     */
    
     revalidatePath("/");
+    revalidatePath(pathName);
     redirect(pathName);
   }
 
@@ -164,5 +168,6 @@ export async function createRole(formData: FormData) {
     */
    
     revalidatePath("/");
+    revalidatePath(pathName);
     redirect(pathName);
   }
