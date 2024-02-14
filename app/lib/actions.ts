@@ -44,6 +44,8 @@ export async function createRole(formData: FormData) {
   }
 
   export async function createHabit({roleID, roleName, title, description, priority, estTime, chronoType, plannedStart, link}:CreateTask) {
+    const createDate =  plannedStart ? new Date(plannedStart) : new Date();
+
     const companionHabit = await prisma.habit.create({
         data: {
             frequency: 'daily',
@@ -55,7 +57,7 @@ export async function createRole(formData: FormData) {
                 priority: priority,
                 estTime: Number(estTime),
                 chronoType: chronoType,
-                plannedStart: new Date(plannedStart).toISOString(),
+                plannedStart: createDate.toISOString(),
                 dueBy: null,
                 link: link,
                 completed: false,
