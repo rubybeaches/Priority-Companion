@@ -10,6 +10,7 @@ import {
 } from "@/app/lib/definitions";
 import "./Task.css";
 import { useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const MinimizedTask = ({
   title,
@@ -25,11 +26,13 @@ const MinimizedTask = ({
   selected,
   selectedField,
   setSelected,
+  setComplete,
 }: TaskStateProps) => {
   const taskWrapper = useRef<HTMLDivElement>(null);
   const revealWrapper = useRef<HTMLDivElement>(null);
   const tab = useRef<HTMLSpanElement>(null);
   const active = useRef<HTMLSpanElement>(null);
+  const pathname = usePathname();
 
   const handleChecked = (checked: boolean) => {
     const taskDiv = taskWrapper.current;
@@ -134,9 +137,12 @@ const MinimizedTask = ({
       <span className="tab" ref={tab}></span>
       <div className="revealWrapper" ref={revealWrapper}>
         <span className="taskBehindWrapper">
-          <h4>Complete {title}</h4>
-          <button>yes</button>
-          <button>no</button>
+          <form action={() => setComplete(pathname)}>
+            {/* <h4>Complete {title}</h4> */}
+            <label>Enter minutes taken to complete:</label>
+            <input type="number" name="timer" />
+            <button>Mark Complete</button>
+          </form>
         </span>
       </div>
       <label className="checkboxWrapper">

@@ -40,4 +40,5 @@ export interface TaskStateProps extends TaskProps {
   selected: iconName,
   selectedField: string,
   setSelected: (icon: iconName, field: string) => void,
+  setComplete: (pathname: string) => void,
 }

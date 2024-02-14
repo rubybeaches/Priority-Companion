@@ -108,6 +108,29 @@ export async function createRole(formData: FormData) {
     redirect(pathName);
   }
 
+  interface CompleteTask {
+    taskID: number,
+    pathName: string,
+  }
+
+  export async function CompleteTask({pathName, taskID}:CompleteTask) {
+    const companionTask = await prisma.task.update({
+      where: {id: taskID},
+        data: {
+            completed: true,
+        }
+    })
+   
+    /*
+    try {
+    } catch (error) {
+    }
+    */
+   
+    revalidatePath("/");
+    redirect(pathName);
+  }
+
   interface DeleteTask {
     taskID: number,
     pathName: string,

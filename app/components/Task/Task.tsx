@@ -4,6 +4,7 @@ import { TaskProps, iconName } from "@/app/lib/definitions";
 import ExpandedTask from "./ExpandedTask";
 import MinimizedTask from "./MinimizedTask";
 import EditTask from "./EditTask";
+import { CompleteTask } from "@/app/lib/actions";
 import { useState } from "react";
 
 interface Task extends TaskProps {
@@ -36,6 +37,13 @@ const Task = ({
     }
   };
 
+  const markComplete = async (pathname: string) => {
+    const completed = await CompleteTask({
+      taskID: id,
+      pathName: pathname,
+    });
+  };
+
   const setSelectedState = (icon: iconName, field: string) => {
     setSelectedIcon((selectedIcon) => icon);
     setSelectedField((selectedField) => field);
@@ -59,6 +67,7 @@ const Task = ({
         selected={selectedIcon}
         selectedField={selectedField}
         setSelected={setSelectedState}
+        setComplete={markComplete}
       />
     );
   }
@@ -79,6 +88,7 @@ const Task = ({
         selected={selectedIcon}
         selectedField={selectedField}
         setSelected={setSelectedState}
+        setComplete={markComplete}
       />
     );
   } else {
@@ -97,6 +107,7 @@ const Task = ({
         selected={selectedIcon}
         selectedField={selectedField}
         setSelected={setSelectedState}
+        setComplete={markComplete}
       />
     );
   }

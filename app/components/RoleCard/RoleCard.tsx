@@ -12,6 +12,7 @@ const Role = ({
   habits: Habit[];
   initiatives: Initiative[];
 }) => {
+  const habitCount = habits.filter((habit) => habit.tasks.length > 0).length;
   return (
     <>
       <h2 className="roleHeader">{role.name}</h2>
@@ -30,7 +31,7 @@ const Role = ({
         ))}
 
         <h3 className="roleHeader">
-          Habits <span className="roleHeaderCount">({habits.length})</span>
+          Habits <span className="roleHeaderCount">({habitCount})</span>
         </h3>
         {habits.map((habit: Habit) => (
           <span key={habit.id}>

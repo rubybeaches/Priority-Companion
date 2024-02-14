@@ -31,10 +31,22 @@ export const getRoleData = async (role_id: number) => {
         where: { id: role_id },
         include: {
             habits: {
-                include: { tasks: true,},
+                include: { 
+                    tasks: {
+                        where: {
+                            completed: false,
+                        },
+                    },
+                },
             },
             initiatives: {
-                include: { tasks: true, },
+                include: { 
+                    tasks: {
+                        where: {
+                            completed: false,
+                        },
+                    },
+                 },
             },
         },
         });
@@ -76,10 +88,22 @@ export const getRoleDataByName = async (role_name: string) => {
         },
         include: {
             habits: {
-                include: { tasks: true,},
+                include: { 
+                    tasks: {
+                        where: {
+                            completed: false,
+                        },
+                    },
+                },
             },
             initiatives: {
-                include: { tasks: true, },
+                include: { 
+                    tasks: {
+                        where: {
+                            completed: false,
+                        },
+                    }, 
+                },
             },
         },
         });
@@ -88,7 +112,7 @@ export const getRoleDataByName = async (role_name: string) => {
 }
 
 export const getRoles = async () => {
-    const roles = await prisma.roles.findMany({include: {habits: {include:{tasks:true}}, initiatives:{include:{tasks:true}}}});
+    const roles = await prisma.roles.findMany({include: {habits: {include:{tasks: {where: {completed: false,},},}}, initiatives:{include:{tasks: {where: {completed: false,},},}}}});
 
     return roles
 }
@@ -98,7 +122,17 @@ export const getHabitByRoleCount = async (role_id:number) => {
         where: { id: role_id },
         include: {
           _count: {
-            select: { habits: true },
+            select: { 
+                habits: {
+                    where: { 
+                        tasks: {
+                            some: {
+                                completed: false,
+                            },
+                        },
+                    },
+                },
+             },
           },
         },
       })

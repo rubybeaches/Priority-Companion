@@ -81,10 +81,11 @@
     border-radius: 8px;
     background-color: #B1CEFF;
     padding: 10px;
+    padding-left: 16px;
     width: var(--task-width);
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     height: 100%;
     z-index: 2;
 }
@@ -96,7 +97,7 @@
     flex: 1;
 }
 
-.taskBehindWrapper button {
+.taskBehindWrapper button, .taskBehindWrapper input {
     background-color: #FFF;
     border: none;
     outline: none;
