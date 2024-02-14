@@ -24,10 +24,14 @@ interface CreateProps {
 
 const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
   const [selected, setSelected] = useState("task");
+  const [selectedField, setSelectedField] = useState("");
   const active = useRef<HTMLDivElement>(null);
   const textArea = useRef<HTMLTextAreaElement>(null);
+  const radioDiv = useRef<HTMLDivElement>(null);
+  const minWrapper = useRef<HTMLDivElement>(null);
   const scrollToRef = useRef<HTMLDivElement>(null);
   const createForm = useRef<HTMLFormElement>(null);
+  const [pending, setPending] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -57,6 +61,19 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
 
   const updateForm = (inputText: string, setter: (text: string) => void) => {
     setter(inputText);
+    setSelected(selected);
+    setSelectedField(inputText);
+  };
+
+  const asyncPend = () => {
+    setPending(true);
+    const editDiv = scrollToRef.current;
+
+    if (editDiv) {
+      editDiv.classList.add("animate");
+    }
+
+    createForm.current?.requestSubmit();
   };
 
   const xTransform = {
@@ -83,6 +100,7 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
         return;
       }
       setSelected((selected) => icon || "");
+      setSelectedField((selectedField) => field || "");
       const updateText = textArea.current;
       if (updateText) {
         updateText.style.opacity = ".2";
@@ -120,8 +138,100 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
     );
   };
 
+  function getFormattedDate(date: Date) {
+    const year = date.getFullYear();
+
+    let month = (1 + date.getMonth()).toString();
+    month = month.length > 1 ? month : "0" + month;
+
+    let day = date.getDate().toString();
+    day = day.length > 1 ? day : "0" + day;
+
+    return year + "-" + month + "-" + day;
+  }
+
+  const inputContainer = () => {
+    if (selected == "chart" || selected == "square") {
+      const radioTypes =
+        selected == "chart"
+          ? ["peak", "trough", "recovery"]
+          : ["DO", "DECIDE", "DELEGATE", "DELETE"];
+      return (
+        <div
+          className={selected == "square" ? "priority" : ""}
+          id="inputContainer"
+          ref={radioDiv}
+        >
+          {radioTypes.map((type) => (
+            <label key={type} className={`radio ${type}`}>
+              {type}
+              <input
+                type="radio"
+                checked={selectedField == type ? true : false}
+                name={type}
+                onChange={(e) => {
+                  updateForm(e.target.name, taskStates[selected].setter);
+                }}
+              />
+            </label>
+          ))}
+        </div>
+      );
+    }
+    if (selected == "calendar") {
+      const dueDate = getFormattedDate(new Date(taskStates[selected].getter));
+      return (
+        <div id="inputContainer">
+          <input
+            type="text"
+            readOnly={true}
+            className="editDateHeader"
+            value={taskStates[selected].getter}
+            style={{ height: taskStates[selected].getter ? "" : "0px" }}
+          />
+          <input
+            type="date"
+            className="editDatePicker"
+            value={dueDate}
+            onChange={(e) => {
+              let setDate = e.target.value.replace(/-/g, "/");
+              setDate = new Date(setDate).toDateString();
+              updateForm(setDate, taskStates[selected].setter);
+            }}
+          />
+        </div>
+      );
+    }
+    if (selected == "clock") {
+      return (
+        <div id="inputContainer" ref={minWrapper}>
+          <div className="minBubble">
+            <input
+              type="number"
+              value={taskStates[selected].getter}
+              onChange={(e) => {
+                updateForm(e.target.value, taskStates[selected].setter);
+              }}
+            />
+            mins
+          </div>
+        </div>
+      );
+    }
+    return (
+      <textarea
+        className={`${inter.className}`}
+        onChange={(e) => {
+          updateForm(e.target.value, taskStates[selected].setter);
+        }}
+        defaultValue={taskStates[selected].getter}
+        ref={textArea}
+      />
+    );
+  };
+
   return (
-    <div className="taskWrapper" ref={scrollToRef}>
+    <div className="taskWrapper edit" ref={scrollToRef}>
       <form
         ref={createForm}
         action={() =>
@@ -154,29 +264,22 @@ const CreateTask = ({ roleID, roleName, parentType }: CreateProps) => {
             state={"set"}
             clickFunc={() => router.push(pathname)}
           />
-          <span className={`${taskTitle && newDescription ? "set" : "unset"}`}>
+          <span
+            className={`${
+              taskTitle && newDescription && !pending ? "set" : "unset"
+            }`}
+          >
             <TaskIcons
               icon="save"
               state={"set"}
-              clickFunc={() =>
-                taskTitle && newDescription
-                  ? createForm.current?.requestSubmit()
-                  : ""
-              }
+              clickFunc={() => (taskTitle && newDescription ? asyncPend() : "")}
             />
           </span>
         </span>
       </div>
       <div className="expandedWrapper">
         <div className="expandedField">
-          <textarea
-            className={`${inter.className}`}
-            onChange={(e) => {
-              updateForm(e.target.value, taskStates[selected].setter);
-            }}
-            defaultValue={taskStates[selected].getter}
-            ref={textArea}
-          />
+          {inputContainer()}
           <div className="activeSelector" ref={active}>
             <span className="before"></span>
             <span className="after"></span>
