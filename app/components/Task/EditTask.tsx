@@ -31,6 +31,7 @@ const EditTask = ({
   link,
   parent,
   parentID,
+  planner,
   expandFunc,
   selected,
   selectedField,
@@ -165,7 +166,13 @@ const EditTask = ({
       }
     };
 
-    const state = field ? (expand ? "selected" : "set") : "unset";
+    const taskState = field ? (expand ? "selected" : "set") : "unset";
+    const plannerState = field
+      ? expand
+        ? "plannerselected"
+        : "plannerset"
+      : "unset";
+    const state = planner ? plannerState : taskState;
 
     if (!expand) {
       return (
@@ -297,7 +304,7 @@ const EditTask = ({
           <span className="taskHeaderIcons save">
             <TaskIcons
               icon="trash"
-              state={"set"}
+              state={planner ? "plannerset" : "set"}
               clickFunc={() =>
                 DeleteTask({
                   pathName: pathname,
@@ -313,7 +320,7 @@ const EditTask = ({
             >
               <TaskIcons
                 icon="save"
-                state={"set"}
+                state={planner ? "plannerset" : "set"}
                 clickFunc={() =>
                   taskTitle && newDescription
                     ? createForm.current?.requestSubmit()

@@ -10,6 +10,11 @@
 #planner h4 {
     font-size: 1.5em;
     font-weight: 600;
+    margin-block: 1em;
+}
+
+.taskContainer {
+    padding: 0px 0px 25px 25px;
 }
 
 #planner { 
@@ -63,6 +68,7 @@
         background-color: #9A28B5;
     }
     .editDatePicker {
+        background-color: #ffd8f1;
         border: 2px solid #CE65E7;
     }
     .minimizedField .clock, .expandedField .minBubble {
