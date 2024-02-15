@@ -9,8 +9,8 @@
 
 #planner h4 {
     font-size: 1.5em;
-    font-weight: 600;
-    margin-block: 1em;
+    font-weight: 500;
+    margin-block: 1em .5em;
 }
 
 .dateContainer {
