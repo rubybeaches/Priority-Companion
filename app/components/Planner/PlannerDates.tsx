@@ -36,8 +36,10 @@ const PlannerDates = ({
           value={getFormattedDate(startDate)}
           ref={startDateInput}
           onChange={(e) => {
-            let pick = e.target.value.replace(/-/g, "/");
-            setDate(new Date(pick));
+            let pick = e.target.value
+              ? new Date(e.target.value.replace(/-/g, "/"))
+              : new Date();
+            setDate(pick);
           }}
         />
         <p>{startDate.toDateString()}</p>
