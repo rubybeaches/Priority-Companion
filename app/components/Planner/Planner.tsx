@@ -3,8 +3,8 @@ import PlannerFilter from "./PlannerFilter";
 import Link from "next/link";
 import PlannerTasks from "./PlannerTasks";
 import { Task as TaskProp } from "@prisma/client";
-import { useState } from "react";
-import { chronoType, prioritySquare } from "@/app/lib/definitions";
+import { useState, useEffect } from "react";
+import PlannerDates from "./PlannerDates";
 
 const Planner = ({
   pathname,
@@ -14,16 +14,42 @@ const Planner = ({
   tasks: TaskProp[];
 }) => {
   const [taskList, setTaskList] = useState(tasks);
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [filter, setFilter] = useState<
+    "priority" | "estTime" | "chronoType" | "link" | "description"
+  >("description");
+  const [filterOn, setFilterOn] = useState<boolean>(false);
 
-  const filterList = (
-    filter: "priority" | "estTime" | "chronoType" | "link",
-    filterOn: boolean
+  useEffect(() => {
+    filterList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startDate, filter, filterOn]);
+
+  const updateDate = (date: Date) => {
+    setStartDate((startDate) => date);
+  };
+
+  const updateFilter = (
+    filterUpdate: "priority" | "estTime" | "chronoType" | "link",
+    filterBool: boolean
   ) => {
+    setFilter((filter) => filterUpdate);
+    setFilterOn((filterOn) => filterBool);
+  };
+
+  const filterList = () => {
     if (filterOn) {
-      const filterd = tasks.filter((task) => task[filter]);
-      setTaskList(filterd);
+      const filterd = tasks.filter(
+        (task) =>
+          task[filter] &&
+          task.plannedStart.toDateString() == startDate.toDateString()
+      );
+      setTaskList((taskList) => filterd);
     } else {
-      setTaskList(tasks);
+      const filterd = tasks.filter(
+        (task) => task.plannedStart.toDateString() == startDate.toDateString()
+      );
+      setTaskList((taskList) => filterd);
     }
   };
 
@@ -40,7 +66,8 @@ const Planner = ({
         </Link>
         <div className="taskContainer">
           <h4>Priority Planner</h4>
-          <PlannerFilter filterList={filterList} />
+          <PlannerDates startDate={startDate} setDate={updateDate} />
+          <PlannerFilter filterList={updateFilter} />
           <PlannerTasks tasks={taskList} />
         </div>
       </div>

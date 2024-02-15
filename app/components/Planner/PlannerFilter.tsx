@@ -36,7 +36,7 @@ const PlannerFilter = ({
 
   return (
     <div className="filterContainer">
-      <span className="filter f-active" ref={square}>
+      <span className="filter" ref={square}>
         <TaskIcons
           icon="square"
           state={"plannerset"}
