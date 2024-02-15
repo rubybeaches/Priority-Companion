@@ -2,7 +2,11 @@
 import { useRef } from "react";
 import TaskIcons from "../Icons/icons";
 
-const PlannerFilter = () => {
+const PlannerFilter = ({
+  filterList,
+}: {
+  filterList: (filter: string) => void;
+}) => {
   const square = useRef<HTMLSpanElement>(null);
   const clock = useRef<HTMLSpanElement>(null);
   const chart = useRef<HTMLSpanElement>(null);
@@ -20,6 +24,8 @@ const PlannerFilter = () => {
       active[ref].classList.remove("f-active");
     }
     active[icon].classList.toggle("f-active");
+
+    filterList(icon);
   };
 
   return (

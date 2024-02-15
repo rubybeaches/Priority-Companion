@@ -1,10 +1,24 @@
-import { getTasks } from "@/app/lib/data";
-import Task from "../Task/Task";
-import Link from "next/link";
+"use client";
 import PlannerFilter from "./PlannerFilter";
+import Link from "next/link";
+import PlannerTasks from "./PlannerTasks";
+import { Task as TaskProp } from "@prisma/client";
+import { useState } from "react";
 
-const Planner = async ({ pathname }: { pathname: string }) => {
-  const tasks = await getTasks();
+const Planner = ({
+  pathname,
+  tasks,
+}: {
+  pathname: string;
+  tasks: TaskProp[];
+}) => {
+  const [taskList, setTaskList] = useState(tasks);
+
+  const filterList = (filter: string) => {
+    const filterd = tasks.filter((task) => task.chronoType);
+    setTaskList(filterd);
+  };
+
   return (
     <>
       <div className="sidebarContainer" id="planner">
@@ -18,24 +32,8 @@ const Planner = async ({ pathname }: { pathname: string }) => {
         </Link>
         <div className="taskContainer">
           <h4>Priority Planner</h4>
-          <PlannerFilter />
-          {tasks.map((task) => (
-            <span key={task.id}>
-              <Task
-                id={task.id}
-                title={task.name}
-                description={task.description}
-                priority={task.priority || undefined}
-                estTime={task.estTime?.toString() || undefined}
-                chronoType={task.chronoType || undefined}
-                plannedStart={task.plannedStart.toDateString()}
-                dueBy={task.dueBy?.toDateString() || undefined}
-                link={task.link || undefined}
-                planner={true}
-                parentID={task.habitId || task.initiativeId || undefined}
-              />
-            </span>
-          ))}
+          <PlannerFilter filterList={filterList} />
+          <PlannerTasks tasks={taskList} />
         </div>
       </div>
       <div className="sidebar"></div>

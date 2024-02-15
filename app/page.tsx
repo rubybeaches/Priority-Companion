@@ -1,5 +1,6 @@
 import { Dancing_Script } from "next/font/google";
 import { getRoles } from "./lib/data";
+import { getTasks } from "@/app/lib/data";
 import RoleCard from "./components/RoleCard/RoleCard";
 import Planner from "./components/Planner/Planner";
 import Image from "next/image";
@@ -19,6 +20,7 @@ const Page = async ({
   searchParams?: { modal?: string };
 }) => {
   const roles = await getRoles();
+  const tasks = await getTasks();
   const query = searchParams?.modal || "";
   return (
     <>
@@ -93,7 +95,7 @@ const Page = async ({
       {query == "planner" && (
         <>
           <div className="overlay">
-            <Planner pathname={"/"} />
+            <Planner pathname={"/"} tasks={tasks} />
           </div>
         </>
       )}

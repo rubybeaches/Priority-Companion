@@ -17,7 +17,7 @@
     width: 380px;
     border: 2px solid #CE65E7;
     background-color: #F8D9FF;
-    border-radius: 20px;
+    border-radius: 50px;
     padding: 10px;
     display: flex;
     gap: .6em;
@@ -28,9 +28,16 @@
     background-color: #F8D9FF;
     overflow: hidden;
     border-radius: 20px;
+    padding-top: 2px;
 }
 .filter p {
-    display: none;
+    opacity: 0;
+    font-size: 0;
+    color: white;
+
+    transition-delay: 250ms, 250ms, 0ms, 0s;
+    transition-property: font-size, opacity, color, padding;
+    transition-duration: 800ms, 800ms, 800ms, 800ms;
 }
 
 .filter.f-active {
@@ -42,6 +49,12 @@
     display: inline;
     padding: 2px 12px 2px 8px;
     font-size: .95em;
+    opacity: 1;
+    color: #CE4FDE;
+    
+    transition-delay: 0ms, 250ms, 500ms, 0s;
+    transition-property: font-size, opacity, color, padding;
+    transition-duration: 800ms, 800ms, 800ms, 800ms;
 }
 
 .taskContainer {
