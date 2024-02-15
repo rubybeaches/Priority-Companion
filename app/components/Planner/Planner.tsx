@@ -4,6 +4,7 @@ import Link from "next/link";
 import PlannerTasks from "./PlannerTasks";
 import { Task as TaskProp } from "@prisma/client";
 import { useState } from "react";
+import { chronoType, prioritySquare } from "@/app/lib/definitions";
 
 const Planner = ({
   pathname,
@@ -14,9 +15,16 @@ const Planner = ({
 }) => {
   const [taskList, setTaskList] = useState(tasks);
 
-  const filterList = (filter: string) => {
-    const filterd = tasks.filter((task) => task.chronoType);
-    setTaskList(filterd);
+  const filterList = (
+    filter: "priority" | "estTime" | "chronoType" | "link",
+    filterOn: boolean
+  ) => {
+    if (filterOn) {
+      const filterd = tasks.filter((task) => task[filter]);
+      setTaskList(filterd);
+    } else {
+      setTaskList(tasks);
+    }
   };
 
   return (

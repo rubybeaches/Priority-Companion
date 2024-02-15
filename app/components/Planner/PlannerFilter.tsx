@@ -5,27 +5,33 @@ import TaskIcons from "../Icons/icons";
 const PlannerFilter = ({
   filterList,
 }: {
-  filterList: (filter: string) => void;
+  filterList: (
+    filter: "priority" | "estTime" | "chronoType" | "link",
+    filterOn: boolean
+  ) => void;
 }) => {
   const square = useRef<HTMLSpanElement>(null);
   const clock = useRef<HTMLSpanElement>(null);
   const chart = useRef<HTMLSpanElement>(null);
   const link = useRef<HTMLSpanElement>(null);
 
-  const toggleActive = (icon: string) => {
+  const toggleActive = (
+    filter: "priority" | "estTime" | "chronoType" | "link"
+  ) => {
     const active: any = {
-      square: square.current,
-      clock: clock.current,
-      chart: chart.current,
+      priority: square.current,
+      estTime: clock.current,
+      chronoType: chart.current,
       link: link.current,
     };
 
     for (const ref in active) {
-      active[ref].classList.remove("f-active");
+      ref != filter
+        ? active[ref].classList.remove("f-active")
+        : active[ref].classList.toggle("f-active");
     }
-    active[icon].classList.toggle("f-active");
-
-    filterList(icon);
+    const hasFilter = active[filter].classList.contains("f-active");
+    filterList(filter, hasFilter);
   };
 
   return (
@@ -34,7 +40,7 @@ const PlannerFilter = ({
         <TaskIcons
           icon="square"
           state={"plannerset"}
-          clickFunc={() => toggleActive("square")}
+          clickFunc={() => toggleActive("priority")}
         />
         <p>Priority</p>
       </span>
@@ -42,7 +48,7 @@ const PlannerFilter = ({
         <TaskIcons
           icon="clock"
           state={"plannerset"}
-          clickFunc={() => toggleActive("clock")}
+          clickFunc={() => toggleActive("estTime")}
         />
         <p>Time Commitment</p>
       </span>
@@ -50,7 +56,7 @@ const PlannerFilter = ({
         <TaskIcons
           icon="chart"
           state={"plannerset"}
-          clickFunc={() => toggleActive("chart")}
+          clickFunc={() => toggleActive("chronoType")}
         />
         <p>Energy Period</p>
       </span>
