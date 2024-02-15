@@ -13,6 +13,37 @@
     margin-block: 1em;
 }
 
+.filterContainer {
+    width: 380px;
+    border: 2px solid #CE65E7;
+    background-color: #F8D9FF;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    gap: .6em;
+}
+
+.filter {
+    display: flex;
+    background-color: #F8D9FF;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.filter p {
+    display: none;
+}
+
+.filter.f-active {
+    background: #fff;
+    padding: 2px;
+}
+
+.filter.f-active p {
+    display: inline;
+    padding: 2px 12px 2px 8px;
+    font-size: .95em;
+}
+
 .taskContainer {
     padding: 0px 0px 25px 25px;
 }

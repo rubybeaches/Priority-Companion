@@ -4,6 +4,7 @@ import RoleCard from "./components/RoleCard/RoleCard";
 import Planner from "./components/Planner/Planner";
 import Image from "next/image";
 import Link from "next/link";
+const dancer = Dancing_Script({ subsets: ["latin"] });
 import "./page.css";
 import "./components/InitiativeCard/InitiativeCard.css";
 import "./components/Task/Task.css";
@@ -11,8 +12,6 @@ import "./components/RoleCard/RoleCard.css";
 import "./components/Icons/icons.css";
 import "./components/Breadcrumbs/Breadcrumbs.css";
 import "./components/Planner/Planner.css";
-
-const dancer = Dancing_Script({ subsets: ["latin"] });
 
 const Page = async ({
   searchParams,

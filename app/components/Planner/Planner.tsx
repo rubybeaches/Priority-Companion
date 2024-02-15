@@ -1,6 +1,7 @@
 import { getTasks } from "@/app/lib/data";
 import Task from "../Task/Task";
 import Link from "next/link";
+import PlannerFilter from "./PlannerFilter";
 
 const Planner = async ({ pathname }: { pathname: string }) => {
   const tasks = await getTasks();
@@ -17,6 +18,7 @@ const Planner = async ({ pathname }: { pathname: string }) => {
         </Link>
         <div className="taskContainer">
           <h4>Priority Planner</h4>
+          <PlannerFilter />
           {tasks.map((task) => (
             <span key={task.id}>
               <Task
