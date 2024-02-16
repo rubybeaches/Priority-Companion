@@ -76,9 +76,9 @@ const MinimizedTask = ({
     if (activeSpan) {
       const activeXTransform = xTransform[selected];
 
-      activeSpan.style.width = "120px";
+      activeSpan.style.width = "calc(80% - 130px - 2.5em)";
       setTimeout(() => {
-        activeSpan.style.width = "210px";
+        activeSpan.style.width = "calc(100% - 130px - 2.5em)";
       }, 500);
       activeSpan.style.transform = `translate(${activeXTransform}px, 0px)`;
     }

@@ -9,7 +9,7 @@ body p {
 
 main.card {
     margin: 20px auto;
-    width: 90%;
+    width: max(600px, 90%);
     position: relative;
 }
 
@@ -18,7 +18,6 @@ main.card {
     padding: 12px 24px 18px 24px;
     border-radius: 12px;
     box-shadow: 0px 3px 6px 0px #8888;
-    width: 400px;
     height: min-content;
     margin: 20px;
 }
@@ -76,7 +75,7 @@ main.card {
 }
 
 .sidebar {
-    width: 450px;
+    width: 550px;
     height: 100%;
     background-color: #FFF;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

@@ -38,7 +38,7 @@
     background-color: #FFF;
     padding: 10px;
     margin-block: 12px 16px;
-    width: 380px;
+    width: max(380px, 95%);
 }
 
 .tab {
@@ -180,7 +180,7 @@
     border-radius: 20px;
     position: absolute;
     z-index: 0;
-    width: 210px;
+    width: calc(100% - 2.5em - 130px);
     height: 30px;
     top: 0px;
     left: 0px;

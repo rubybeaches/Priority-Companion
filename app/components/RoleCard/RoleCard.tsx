@@ -44,7 +44,9 @@ const Role = ({
                   priority={task.priority || undefined}
                   estTime={task.estTime?.toString() || undefined}
                   chronoType={task.chronoType || undefined}
-                  plannedStart={task.plannedStart.toDateString()}
+                  plannedStart={new Date(
+                    task.plannedStart.toLocaleString()
+                  ).toDateString()}
                   dueBy={task.dueBy?.toDateString() || undefined}
                   link={task.link || undefined}
                   parent={"habit"}

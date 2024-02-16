@@ -45,7 +45,7 @@ export async function createRole(formData: FormData) {
   }
 
   export async function createHabit({roleID, roleName, title, description, priority, estTime, chronoType, plannedStart, link}:CreateTask) {
-    const createDate =  plannedStart ? new Date(plannedStart) : new Date();
+    const createDate =  plannedStart ? new Date(plannedStart).toUTCString() : new Date().toUTCString();
 
     const companionHabit = await prisma.habit.create({
         data: {
@@ -58,7 +58,7 @@ export async function createRole(formData: FormData) {
                 priority: priority,
                 estTime: Number(estTime),
                 chronoType: chronoType,
-                plannedStart: createDate.toISOString(),
+                plannedStart: new Date(createDate).toISOString(),
                 dueBy: null,
                 link: link,
                 completed: false,
@@ -85,6 +85,7 @@ export async function createRole(formData: FormData) {
   }
 
   export async function UpdateTask({pathName, taskID, title, description, priority, estTime, chronoType, plannedStart, link}:EditTask) {
+    const updateDate = new Date(plannedStart).toUTCString();
     const companionTask = await prisma.task.update({
       where: {id: taskID},
         data: {
@@ -93,7 +94,7 @@ export async function createRole(formData: FormData) {
             priority: priority,
             estTime: Number(estTime),
             chronoType: chronoType,
-            plannedStart: new Date(plannedStart).toISOString(),
+            plannedStart: new Date(updateDate).toISOString(),
             dueBy: null,
             link: link,
             completed: false,

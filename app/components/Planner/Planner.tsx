@@ -42,12 +42,15 @@ const Planner = ({
       const filterd = tasks.filter(
         (task) =>
           task[filter] &&
-          task.plannedStart.toDateString() == startDate.toDateString()
+          new Date(task.plannedStart.toLocaleString()).toDateString() ==
+            startDate.toDateString()
       );
       setTaskList((taskList) => filterd);
     } else {
       const filterd = tasks.filter(
-        (task) => task.plannedStart.toDateString() == startDate.toDateString()
+        (task) =>
+          new Date(task.plannedStart.toLocaleString()).toDateString() ==
+          startDate.toDateString()
       );
       setTaskList((taskList) => filterd);
     }
@@ -60,7 +63,7 @@ const Planner = ({
           className="linkButton linkRight"
           href={"/"}
           replace
-          style={{ left: "400px" }}
+          style={{ left: "500px" }}
         >
           <span className="plannerClose">&#10006;</span>
         </Link>
