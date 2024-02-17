@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "700px",
-  initialScale: 1.0,
+  width: "700",
+  initialScale: 1,
   userScalable: true,
 };
 
