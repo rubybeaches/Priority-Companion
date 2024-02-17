@@ -34,7 +34,6 @@ const PlannerDates = ({
         <input
           type="date"
           value={getFormattedDate(startDate)}
-          placeholder={getFormattedDate(startDate)}
           ref={startDateInput}
           onChange={(e) => {
             let pick = e.target.value

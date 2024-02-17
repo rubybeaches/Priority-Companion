@@ -39,6 +39,7 @@
     padding: 10px;
     margin-block: 12px 16px;
     width: max(380px, 95%);
+    height: fit-content;
 }
 
 .tab {
