@@ -1,6 +1,12 @@
+.breadContainer {
+    width: calc(90% + 36px);
+    margin: auto;
+}
+
 .bread {
     list-style: none;
     display: flex;
+    padding-inline-start: 0px;
 }
 
 .crum a {

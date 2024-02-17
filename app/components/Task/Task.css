@@ -182,6 +182,7 @@
     position: absolute;
     z-index: 0;
     width: calc(100% - 2.5em - 130px);
+    width: -webkit-calc(100% - 2.5em - 130px);
     height: 30px;
     top: 0px;
     left: 0px;
