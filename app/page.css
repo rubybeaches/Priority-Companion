@@ -43,3 +43,15 @@ main .card:hover .linkButton {
     max-width: 550px;
     margin: auto;
 }
+
+.role-bg1 {
+    background-image: url("/rol-bg1.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.role-bg2 {
+    background-image: url("/role-bg2.png");
+    background-position: center;
+    background-size: cover;
+}

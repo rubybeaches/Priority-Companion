@@ -64,7 +64,7 @@ const Page = async ({
             {roles.map((role, index) => (
               <span key={index}>
                 {index % 2 == 0 && (
-                  <div className="card">
+                  <div className="card role-bg1">
                     <RoleCard
                       role={role}
                       habits={role.habits}
@@ -79,7 +79,7 @@ const Page = async ({
             {roles.map((role, index) => (
               <span key={index}>
                 {index % 2 != 0 && (
-                  <div className="card">
+                  <div className="card role-bg2">
                     <RoleCard
                       role={role}
                       habits={role.habits}

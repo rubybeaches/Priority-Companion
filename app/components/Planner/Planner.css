@@ -48,8 +48,11 @@
 
 .datebar input[type=date] {
     position: absolute;
+    z-index: -1;
+    /* 
     visibility: hidden;
     opacity: 0;
+    */
 }
 
 .date {
