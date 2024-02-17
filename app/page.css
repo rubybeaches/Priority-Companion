@@ -45,7 +45,7 @@ main .card:hover .linkButton {
 }
 
 .role-bg1 {
-    background-image: url("/rol-bg1.png");
+    background-image: url("/role-bg1.png");
     background-position: center;
     background-size: cover;
 }
