@@ -468,6 +468,7 @@
 .minimizedField .clock, .expandedField .minBubble {
   background-color: #d8e6ff;
   border: 1.5px solid #5693ff;
+  color: black;
   outline: none;
   padding: 2px 8px;
   border-radius: 20px;

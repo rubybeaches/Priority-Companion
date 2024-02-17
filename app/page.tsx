@@ -5,7 +5,7 @@ import RoleCard from "./components/RoleCard/RoleCard";
 import Planner from "./components/Planner/Planner";
 import Image from "next/image";
 import Link from "next/link";
-const dancer = Dancing_Script({ subsets: ["latin"] });
+const dancer = Dancing_Script({ subsets: ["latin"], weight: ["700"] });
 import "./page.css";
 import "./components/InitiativeCard/InitiativeCard.css";
 import "./components/Task/Task.css";

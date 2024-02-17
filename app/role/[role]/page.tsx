@@ -11,6 +11,7 @@ import "../../components/Task/Task.css";
 import "../../components/RoleCard/RoleCard.css";
 import "../../components/Icons/icons.css";
 import "../../components/Breadcrumbs/Breadcrumbs.css";
+import HabitList from "@/app/components/RoleCard/HabitList";
 
 export default async function Role({
   params,
@@ -33,9 +34,7 @@ export default async function Role({
           <span className="linkPlusIcon">&#x2b;</span> Add
         </Link>
         {Role.initiatives.map((init: Initiative) => (
-          <span key={init.id}>
-            <InitiativeCard {...init} />
-          </span>
+          <InitiativeCard key={init.id} {...init} />
         ))}
       </span>
 
@@ -51,29 +50,7 @@ export default async function Role({
         >
           <span className="linkPlusIcon">&#x2b;</span> Add
         </Link>
-        {Role.habits.map((habit: Habit) => (
-          <span key={habit.id}>
-            {habit.tasks.map((task) => (
-              <span key={task.id}>
-                <Task
-                  id={task.id}
-                  title={task.name}
-                  description={task.description}
-                  priority={task.priority || undefined}
-                  estTime={task.estTime?.toString() || undefined}
-                  chronoType={task.chronoType || undefined}
-                  plannedStart={new Date(
-                    task.plannedStart.toLocaleString()
-                  ).toDateString()}
-                  dueBy={task.dueBy?.toDateString() || undefined}
-                  link={task.link || undefined}
-                  parent={"habit"}
-                  parentID={habit.id}
-                />
-              </span>
-            ))}
-          </span>
-        ))}
+        <HabitList Role={Role} />
 
         {query == "habit" && (
           <>

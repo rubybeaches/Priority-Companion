@@ -3,6 +3,10 @@
     margin-block: 12px 8px;
 }
 
+.roleHeader:nth-child(n + 2) {
+    margin-block: 24px 8px;
+}
+
 .roleDesc {
     margin-bottom: 20px;
 }
@@ -16,7 +20,12 @@
 
 .wrapper .initWrapper, .wrapper .taskWrapper {
     margin-block: 0px;
-    margin: 0px 16px 16px 0px;
+}
+
+.wrapper span .initWrapper:first-child, 
+.wrapper span span .taskWrapper:first-child {
+    margin-top: 12px;
+    max-width: 500px;
 }
 
 .wrapper .linkRight {

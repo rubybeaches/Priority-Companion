@@ -25,6 +25,7 @@ main .card:hover .linkButton {
 .columnWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 2em;
 }
 
 @media (max-width: 1024px) {
@@ -36,4 +37,9 @@ main .card:hover .linkButton {
 .roleWrapper {
     display: flex;
     flex-direction: column;
+}
+
+.roleWrapper .card {
+    max-width: 550px;
+    margin: auto;
 }
