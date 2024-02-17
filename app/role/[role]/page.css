@@ -15,18 +15,20 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: .8em 1.5em;
 }
 
 .wrapper .initWrapper, .wrapper .taskWrapper {
     margin-block: 0px;
+    margin-top: 8px;
+    width: max(380px, 30%);
 }
 
-.wrapper span .initWrapper:first-child, 
-.wrapper span span .taskWrapper:first-child {
-    margin-top: 12px;
-    max-width: 500px;
+/*
+.wrapper a + .initWrapper, .wrapper a + .taskWrapper {
+    margin-block: 12px;
 }
+*/
 
 .wrapper .linkRight {
     top: -35px;
