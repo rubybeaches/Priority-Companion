@@ -24,6 +24,7 @@
 
 .datebar {
     display: inline;
+    position: relative;
     background-color: #F2F2F2;
     display: flex;
     width: fit-content;
@@ -46,7 +47,10 @@
 }
 
 .datebar input[type=date] {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
 }
 
 .date {
