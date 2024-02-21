@@ -3,7 +3,7 @@ import PlannerFilter from "./PlannerFilter";
 import Link from "next/link";
 import PlannerTasks from "./PlannerTasks";
 import { Task as TaskProp } from "@prisma/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import PlannerDates from "./PlannerDates";
 
 const Planner = ({
@@ -13,17 +13,12 @@ const Planner = ({
   pathname: string;
   tasks: TaskProp[];
 }) => {
-  const [taskList, setTaskList] = useState(tasks);
+  //const [taskList, setTaskList] = useState(tasks);
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [filter, setFilter] = useState<
     "priority" | "estTime" | "chronoType" | "link" | "description"
   >("description");
   const [filterOn, setFilterOn] = useState<boolean>(false);
-
-  useEffect(() => {
-    filterList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startDate, filter, filterOn]);
 
   const updateDate = (date: Date) => {
     setStartDate((startDate) => date);
@@ -37,24 +32,16 @@ const Planner = ({
     setFilterOn((filterOn) => filterBool);
   };
 
-  const filterList = () => {
-    if (filterOn) {
-      const filterd = tasks.filter(
-        (task) =>
-          task[filter] &&
-          new Date(task.plannedStart.toLocaleString()).toDateString() ==
-            startDate.toDateString()
-      );
-      setTaskList((taskList) => filterd);
-    } else {
-      const filterd = tasks.filter(
-        (task) =>
-          new Date(task.plannedStart.toLocaleString()).toDateString() ==
-          startDate.toDateString()
-      );
-      setTaskList((taskList) => filterd);
-    }
-  };
+  const filterList = useMemo(() => {
+    return tasks.filter((task) => {
+      return filterOn
+        ? task[filter] &&
+            new Date(task.plannedStart.toLocaleString()).toDateString() ==
+              startDate.toDateString()
+        : new Date(task.plannedStart.toLocaleString()).toDateString() ==
+            startDate.toDateString();
+    });
+  }, [filterOn, filter, tasks, startDate]);
 
   return (
     <>
@@ -71,7 +58,7 @@ const Planner = ({
           <h4>Priority Planner</h4>
           <PlannerDates startDate={startDate} setDate={updateDate} />
           <PlannerFilter filterList={updateFilter} />
-          <PlannerTasks tasks={taskList} />
+          <PlannerTasks tasks={filterList} />
         </div>
       </div>
       <div className="sidebar"></div>
