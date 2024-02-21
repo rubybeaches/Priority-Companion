@@ -3,7 +3,7 @@ import PlannerFilter from "./PlannerFilter";
 import Link from "next/link";
 import PlannerTasks from "./PlannerTasks";
 import { Task as TaskProp } from "@prisma/client";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import PlannerDates from "./PlannerDates";
 
 const Planner = ({
